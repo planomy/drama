@@ -44,6 +44,53 @@
     text-transform:uppercase;padding:6px 12px;border-radius:999px;
   }
 
+  .appendix-cue{
+    position:absolute;bottom:20px;right:20px;z-index:3;
+    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+    max-width:min(320px,46%);
+  }
+  .appendix-cue .cue-label{
+    display:flex;align-items:center;gap:6px;
+    font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold2);text-shadow:0 1px 10px rgba(0,0,0,.9);
+  }
+  .appendix-cue .cue-label::before{
+    content:'';width:8px;height:8px;border-radius:50%;
+    background:var(--gold);box-shadow:0 0 10px var(--gold);
+    animation:cue-blink 1.8s ease-in-out infinite;
+  }
+  .appendix-cue .cue-btn{
+    background:linear-gradient(145deg,rgba(210,170,255,.97),rgba(150,90,220,.97));
+    border:1px solid rgba(255,255,255,.4);color:#fff;
+    font-weight:800;font-size:14px;padding:11px 18px;border-radius:999px;
+    cursor:pointer;box-shadow:0 10px 28px rgba(60,20,100,.55);
+    transition:transform .15s,box-shadow .15s;
+    white-space:nowrap;
+  }
+  .appendix-cue .cue-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 32px rgba(80,30,130,.65);
+  }
+  @keyframes cue-blink{0%,100%{opacity:1}50%{opacity:.45}}
+
+  .appendix-close{
+    position:absolute;top:14px;right:16px;z-index:4;
+    display:flex;align-items:center;gap:8px;
+    background:rgba(20,10,30,.92);border:1px solid rgba(200,160,255,.45);
+    color:var(--accent2);border-radius:999px;padding:8px 14px 8px 12px;
+    font-size:13px;font-weight:800;cursor:pointer;
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+    transition:background .15s,border-color .15s;
+  }
+  .appendix-close:hover{background:rgba(50,30,70,.95);border-color:var(--accent)}
+  .appendix-close .x{
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(200,160,255,.2);border:1px solid rgba(200,160,255,.4);
+    display:grid;place-items:center;font-size:16px;line-height:1;
+  }
+  html.presenting .appendix-cue,html:fullscreen .appendix-cue{bottom:28px;right:28px}
+  html.presenting .appendix-close,html:fullscreen .appendix-close{top:20px;right:24px}
+
   html.presenting body,html:fullscreen body{align-items:stretch;justify-content:stretch;background:var(--bg1)}
   html.presenting #app,html:fullscreen #app{height:100dvh}
   html.presenting #nav,html:fullscreen #nav{
@@ -184,15 +231,41 @@ const APPENDIX = [
 let deck = 'unit';
 let unitIdx = 0;
 let appendixIdx = 0;
+let returnUnitIdx = null;
 
 function slides(){ return deck === 'unit' ? UNIT : APPENDIX; }
 function deckLabel(){ return deck === 'unit' ? 'Unit plan' : 'Appendices'; }
 function curIdx(){ return deck === 'unit' ? unitIdx : appendixIdx; }
 
+function appendixLabel(appIdx){
+  return APPENDIX[appIdx].nav.replace(/^App /, 'Appendix ');
+}
+
+function appendixCueHtml(lesson){
+  if(deck !== 'unit' || !lesson?.apps?.length) return '';
+  const btns = lesson.apps.map(ai =>
+    `<button type="button" class="cue-btn" onclick="openAppendix(${ai})">${appendixLabel(ai)} →</button>`
+  ).join('');
+  return `<div class="appendix-cue" aria-label="On-screen appendix available">
+    <span class="cue-label">Appendix on screen</span>${btns}
+  </div>`;
+}
+
+function appendixCloseHtml(){
+  if(deck !== 'appendix' || returnUnitIdx == null) return '';
+  const lesson = UNIT[returnUnitIdx];
+  const label = lesson?.nav?.replace(/^Lesson \d+ — /, '') || 'lesson';
+  return `<button type="button" class="appendix-close" onclick="closeAppendix()" title="Back to ${lesson?.nav || 'lesson'}">
+    <span class="x" aria-hidden="true">✕</span> Back to ${label}
+  </button>`;
+}
+
 function render(){
   const s = slides()[curIdx()];
   const el = document.getElementById('slide');
-  el.innerHTML = `<span class="deck-tag">${deckLabel()}</span><img src="${s.src}" alt="${s.nav}">`;
+  const cue = deck === 'unit' ? appendixCueHtml(s) : '';
+  const closeBtn = appendixCloseHtml();
+  el.innerHTML = `<span class="deck-tag">${deckLabel()}</span>${closeBtn}<img src="${s.src}" alt="${s.nav}">${cue}`;
   document.getElementById('counter').textContent = `${curIdx() + 1} / ${slides().length}`;
   document.getElementById('jump').value = curIdx();
   if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
@@ -217,6 +290,27 @@ function show(i){
   render();
 }
 
+function openAppendix(appIdx){
+  returnUnitIdx = unitIdx;
+  deck = 'appendix';
+  appendixIdx = appIdx;
+  document.getElementById('deckUnit').classList.remove('active');
+  document.getElementById('deckApp').classList.add('active');
+  buildJump();
+  render();
+}
+
+function closeAppendix(){
+  if(returnUnitIdx == null) return;
+  unitIdx = returnUnitIdx;
+  returnUnitIdx = null;
+  deck = 'unit';
+  document.getElementById('deckUnit').classList.add('active');
+  document.getElementById('deckApp').classList.remove('active');
+  buildJump();
+  render();
+}
+
 function setDeck(d){
   if(deck === d) return;
   const fromUnit = deck === 'unit';
@@ -224,8 +318,11 @@ function setDeck(d){
   document.getElementById('deckUnit').classList.toggle('active', deck === 'unit');
   document.getElementById('deckApp').classList.toggle('active', deck === 'appendix');
   if(fromUnit && d === 'appendix'){
+    returnUnitIdx = unitIdx;
     const lesson = UNIT[unitIdx];
     if(lesson?.apps?.length) appendixIdx = lesson.apps[0];
+  } else if(d === 'unit'){
+    returnUnitIdx = null;
   }
   buildJump();
   render();
@@ -301,7 +398,10 @@ document.addEventListener('keydown', e => {
   if(e.key === 'ArrowLeft') { e.preventDefault(); show(curIdx() - 1); }
   if(e.key === 'f' || e.key === 'F') { e.preventDefault(); togglePresent(); }
   if(e.key === 'n' || e.key === 'N') { e.preventDefault(); openNotes(); }
-  if(e.key === 'Escape') closeNotes();
+  if(e.key === 'Escape'){
+    if(returnUnitIdx != null && deck === 'appendix'){ e.preventDefault(); closeAppendix(); return; }
+    closeNotes();
+  }
 });
 document.addEventListener('fullscreenchange', () => {
   if(!document.fullscreenElement && !document.webkitFullscreenElement) setPresenting(false);
