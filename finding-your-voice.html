@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 5/6 Drama · Finding Your Voice</title>
+<style>
+  :root{
+    --bg0:#140a1e; --bg1:#1e1230; --bg2:#2a1a42;
+    --ink:#fcfaf8; --ink-dim:#ddd0ec; --ink-faint:#a89cb8;
+    --line:#5a4870; --panel:#2a1a42; --panel2:#342450;
+    --accent:#c8a0ff; --accent2:#e0c0ff; --gold:#e8b838; --gold2:#ffe8a0;
+    --radius:18px;
+    --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--font);color:var(--ink);
+    background:var(--bg0);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  #app{width:100vw;height:100vh;display:flex;flex-direction:column}
+  #stageWrap{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    padding:18px 18px 6px;min-height:0;
+  }
+  .slide{
+    position:relative;width:min(1180px,100%);aspect-ratio:16/10;max-height:100%;
+    background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    border:1px solid var(--line);border-radius:26px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04);
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .slide.img-slide{padding:0;background:#0a0610;border-color:#3a2850}
+  .slide.img-slide img{
+    width:100%;height:100%;object-fit:contain;display:block;background:#0a0610;
+  }
+  .deck-tag{
+    position:absolute;top:14px;left:16px;z-index:2;
+    background:rgba(20,10,30,.82);border:1px solid rgba(200,160,255,.35);
+    color:var(--accent2);font-weight:800;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;padding:6px 12px;border-radius:999px;
+  }
+
+  html.presenting body,html:fullscreen body{align-items:stretch;justify-content:stretch;background:var(--bg1)}
+  html.presenting #app,html:fullscreen #app{height:100dvh}
+  html.presenting #nav,html:fullscreen #nav{
+    flex-shrink:0;padding:8px 10px;background:var(--bg0);border-top:1px solid var(--line);
+  }
+  html.presenting #stageWrap,html:fullscreen #stageWrap{
+    flex:1;min-height:0;padding:0;align-items:center;justify-content:center;
+  }
+  html.presenting .slide,html:fullscreen .slide{
+    width:1180px;max-width:none;max-height:none;aspect-ratio:16/10;
+    border-radius:0;border:none;box-shadow:none;transform-origin:center center;
+  }
+
+  #nav{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;flex-wrap:wrap}
+  .btn{
+    background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    border-radius:999px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;
+    transition:background .15s,border-color .15s;
+  }
+  .btn:hover{background:var(--panel2);border-color:var(--accent)}
+  .btn.primary{background:rgba(200,160,255,.18);border-color:rgba(200,160,255,.45);color:var(--accent2)}
+  .btn.active{background:rgba(232,184,56,.18);border-color:rgba(232,184,56,.45);color:var(--gold2)}
+  #counter{font-weight:800;font-size:13px;min-width:72px;text-align:center;color:var(--ink-dim)}
+  select#jump{
+    background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+    border-radius:999px;padding:9px 12px;font-size:13px;max-width:min(280px,42vw);
+  }
+  .deck-toggle{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .deck-toggle .btn{border:none;background:transparent;padding:8px 14px}
+  .deck-toggle .btn.active{background:rgba(200,160,255,.22);color:var(--accent2)}
+
+  #tnotes{
+    position:fixed;top:0;right:0;width:min(400px,92vw);height:100dvh;
+    background:var(--bg1);border-left:1px solid var(--line);
+    transform:translateX(100%);transition:transform .2s;z-index:50;
+    display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.4);
+  }
+  #tnotes.open{transform:translateX(0)}
+  #tnotes header{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:14px 16px;border-bottom:1px solid var(--line);
+  }
+  #tnotes header b{display:block;font-size:15px}
+  #tnotes .slide-label{display:block;font-size:12px;color:var(--ink-faint);margin-top:2px}
+  #tnotes .body{padding:16px 18px;overflow:auto;flex:1;font-size:14.5px;line-height:1.55;color:var(--ink-dim)}
+  #tnotes .body p{margin-bottom:10px}
+  .btn.notes-open{border-color:var(--accent);color:var(--accent2)}
+
+  .downloads{
+    position:fixed;bottom:72px;right:14px;z-index:5;display:flex;flex-direction:column;gap:6px;
+  }
+  .downloads a{
+    font-size:11px;font-weight:700;color:var(--ink-faint);text-decoration:none;
+    background:rgba(20,10,30,.75);border:1px solid var(--line);padding:5px 10px;border-radius:999px;
+  }
+  .downloads a:hover{color:var(--gold2);border-color:var(--gold)}
+  html.presenting .downloads,html:fullscreen .downloads{display:none}
+
+  @media(max-width:720px){
+    select#jump{max-width:120px}
+    .deck-toggle .btn{padding:8px 10px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stageWrap"><div class="slide img-slide" id="slide"></div></div>
+  <div id="nav">
+    <div class="deck-toggle">
+      <button class="btn active" id="deckUnit" type="button">Unit plan</button>
+      <button class="btn" id="deckApp" type="button">Appendices</button>
+    </div>
+    <button class="btn" id="prev" type="button">← Prev</button>
+    <span id="counter">1 / 24</span>
+    <select id="jump" aria-label="Jump to slide"></select>
+    <button class="btn" id="notesBtn" type="button">Teacher notes</button>
+    <button class="btn" id="presentBtn" type="button" title="Fullscreen for screen share (F)">⛶ Present</button>
+    <button class="btn" id="next" type="button">Next →</button>
+  </div>
+</div>
+
+<aside id="tnotes">
+  <header>
+    <div><b>Teacher notes</b><span class="slide-label" id="tnotesTitle"></span></div>
+    <span>
+      <button class="btn" id="detachBtn" type="button">Detach ⧉</button>
+      <button class="btn" id="notesClose" type="button">✕</button>
+    </span>
+  </header>
+  <div class="body" id="tnotesBody"></div>
+</aside>
+
+<div class="downloads">
+  <a href="Finding%20Your%20Voice%20Unit.pdf" target="_blank" rel="noopener">PDF ↗</a>
+  <a href="Finding%20Your%20Voice%20Presentation.pptx" download>PPTX ↓</a>
+</div>
+
+<script>
+const UNIT = [
+  { nav:'Cover', src:'images/unit/01-cover.jpg', notes:'<p>Open the unit. Students are building towards a one-minute monologue filmed at home.</p>' },
+  { nav:'Unit overview', src:'images/unit/02-overview.jpg', notes:'<p>Walk through delivery context, lesson rhythm and assessment at a glance.</p>' },
+  { nav:'The journey', src:'images/unit/03-journey.jpg', notes:'<p>Whole-class Weeks 1–2 → breakout pairs 3–8 → independent 9–10.</p>' },
+  { nav:'Lesson 1 — Elements', src:'images/unit/04-lesson-01.jpg', notes:'<p><b>Appendix A</b> on screen. Camera Freeze warm-up → elements mini-lesson → 30-sec exit ticket.</p>' },
+  { nav:'Lesson 2 — History', src:'images/unit/05-lesson-02.jpg', notes:'<p><b>Appendices B &amp; C</b>. Drama through time; monologue vs soliloquy — act the same line both ways.</p>' },
+  { nav:'Lesson 3 — Cultures', src:'images/unit/06-lesson-03.jpg', notes:'<p><b>Appendix D</b>. First breakout pairs. Invite folktales from students’ own cultures.</p>' },
+  { nav:'Lesson 4 — Character', src:'images/unit/07-lesson-04.jpg', notes:'<p><b>Appendix F</b> (hot-seat). Model in role before pairs swap.</p>' },
+  { nav:'Lesson 5 — Structure', src:'images/unit/08-lesson-05.jpg', notes:'<p><b>Appendix G</b>. Four-part one-minute structure; slow the turning point.</p>' },
+  { nav:'Lesson 6 — Devising', src:'images/unit/09-lesson-06.jpg', notes:'<p>Improvisation to find words and voice. Appendix H in the PDF.</p>' },
+  { nav:'Lesson 7 — Camera', src:'images/unit/10-lesson-07.jpg', notes:'<p>Performance skills for camera. Appendix I rehearsal checklist in PDF.</p>' },
+  { nav:'Lesson 8 — Feedback', src:'images/unit/11-lesson-08.jpg', notes:'<p><b>Appendix A</b> again. Peer feedback; name elements used. Appendix J in PDF.</p>' },
+  { nav:'Lesson 9 — Finalise', src:'images/unit/12-lesson-09.jpg', notes:'<p><b>Appendix K</b> filming guide. Long independent DO block; help-room breakout.</p>' },
+  { nav:'Lesson 10 — Perform', src:'images/unit/13-lesson-10.jpg', notes:'<p>Final performance and reflection. Appendix L reflection sheet in PDF.</p>' },
+  { nav:'Appendix A — Elements', src:'images/unit/14-appendix-a.jpg' },
+  { nav:'Appendix B — History', src:'images/unit/15-appendix-b.jpg' },
+  { nav:'Appendix C — Monologue', src:'images/unit/16-appendix-c.jpg' },
+  { nav:'Appendix D — Characters', src:'images/unit/17-appendix-d.jpg' },
+  { nav:'Appendix E — Planning', src:'images/unit/18-appendix-e.jpg' },
+  { nav:'Appendix F — Hot-seat', src:'images/unit/19-appendix-f.jpg' },
+  { nav:'Appendix G — Structure', src:'images/unit/20-appendix-g.jpg' },
+  { nav:'Appendix H — Devising', src:'images/unit/21-appendix-h.jpg' },
+  { nav:'Appendix I — Rehearsal', src:'images/unit/22-appendix-i.jpg' },
+  { nav:'Appendix J — Feedback', src:'images/unit/23-appendix-j.jpg' },
+  { nav:'Appendix K–M — Film & rubric', src:'images/unit/24-appendix-klm.jpg' }
+];
+
+const APPENDIX = [
+  { nav:'Cover & jump menu', src:'images/appendix/slide-01.jpg', notes:'<p>Welcome students. This deck is your on-screen guide. Press right arrow through appendices as you reach them in lessons.</p>' },
+  { nav:'App A — Elements', src:'images/appendix/slide-02.jpg', notes:'<p><b>Lessons 1 &amp; 8.</b> Read a few aloud; students show one with face or body. They use at least two elements in every task.</p>' },
+  { nav:'App B — Through time', src:'images/appendix/slide-03.jpg', notes:'<p><b>Lesson 2.</b> Walk each era briefly. Drama travelled from open-air stages to online performance.</p>' },
+  { nav:'App C — Monologue vs soliloquy', src:'images/appendix/slide-04.jpg', notes:'<p><b>Lesson 2.</b> Act the same line as monologue and soliloquy so students hear the difference.</p>' },
+  { nav:'App D — Characters', src:'images/appendix/slide-05.jpg', notes:'<p><b>Lesson 3.</b> Story patterns from world cultures — invite students’ own folktales and families.</p>' },
+  { nav:'App F — Hot-seat', src:'images/appendix/slide-06.jpg', notes:'<p><b>Lesson 4.</b> One partner answers in role, then swap. Model first — let a student interview you.</p>' },
+  { nav:'App G — One-minute piece', src:'images/appendix/slide-07.jpg', notes:'<p><b>Lesson 5.</b> Opening → build → turning point → final line. Slow the peak; use contrast.</p>' },
+  { nav:'App K — Filming', src:'images/appendix/slide-08.jpg', notes:'<p><b>Lessons 9 &amp; 10.</b> Landscape, face a window, upper body in frame, one full take. Watch back before submitting.</p>' },
+  { nav:'Lights. Camera. You!', src:'images/appendix/slide-09.jpg', notes:'<p>Remind students of the 30-second exit ticket each lesson. Everything builds to the one-minute film.</p>' }
+];
+
+let deck = 'unit';
+let idx = 0;
+
+function slides(){ return deck === 'unit' ? UNIT : APPENDIX; }
+function deckLabel(){ return deck === 'unit' ? 'Unit plan' : 'Appendices'; }
+
+function render(){
+  const s = slides()[idx];
+  const el = document.getElementById('slide');
+  el.innerHTML = `<span class="deck-tag">${deckLabel()}</span><img src="${s.src}" alt="${s.nav}">`;
+  document.getElementById('counter').textContent = `${idx + 1} / ${slides().length}`;
+  document.getElementById('jump').value = idx;
+  if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
+  requestAnimationFrame(updatePresentScale);
+}
+
+function buildJump(){
+  const sel = document.getElementById('jump');
+  sel.innerHTML = '';
+  slides().forEach((s, i) => {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = `${i + 1}. ${s.nav}`;
+    sel.appendChild(o);
+  });
+}
+
+function show(i){
+  idx = Math.max(0, Math.min(slides().length - 1, i));
+  render();
+}
+
+function setDeck(d){
+  if(deck === d) return;
+  deck = d;
+  idx = 0;
+  document.getElementById('deckUnit').classList.toggle('active', deck === 'unit');
+  document.getElementById('deckApp').classList.toggle('active', deck === 'appendix');
+  buildJump();
+  render();
+}
+
+function fillNotes(){
+  const s = slides()[idx];
+  document.getElementById('tnotesTitle').textContent = s.nav;
+  document.getElementById('tnotesBody').innerHTML = s.notes || '<p>No notes for this screen.</p>';
+}
+
+function openNotes(){
+  document.getElementById('tnotes').classList.add('open');
+  document.getElementById('notesBtn').classList.add('notes-open');
+  fillNotes();
+}
+function closeNotes(){
+  document.getElementById('tnotes').classList.remove('open');
+  document.getElementById('notesBtn').classList.remove('notes-open');
+}
+function detachNotes(){
+  const s = slides()[idx];
+  const w = window.open('', 'tnotes', 'width=460,height=760');
+  w.document.write(`<title>Teacher Notes — ${s.nav}</title>
+    <style>body{font-family:system-ui;background:#1e1230;color:#ddd0ec;line-height:1.6;padding:22px}h2{color:#ffe8a0}</style>
+    <h2>${s.nav}</h2>${s.notes || '<p>No notes.</p>'}`);
+  w.document.close();
+}
+
+function isPresenting(){
+  return document.documentElement.classList.contains('presenting')
+    || document.fullscreenElement || document.webkitFullscreenElement;
+}
+function setPresenting(on){
+  document.documentElement.classList.toggle('presenting', on);
+  syncPresentBtn();
+  requestAnimationFrame(() => requestAnimationFrame(updatePresentScale));
+}
+function updatePresentScale(){
+  const slide = document.getElementById('slide');
+  if(!isPresenting()){ slide.style.transform = ''; return; }
+  const wrap = document.getElementById('stageWrap');
+  const scale = Math.min(wrap.clientWidth / 1180, wrap.clientHeight / 738);
+  slide.style.transform = `scale(${scale})`;
+}
+function togglePresent(){
+  if(isPresenting()){
+    setPresenting(false);
+    (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+  } else {
+    setPresenting(true);
+    const req = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+    req?.call(document.documentElement)?.catch?.(() => {});
+  }
+}
+function syncPresentBtn(){
+  document.getElementById('presentBtn').textContent = isPresenting() ? '⤢ Exit' : '⛶ Present';
+}
+
+document.getElementById('deckUnit').onclick = () => setDeck('unit');
+document.getElementById('deckApp').onclick = () => setDeck('appendix');
+document.getElementById('prev').onclick = () => show(idx - 1);
+document.getElementById('next').onclick = () => show(idx + 1);
+document.getElementById('jump').onchange = e => show(+e.target.value);
+document.getElementById('notesBtn').onclick = openNotes;
+document.getElementById('notesClose').onclick = closeNotes;
+document.getElementById('detachBtn').onclick = detachNotes;
+document.getElementById('presentBtn').onclick = togglePresent;
+
+document.addEventListener('keydown', e => {
+  if(e.target.matches('select,input,textarea')) return;
+  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(idx + 1); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+  if(e.key === 'f' || e.key === 'F') { e.preventDefault(); togglePresent(); }
+  if(e.key === 'n' || e.key === 'N') { e.preventDefault(); openNotes(); }
+  if(e.key === 'Escape') closeNotes();
+});
+document.addEventListener('fullscreenchange', () => {
+  if(!document.fullscreenElement && !document.webkitFullscreenElement) setPresenting(false);
+  else syncPresentBtn();
+});
+
+buildJump();
+render();
+</script>
+</body>
+</html>
