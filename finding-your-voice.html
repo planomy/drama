@@ -146,16 +146,16 @@ const UNIT = [
   { nav:'Cover', src:'images/unit/01-cover.jpg', notes:'<p>Open the unit. Students are building towards a one-minute monologue filmed at home.</p>' },
   { nav:'Unit overview', src:'images/unit/02-overview.jpg', notes:'<p>Walk through delivery context, lesson rhythm and assessment at a glance.</p>' },
   { nav:'The journey', src:'images/unit/03-journey.jpg', notes:'<p>Whole-class Weeks 1–2 → breakout pairs 3–8 → independent 9–10.</p>' },
-  { nav:'Lesson 1 — Elements', src:'images/unit/04-lesson-01.jpg', notes:'<p><b>Appendix A</b> on screen. Camera Freeze warm-up → elements mini-lesson → 30-sec exit ticket.</p>' },
-  { nav:'Lesson 2 — History', src:'images/unit/05-lesson-02.jpg', notes:'<p><b>Appendices B &amp; C</b>. Drama through time; monologue vs soliloquy — act the same line both ways.</p>' },
-  { nav:'Lesson 3 — Cultures', src:'images/unit/06-lesson-03.jpg', notes:'<p><b>Appendix D</b>. First breakout pairs. Invite folktales from students’ own cultures.</p>' },
-  { nav:'Lesson 4 — Character', src:'images/unit/07-lesson-04.jpg', notes:'<p><b>Appendix F</b> (hot-seat). Model in role before pairs swap.</p>' },
-  { nav:'Lesson 5 — Structure', src:'images/unit/08-lesson-05.jpg', notes:'<p><b>Appendix G</b>. Four-part one-minute structure; slow the turning point.</p>' },
+  { nav:'Lesson 1 — Elements', src:'images/unit/04-lesson-01.jpg', notes:'<p><b>Appendix A</b> on screen. Camera Freeze warm-up → elements mini-lesson → 30-sec exit ticket.</p>', apps:[1] },
+  { nav:'Lesson 2 — History', src:'images/unit/05-lesson-02.jpg', notes:'<p><b>Appendices B &amp; C</b>. Drama through time; monologue vs soliloquy — act the same line both ways.</p>', apps:[2,3] },
+  { nav:'Lesson 3 — Cultures', src:'images/unit/06-lesson-03.jpg', notes:'<p><b>Appendix D</b>. First breakout pairs. Invite folktales from students’ own cultures.</p>', apps:[4] },
+  { nav:'Lesson 4 — Character', src:'images/unit/07-lesson-04.jpg', notes:'<p><b>Appendix F</b> (hot-seat). Model in role before pairs swap.</p>', apps:[5] },
+  { nav:'Lesson 5 — Structure', src:'images/unit/08-lesson-05.jpg', notes:'<p><b>Appendix G</b>. Four-part one-minute structure; slow the turning point.</p>', apps:[6] },
   { nav:'Lesson 6 — Devising', src:'images/unit/09-lesson-06.jpg', notes:'<p>Improvisation to find words and voice. Appendix H in the PDF.</p>' },
   { nav:'Lesson 7 — Camera', src:'images/unit/10-lesson-07.jpg', notes:'<p>Performance skills for camera. Appendix I rehearsal checklist in PDF.</p>' },
-  { nav:'Lesson 8 — Feedback', src:'images/unit/11-lesson-08.jpg', notes:'<p><b>Appendix A</b> again. Peer feedback; name elements used. Appendix J in PDF.</p>' },
-  { nav:'Lesson 9 — Finalise', src:'images/unit/12-lesson-09.jpg', notes:'<p><b>Appendix K</b> filming guide. Long independent DO block; help-room breakout.</p>' },
-  { nav:'Lesson 10 — Perform', src:'images/unit/13-lesson-10.jpg', notes:'<p>Final performance and reflection. Appendix L reflection sheet in PDF.</p>' },
+  { nav:'Lesson 8 — Feedback', src:'images/unit/11-lesson-08.jpg', notes:'<p><b>Appendix A</b> again. Peer feedback; name elements used. Appendix J in PDF.</p>', apps:[1] },
+  { nav:'Lesson 9 — Finalise', src:'images/unit/12-lesson-09.jpg', notes:'<p><b>Appendix K</b> filming guide. Long independent DO block; help-room breakout.</p>', apps:[7] },
+  { nav:'Lesson 10 — Perform', src:'images/unit/13-lesson-10.jpg', notes:'<p>Final performance and reflection. Appendix L reflection sheet in PDF.</p>', apps:[7] },
   { nav:'Appendix A — Elements', src:'images/unit/14-appendix-a.jpg' },
   { nav:'Appendix B — History', src:'images/unit/15-appendix-b.jpg' },
   { nav:'Appendix C — Monologue', src:'images/unit/16-appendix-c.jpg' },
@@ -182,17 +182,19 @@ const APPENDIX = [
 ];
 
 let deck = 'unit';
-let idx = 0;
+let unitIdx = 0;
+let appendixIdx = 0;
 
 function slides(){ return deck === 'unit' ? UNIT : APPENDIX; }
 function deckLabel(){ return deck === 'unit' ? 'Unit plan' : 'Appendices'; }
+function curIdx(){ return deck === 'unit' ? unitIdx : appendixIdx; }
 
 function render(){
-  const s = slides()[idx];
+  const s = slides()[curIdx()];
   const el = document.getElementById('slide');
   el.innerHTML = `<span class="deck-tag">${deckLabel()}</span><img src="${s.src}" alt="${s.nav}">`;
-  document.getElementById('counter').textContent = `${idx + 1} / ${slides().length}`;
-  document.getElementById('jump').value = idx;
+  document.getElementById('counter').textContent = `${curIdx() + 1} / ${slides().length}`;
+  document.getElementById('jump').value = curIdx();
   if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
   requestAnimationFrame(updatePresentScale);
 }
@@ -209,22 +211,28 @@ function buildJump(){
 }
 
 function show(i){
-  idx = Math.max(0, Math.min(slides().length - 1, i));
+  const n = Math.max(0, Math.min(slides().length - 1, i));
+  if(deck === 'unit') unitIdx = n;
+  else appendixIdx = n;
   render();
 }
 
 function setDeck(d){
   if(deck === d) return;
+  const fromUnit = deck === 'unit';
   deck = d;
-  idx = 0;
   document.getElementById('deckUnit').classList.toggle('active', deck === 'unit');
   document.getElementById('deckApp').classList.toggle('active', deck === 'appendix');
+  if(fromUnit && d === 'appendix'){
+    const lesson = UNIT[unitIdx];
+    if(lesson?.apps?.length) appendixIdx = lesson.apps[0];
+  }
   buildJump();
   render();
 }
 
 function fillNotes(){
-  const s = slides()[idx];
+  const s = slides()[curIdx()];
   document.getElementById('tnotesTitle').textContent = s.nav;
   document.getElementById('tnotesBody').innerHTML = s.notes || '<p>No notes for this screen.</p>';
 }
@@ -239,7 +247,7 @@ function closeNotes(){
   document.getElementById('notesBtn').classList.remove('notes-open');
 }
 function detachNotes(){
-  const s = slides()[idx];
+  const s = slides()[curIdx()];
   const w = window.open('', 'tnotes', 'width=460,height=760');
   w.document.write(`<title>Teacher Notes — ${s.nav}</title>
     <style>body{font-family:system-ui;background:#1e1230;color:#ddd0ec;line-height:1.6;padding:22px}h2{color:#ffe8a0}</style>
@@ -279,8 +287,8 @@ function syncPresentBtn(){
 
 document.getElementById('deckUnit').onclick = () => setDeck('unit');
 document.getElementById('deckApp').onclick = () => setDeck('appendix');
-document.getElementById('prev').onclick = () => show(idx - 1);
-document.getElementById('next').onclick = () => show(idx + 1);
+document.getElementById('prev').onclick = () => show(curIdx() - 1);
+document.getElementById('next').onclick = () => show(curIdx() + 1);
 document.getElementById('jump').onchange = e => show(+e.target.value);
 document.getElementById('notesBtn').onclick = openNotes;
 document.getElementById('notesClose').onclick = closeNotes;
@@ -289,8 +297,8 @@ document.getElementById('presentBtn').onclick = togglePresent;
 
 document.addEventListener('keydown', e => {
   if(e.target.matches('select,input,textarea')) return;
-  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(idx + 1); }
-  if(e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(curIdx() + 1); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); show(curIdx() - 1); }
   if(e.key === 'f' || e.key === 'F') { e.preventDefault(); togglePresent(); }
   if(e.key === 'n' || e.key === 'N') { e.preventDefault(); openNotes(); }
   if(e.key === 'Escape') closeNotes();
