@@ -15,21 +15,45 @@ for _L in LESSONS:
   _L["wp"] = [tuple(x) for x in _L["wp"]]
 
 APPENDICES = [
-  ("App A — Elements", "images/appendix/slide-02.jpg", "Lessons 1 & 8",
+  ("App A — Elements", "images/unit/14-appendix-a.jpg", "Lessons 1 & 8",
    "The 10 elements: role, situation, movement, space, tension, focus, contrast, voice, time, mood."),
-  ("App B — Through time", "images/appendix/slide-03.jpg", "Lesson 2",
+  ("App B — Through time", "images/unit/15-appendix-b.jpg", "Lesson 2",
    "Greek → medieval → Shakespearean → modern/digital performance."),
-  ("App C — Monologue vs soliloquy", "images/appendix/slide-04.jpg", "Lesson 2",
+  ("App C — Monologue vs soliloquy", "images/unit/16-appendix-c.jpg", "Lesson 2",
    "Monologue speaks to someone/audience; soliloquy reveals private thoughts alone."),
-  ("App D — Characters", "images/appendix/slide-05.jpg", "Lesson 3",
+  ("App D — Characters", "images/unit/17-appendix-d.jpg", "Lesson 3",
    "Story patterns: race/contest, wise elder, stranger, trickster, loyal animal, sky & earth."),
-  ("App F — Hot-seat", "images/appendix/slide-06.jpg", "Lesson 4",
+  ("App E — Planning template", "images/unit/18-appendix-e.jpg", "Lessons 4–6",
+   "Monologue Planning Template — character, situation, voice, structure and lines."),
+  ("App F — Hot-seat", "images/unit/19-appendix-f.jpg", "Lesson 4",
    "Five in-role questions: name/age, want, who matters, problem, feeling now."),
-  ("App G — One-minute piece", "images/appendix/slide-07.jpg", "Lesson 5",
+  ("App G — One-minute piece", "images/unit/20-appendix-g.jpg", "Lesson 5",
    "Opening → build → turning point → final line. Pause. Stillness. Contrast."),
+  ("App H — Devising", "images/unit/21-appendix-h.jpg", "Lesson 6",
+   "Talk it out · partner thought-tracking · record & listen back."),
+  ("App I — Rehearsal checklist", "images/unit/22-appendix-i.jpg", "Lessons 7 & 9",
+   "Voice, face, framing, gestures, light and background — self-check before peer tips."),
+  ("App J — Peer feedback", "images/unit/23-appendix-j.jpg", "Lesson 8",
+   "Specific, kind feedback using drama vocabulary + element + effect."),
   ("App K — Filming", "images/appendix/slide-08.jpg", "Lessons 9 & 10",
    "Landscape · face a window · upper body in frame · quiet · one full take · watch back."),
+  ("App L — Reflection", "images/unit/24-appendix-klm.jpg", "Lesson 10",
+   "Reflection Sheet for the folio — elements used, what the piece communicates, next time."),
 ]
+
+# First appendix to open for each lesson (I / Appendices button).
+LESSON_APPS = {
+  1: ["App A — Elements"],
+  2: ["App B — Through time", "App C — Monologue vs soliloquy"],
+  3: ["App D — Characters"],
+  4: ["App F — Hot-seat", "App E — Planning template"],
+  5: ["App G — One-minute piece", "App E — Planning template"],
+  6: ["App H — Devising", "App E — Planning template"],
+  7: ["App I — Rehearsal checklist"],
+  8: ["App J — Peer feedback", "App A — Elements"],
+  9: ["App K — Filming", "App I — Rehearsal checklist"],
+  10: ["App K — Filming", "App L — Reflection"],
+}
 
 # Answer / coaching tips for Screen A discussion starters (shown in teacher notes only).
 BRAIN_TIPS = {
@@ -165,9 +189,39 @@ def patch_runtime(js: str) -> str:
   )
   js = js.replace(
     "function openInfoReport(){ window.open(INFOREPORT_URL, '_blank', 'noopener'); }",
-    """function openInfoReport(){
-  const i = SLIDES.findIndex(s => (s.nav||'').startsWith('App A'));
-  if(i >= 0) show(i);
+    """let appendixReturnIdx = null;
+function lessonNumFromSlide(s){
+  const m = (s?.nav||'').match(/^L(\\d+)/);
+  return m ? +m[1] : null;
+}
+function appsForSlide(s){
+  if (s?.appsNav?.length) return s.appsNav;
+  const n = lessonNumFromSlide(s);
+  if (n && LESSON_APP_MAP[n]) return LESSON_APP_MAP[n];
+  return ['App A — Elements'];
+}
+function openLessonAppendix(nav){
+  const s = SLIDES[idx];
+  if (!(s.nav||'').startsWith('App ')) appendixReturnIdx = idx;
+  const i = SLIDES.findIndex(x => x.nav === nav);
+  if (i >= 0) show(i);
+}
+function backToLesson(){
+  if (appendixReturnIdx != null){ show(appendixReturnIdx); appendixReturnIdx = null; }
+  else {
+    // Fall back to previous non-appendix slide
+    for (let i = idx - 1; i >= 0; i--){
+      if (!(SLIDES[i].nav||'').startsWith('App ')){ show(i); return; }
+    }
+  }
+}
+function openInfoReport(){
+  const s = SLIDES[idx];
+  if ((s.nav||'').startsWith('App ')){ backToLesson(); return; }
+  appendixReturnIdx = idx;
+  const targets = appsForSlide(s);
+  const i = SLIDES.findIndex(x => targets.includes(x.nav));
+  if (i >= 0) show(i);
 }""",
   )
   js = js.replace(
@@ -184,8 +238,22 @@ def patch_runtime(js: str) -> str:
     """function syncInfoReportBtn(){
   const btn = document.getElementById('inforeportBtn');
   if(!btn) return;
-  btn.textContent = '📎 Appendices';
-  btn.title = 'Jump to on-screen appendices (I)';
+  const s = SLIDES[idx];
+  const onApp = (s.nav||'').startsWith('App ');
+  if (onApp){
+    btn.textContent = '← Back to lesson';
+    btn.title = 'Return to the lesson you left (I)';
+    return;
+  }
+  const apps = appsForSlide(s);
+  if (apps.length === 1){
+    const short = apps[0].split(' — ')[0];
+    btn.textContent = '📎 ' + short;
+    btn.title = 'Open ' + apps[0] + ' (I)';
+  } else {
+    btn.textContent = '📎 Lesson appendices';
+    btn.title = 'Open this lesson\\'s appendices (I): ' + apps.join(', ');
+  }
 }""",
   )
   return js
@@ -241,7 +309,7 @@ def main() -> None:
     <li><b>Rhythm:</b> short TEACH bursts (≤10 min) then DO — keep students performing.</li>
     <li><b>Weeks 1–2:</b> whole-class · <b>Weeks 3–8:</b> breakout pairs · <b>Weeks 9–10:</b> independent + help room.</li>
     <li><b>Exit tickets:</b> 30-sec recorded clips every lesson.</li>
-    <li><b>Appendices:</b> jump with <kbd>I</kbd> or the Appendices button.</li>
+    <li><b>Appendices:</b> from a lesson, press <kbd>I</kbd> or the purple button for <i>that lesson’s</i> appendix — then <b>← Back to lesson</b> (or <kbd>I</kbd> again).</li>
   </ul>
   <h3>Australian Curriculum v9.0 Drama (Years 5–6)</h3>
   <ul>
@@ -255,6 +323,7 @@ def main() -> None:
   chunks.append("const ASSESS_TAB_BY_NAV = {};")
   chunks.append("const INFOREPORT_NAV = new Set();")
   chunks.append("const TEACHER_NOTES = {};")
+  chunks.append(f"const LESSON_APP_MAP = {dumps({str(k): v for k, v in LESSON_APPS.items()})};")
   chunks.append("const SLIDES = [];")
 
   chunks.append(
@@ -382,23 +451,22 @@ def main() -> None:
       + "</li>"
       for t in teach_blocks
     )
-    teach_card_body = "".join(
-      f'<div style="margin-top:10px"><b style="color:var(--accent2)">{t["mins"]}</b>'
-      f' <b>{t["title"]}</b>'
-      f'<p style="margin-top:4px;font-size:14.5px;line-height:1.4">{t["body"]}</p>'
-      + (f'<p style="margin-top:4px;font-size:13px;color:#4a5a54"><i>Tip:</i> {t["tip"]}</p>' if t.get("tip") else "")
-      + "</div>"
-      for t in teach_blocks
+    apps_nav = LESSON_APPS.get(n, ["App A — Elements"])
+    apps_btns = "".join(
+      f'<button type="button" class="btn inforeport" style="margin:4px 6px 0 0;padding:7px 12px;font-size:13px" '
+      f'onclick="openLessonAppendix({json.dumps(nav)})">{nav.split(" — ")[0]}</button>'
+      for nav in apps_nav
     )
     notes_a = (
       f"<h4>Learn — Lesson {n}</h4>{lesson['notes']}"
       f"<p><b>Strand:</b> {lesson.get('strand','')} · <b>Mode:</b> {lesson['mode']}</p>"
-      f"<h4>Teach (from unit)</h4><ul>{teach_notes}</ul>"
+      f"<h4>Teach (also on Screen B sequence)</h4><ul>{teach_notes}</ul>"
       f"{discussion_notes(lesson['brain'])}"
       f"<h4>Word Work</h4><ul>"
       + "".join(f"<li><b>{t}</b> — {d}</li>" for t, d in lesson["wp"])
       + "</ul>"
       + f"<p><b>Resources:</b> {lesson.get('resources', lesson['apps'])}</p>"
+      + f"<p><b>On-screen appendices:</b> {' · '.join(apps_nav)}. Press <kbd>I</kbd> or use the buttons — then <b>← Back to lesson</b>.</p>"
     )
     notes_b = (
       f"<h4>Apply — Lesson {n}</h4>{lesson['notes']}"
@@ -410,14 +478,6 @@ def main() -> None:
     left_a = [
       {"k": "img", "src": lesson["img"], "cap": lesson["title"], "hero": True, "fit": True},
       {"k": "hook", "q": lesson["walt"]},
-      {
-        "k": "html",
-        "html": (
-          '<div class="card cream"><span class="tag do">TEACH · KEY CONTENT</span>'
-          f'{teach_card_body}'
-          f'<p style="margin-top:12px;font-size:13px;color:#4a5a54"><b>On screen:</b> {lesson["apps"]}</p></div>'
-        ),
-      },
     ]
     right_a = [
       {"k": "wp", "list": [{"t": a, "d": b} for a, b in lesson["wp"]]},
@@ -425,8 +485,11 @@ def main() -> None:
       {
         "k": "html",
         "html": (
-          '<div class="card dark"><span class="tag try">SUCCESS CRITERIA</span>'
-          f'<ul style="margin:8px 0 0 18px;color:var(--ink)">{success_html}</ul></div>'
+          '<div class="card cream"><span class="tag do">SUCCESS CRITERIA</span>'
+          f'<ul style="margin:8px 0 0 18px">{success_html}</ul>'
+          f'<p style="margin-top:12px;font-size:14px;color:#4a5a54"><b>On screen this lesson:</b></p>'
+          f'<div style="margin-top:6px">{apps_btns}</div>'
+          '<p style="margin-top:10px;font-size:13px;color:#4a5a54">After an appendix, press <kbd>I</kbd> or <b>← Back to lesson</b>.</p></div>'
         ),
       },
     ]
@@ -443,6 +506,7 @@ def main() -> None:
           "left": left_a,
           "right": right_a,
           "notes": notes_a,
+          "appsNav": apps_nav,
           "assessTab": "task" if n >= 9 else "guide",
         }
       )
@@ -497,6 +561,7 @@ def main() -> None:
           "left": left_b,
           "right": right_b,
           "notes": notes_b,
+          "appsNav": apps_nav,
         }
       )
       + ");"
@@ -533,10 +598,28 @@ def main() -> None:
   )
 
   for nav, src, used, blurb in APPENDICES:
+    sibling_btns = ""
+    # Offer jumps to other appendices that share a lesson (e.g. B↔C)
+    siblings = []
+    for lesson_n, apps in LESSON_APPS.items():
+      if nav in apps:
+        for a in apps:
+          if a != nav and a not in siblings:
+            siblings.append(a)
+    if siblings:
+      sibling_btns = (
+        '<p style="margin-top:12px;font-size:13px;color:#4a5a54"><b>Also this lesson:</b></p>'
+        + "".join(
+          f'<button type="button" class="btn inforeport" style="margin:4px 6px 0 0;padding:7px 12px;font-size:13px" '
+          f'onclick="openLessonAppendix({json.dumps(a)})">{a.split(" — ")[0]}</button>'
+          for a in siblings
+        )
+      )
     chunks.append(
       "SLIDES.push("
       + dumps(
         {
+          "type": "appendix",
           "nav": nav,
           "eyebrow": f"On-screen appendix · {used}",
           "eyebrowR": "Appendix",
@@ -550,28 +633,17 @@ def main() -> None:
               "html": (
                 '<div class="card cream"><span class="tag read">USE THIS SLIDE</span>'
                 f'<p style="margin-top:10px">{blurb}</p>'
-                '<p style="margin-top:10px;font-size:14px;color:#4a5a54">Return to the lesson with Jump when done.</p></div>'
+                f'{sibling_btns}'
+                '<div style="margin-top:14px">'
+                '<button type="button" class="btn primary" style="padding:10px 16px" onclick="backToLesson()">'
+                "← Back to lesson</button></div>"
+                '<p style="margin-top:8px;font-size:13px;color:#4a5a54">Or press <kbd>I</kbd> — same as the nav button.</p></div>'
               ),
-            },
-            {
-              "k": "brain",
-              "q": [
-                "What should students notice first?",
-                "Which success criterion does this support?",
-                "How will you freeze or zoom while teaching from it?",
-              ],
             },
           ],
           "notes": (
-            f"<p><b>{nav}</b> — {used}. Keep this up while students work.</p>"
+            f"<p><b>{nav}</b> — {used}. Keep this up while students work, then <b>← Back to lesson</b>.</p>"
             f"<p>{blurb}</p>"
-            + discussion_notes(
-              [
-                "What should students notice first?",
-                "Which success criterion does this support?",
-                "How will you freeze or zoom while teaching from it?",
-              ]
-            )
           ),
         }
       )
