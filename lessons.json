@@ -1,0 +1,533 @@
+[
+  {
+    "n": 1, "week": 1, "title": "Elements of Drama Warm-Up",
+    "mode": "WHOLE-CLASS",
+    "strand": "Exploring & Responding · Elements of Drama",
+    "walt": "Identify and use the elements of drama through online drama games.",
+    "img": "images/lessons/lesson-01.jpg",
+    "success": [
+      "I can name at least three elements of drama.",
+      "I can use two elements of drama in a short improvisation."
+    ],
+    "wp": [
+      ["role", "who you are pretending to be"],
+      ["situation", "where you are and what is happening"],
+      ["voice", "tone, pace and volume"],
+      ["tension", "suspense that keeps us hooked"]
+    ],
+    "brain": [
+      "Which element makes a freeze frame feel dramatic?",
+      "How can voice alone change the mood of one line?",
+      "Why does drama need contrast?"
+    ],
+    "teach": [
+      {
+        "mins": "10 min",
+        "title": "Mini-lesson — Elements (App. A)",
+        "body": "Recap the 10 elements of drama: role, situation, voice, movement, space, time, tension, mood, focus, contrast.",
+        "tip": "Share App. A on screen. Keep it tight and clearly labelled."
+      },
+      {
+        "mins": "8 min",
+        "title": "Re-teach with a student example",
+        "body": "Spotlight one volunteer. Name the elements you see. Tighten the use of voice and tension together.",
+        "tip": "Keep demos under two minutes so students get maximum doing time."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Camera Freeze", "Call a word (celebration, storm, market) — students freeze in a pose that shows it. Gallery view; spotlight 3–4 each round."],
+      ["10 min · Teach · Elements", "Recap App. A — role, situation, voice, movement, space, time, tension, mood, focus, contrast. Share on screen; keep labels clear."],
+      ["14 min · Solo build", "On mute, cameras on: 30–45 sec moment (mysterious box / waiting for big news) using at least two named elements. Drop situations in chat. No breakouts."],
+      ["8 min · Teach · Re-teach", "Spotlight one volunteer; name elements; tighten voice and tension."],
+      ["16 min · Spotlight share", "Spotlight performances one at a time; class names elements in chat. Mute other mics."],
+      ["4 min · Wrap", "Recap elements + exit ticket. Preview Lesson 2 — a short history of drama."]
+    ],
+    "model": "Perform a 20–30 sec mini-scene live, naming the two elements as you go: “watch for voice and tension here.”",
+    "watch": "Drama warm-up & improv games · National Theatre / BBC Teach (~3 min)",
+    "exit": [
+      "A. Phone call with fantastic news — react and reply",
+      "B. Mystery package at the door — open it on camera",
+      "C. Winning a strange competition — thank-you speech"
+    ],
+    "apps": "Appendix A · Elements",
+    "resources": "Webcam + mic · App. A on screen · element list pinned in chat",
+    "notes": "<p><b>Appendix A</b> on screen. Camera Freeze → elements mini-lesson → solo build → re-teach voice/tension → spotlight shares → 30-sec exit ticket.</p><p>Whole-class week — no breakouts yet.</p>"
+  },
+  {
+    "n": 2, "week": 2, "title": "A Short History of Drama",
+    "mode": "WHOLE-CLASS",
+    "strand": "Exploring & Responding · Drama Across Time",
+    "walt": "Understand how drama has changed across time, and what a monologue and a soliloquy are.",
+    "img": "images/lessons/lesson-02.jpg",
+    "success": [
+      "I can describe one feature of drama from at least two time periods.",
+      "I can explain the difference between a monologue and a soliloquy."
+    ],
+    "wp": [
+      ["monologue", "one character speaks to someone or the audience"],
+      ["soliloquy", "private thoughts spoken aloud, usually alone"],
+      ["chorus", "group that helped tell the story in Greek theatre"],
+      ["Globe", "Shakespearean open-air theatre"]
+    ],
+    "brain": [
+      "Why did Greek actors wear masks?",
+      "How is a soliloquy different from chatting to a friend on stage?",
+      "What stayed the same from Greek theatre to filming at home?"
+    ],
+    "teach": [
+      {
+        "mins": "9 min",
+        "title": "Timeline, part 1 (App. B)",
+        "body": "Ancient Greek theatre & medieval mystery/morality plays — two or three key facts each.",
+        "tip": "Keep each era memorable, not exhaustive. Share App. B on screen."
+      },
+      {
+        "mins": "9 min",
+        "title": "Timeline, part 2 + mono vs soliloquy",
+        "body": "Elizabethan/Shakespearean & modern/digital drama (App. B). Introduce monologue vs soliloquy with App. C.",
+        "tip": "Act the same line both ways so the difference is obvious."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Then & Now", "Call an era — masked Greek actor, medieval town-square player, Shakespearean actor, modern film star — students pose. Ask 2–3 to explain a choice."],
+      ["9 min · Teach · Timeline 1", "App. B: Ancient Greek & medieval — 2–3 key facts each."],
+      ["8 min · Quick-fire", "Pose or mime one feature per era so far; drop one fact in chat. Read a few aloud. No breakouts."],
+      ["9 min · Teach · Timeline 2", "Elizabethan/Shakespearean & modern/digital + monologue vs soliloquy (App. C)."],
+      ["22 min · Character seeds", "Independently jot 2–3 character ideas for a later monologue or soliloquy. Spotlight a few — mono or soliloquy? Quiet thinking first."],
+      ["4 min · Wrap", "Recap mono vs soliloquy + exit ticket. Preview Lesson 3 — drama across cultures (first breakouts!)."]
+    ],
+    "model": "Say one line twice: first as a monologue (to someone), then as a soliloquy (private thoughts, alone). Ask the class to spot the difference.",
+    "watch": "Shakespeare’s Theatre (the Globe) · BBC Teach (~4 min) · youtube.com/watch?v=D1rbtHchv1g",
+    "exit": [
+      "A. Masked Greek actor announces huge news to the city",
+      "B. Soliloquy: alone, deciding something big",
+      "C. Shakespearean town crier announces tomorrow’s event"
+    ],
+    "apps": "Appendices B & C",
+    "resources": "App. B History Timeline · App. C Monologue vs Soliloquy (on screen)",
+    "notes": "<p><b>Appendices B &amp; C</b>. Act the same line both ways. Character seeds feed Weeks 3–10 — no single right answer yet.</p>"
+  },
+  {
+    "n": 3, "week": 3, "title": "Drama Across Cultures",
+    "mode": "BREAKOUT DEBUT",
+    "strand": "Exploring & Responding · Drama Across Cultures",
+    "walt": "Describe how drama communicates ideas and helps continue and revitalise culture.",
+    "img": "images/lessons/lesson-03.jpg",
+    "success": [
+      "I can describe one way a performance communicated meaning.",
+      "I can explain why storytelling matters to a culture."
+    ],
+    "wp": [
+      ["culture", "shared beliefs, stories and ways of life"],
+      ["folktale", "a story passed down through generations"],
+      ["trickster", "clever character who outwits a stronger foe"],
+      ["revitalise", "bring new life and energy to something"]
+    ],
+    "brain": [
+      "What feelings did the performance communicate?",
+      "Why might this story matter to its culture?",
+      "Which story pattern could inspire your own piece?"
+    ],
+    "teach": [
+      {
+        "mins": "10 min",
+        "title": "Teach + view storytelling clip",
+        "body": "Play the chosen storytelling/drama clip(s). Pause to ask: what is happening, and what ideas or feelings are being communicated?",
+        "tip": "Share screen with audio. Pre-test the link; have a backup clip ready. Preview for cultural appropriateness."
+      },
+      {
+        "mins": "8 min",
+        "title": "Character & situation (App. D)",
+        "body": "Use App. D patterns to choose a character + situation — from a culture, folktale, history, or an original idea. Invite stories from students’ own backgrounds.",
+        "tip": "First breakouts this week — pin two questions in each room; clear time limit + 2-min warning."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Story Circle", "One-sentence prompt; volunteers add a sentence (aloud or chat) to build a class story. Read chat additions aloud."],
+      ["10 min · Teach / watch", "Play storytelling clip; pause for meaning and feeling."],
+      ["12 min · First breakouts", "Think-pair-share: what did it communicate, and why might the story matter to its culture? Pin both questions."],
+      ["8 min · Teach · App. D", "Patterns for character + situation; invite own-culture inspiration."],
+      ["18 min · Narrow it down", "Independently choose character + situation; note where inspiration came from. Follow up anyone still undecided."],
+      ["4 min · Wrap", "Exit ticket. Character + situation idea due at the start of Lesson 4."]
+    ],
+    "model": "Model answering “what did this communicate?” aloud, citing voice/movement/situation — then show how App. D helps lock a character + situation.",
+    "watch": "Storytelling traditions around the world · TED-Ed / ABC Education (teacher-selected 1–2 clips)",
+    "exit": [
+      "A. Opening of a folktale from your family or culture",
+      "B. Wise elder passing on one important lesson",
+      "C. Hero discovers something amazing"
+    ],
+    "apps": "Appendix D · Characters",
+    "resources": "1–2 vetted culture clips · App. D Character Shortlist · breakout rooms (pairs)",
+    "notes": "<p><b>Appendix D</b>. Breakout debut — pre-assign rooms, pin questions, pop into a couple of rooms to settle the routine.</p>"
+  },
+  {
+    "n": 4, "week": 4, "title": "Building Your Character",
+    "mode": "BREAKOUT PAIRS",
+    "strand": "Creating & Making · Devising Role & Situation",
+    "walt": "Build a character through role, situation and voice.",
+    "img": "images/lessons/lesson-04.jpg",
+    "success": [
+      "I can describe my character’s role and situation.",
+      "I can find a voice and posture for my character."
+    ],
+    "wp": [
+      ["hot-seat", "answering questions in role as your character"],
+      ["role", "who you are pretending to be"],
+      ["want", "what your character desires most"],
+      ["posture", "how your body shows the character"]
+    ],
+    "brain": [
+      "What does your character want most right now?",
+      "How would they walk into a room?",
+      "Which App. F question reveals the most?"
+    ],
+    "teach": [
+      {
+        "mins": "8 min",
+        "title": "Hot-seating demo (App. F)",
+        "body": "Recap role, situation, voice. Demonstrate hot-seating — answer in role for about a minute using an App. F prompt.",
+        "tip": "Ask a volunteer to interview you in role so pairs see the format."
+      },
+      {
+        "mins": "6 min",
+        "title": "Into the planning template (App. E)",
+        "body": "Show how to turn hot-seat answers into the Monologue Planning Template — character, situation and voice.",
+        "tip": "Keep a copy of templates so work isn’t lost if a student drops out."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Walk As", "Move on camera as characters you call — queen, trickster, giant, animal. Discuss how movement shows role."],
+      ["8 min · Teach · Hot-seat demo", "Answer in role ~1 min with App. F; volunteer interviews you."],
+      ["20 min · Breakout hot-seat", "Pairs take turns hot-seating each other’s character with App. F prompts. Rotate rooms so both get a turn."],
+      ["6 min · Teach · Template", "Transfer answers onto App. E — character, situation, voice."],
+      ["14 min · Lock it in", "Independently finalise character, situation and voice on the planning template."],
+      ["4 min · Wrap", "Share character in one sentence + exit ticket. Preview Lesson 5 — finding the key moment."]
+    ],
+    "model": "Volunteer asks you one question; answer in role for ~30 sec with committed voice and posture.",
+    "watch": "Hot-seating: building a character · BBC Bitesize / Drama Resource (~3 min)",
+    "exit": [
+      "A. Return a faulty product — explain the problem in character",
+      "B. Voicemail explaining why you’re late",
+      "C. Talk-show intro — name, age, biggest want"
+    ],
+    "apps": "Appendices E & F",
+    "resources": "Breakout pairs · App. E Planning Template · App. F Hot-Seat prompts",
+    "notes": "<p><b>Appendix F</b> hot-seat then <b>App. E</b> template. Model in role before pairs swap.</p>"
+  },
+  {
+    "n": 5, "week": 5, "title": "Finding Your Moment — Structure & Tension",
+    "mode": "BREAKOUT PAIRS",
+    "strand": "Creating & Making · Shaping Dramatic Action",
+    "walt": "Combine elements of drama to shape and sustain a one-minute piece.",
+    "img": "images/lessons/lesson-05.jpg",
+    "success": [
+      "I can choose a key dramatic moment for my piece.",
+      "I can plan how tension builds across my piece."
+    ],
+    "wp": [
+      ["opening", "first line that grabs us"],
+      ["turning point", "the peak of the piece"],
+      ["contrast", "opposites: loud/quiet, fast/slow"],
+      ["focus", "where we point attention"]
+    ],
+    "brain": [
+      "Where is the peak of your story?",
+      "What happens if you pause before the big line?",
+      "How can stillness create tension?"
+    ],
+    "teach": [
+      {
+        "mins": "10 min",
+        "title": "One-minute structure (App. G)",
+        "body": "Opening line → build → turning point → final line. Show how tension, focus and contrast create interest across the minute.",
+        "tip": "Leave App. G on screen as a visual prompt students can refer back to."
+      },
+      {
+        "mins": "6 min",
+        "title": "Pause + contrast",
+        "body": "Model how a pause and a contrast turn an ordinary line into the peak moment.",
+        "tip": "Same words twice: flat, then pause + contrast — difference in 30 sec."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Tension tableaux", "Pairs create before/after freezes either side of a tense moment; partners guess what happened. Bring 2–3 back to show."],
+      ["10 min · Teach · Structure", "App. G: opening, build, turning point, final line + tension/focus/contrast."],
+      ["8 min · Test your peak", "Pairs: before/after tableau for each student’s own turning point; partner guesses the moment."],
+      ["6 min · Teach · Pause + contrast", "Model flat line vs paused/contrasted peak."],
+      ["24 min · Plan structure", "On App. E: opening line, how it builds, turning point (highest tension), final line. One suggestion per student."],
+      ["4 min · Wrap", "Share a planned opening or final line + exit ticket. Preview Lesson 6 — devising words and voice."]
+    ],
+    "model": "Deliver one line flat, then again with a pause + contrast (loud → silent). Same words, very different tension.",
+    "watch": "Building tension & using tableaux · Drama Resource / BBC Bitesize (~3 min)",
+    "exit": [
+      "A. 30 seconds before opening a mysterious box",
+      "B. Countdown — narrate 30 sec before something huge",
+      "C. Waiting for news that could change everything"
+    ],
+    "apps": "Appendices E & G",
+    "resources": "Breakout pairs · App. E (continued) · App. G Structure Prompt Card",
+    "notes": "<p><b>Appendix G</b>. Slow the turning point; use contrast and pause. Check in by room with one tip each.</p>"
+  },
+  {
+    "n": 6, "week": 6, "title": "Devising the Words & Voice",
+    "mode": "BREAKOUT PAIRS",
+    "strand": "Creating & Making · Improvising & Devising",
+    "walt": "Use improvisation to devise the words and voice for our piece.",
+    "img": "images/lessons/lesson-06.jpg",
+    "success": [
+      "I can improvise to find lines for my monologue or soliloquy.",
+      "I can use voice to show my character’s feelings."
+    ],
+    "wp": [
+      ["devise", "create the piece through improvisation"],
+      ["tone", "the feeling colour in your voice"],
+      ["pace", "how fast or slow you speak"],
+      ["volume", "how loud or soft you speak"]
+    ],
+    "brain": [
+      "Which line would you keep from that improv?",
+      "How does pace change meaning?",
+      "Where should the voice match the turning point?"
+    ],
+    "teach": [
+      {
+        "mins": "8 min",
+        "title": "Devising techniques (App. H)",
+        "body": "Solo devising: talk it out, partner thought-tracking, record & listen back. Demonstrate one live with a volunteer.",
+        "tip": "Keep the demo under two minutes — protect work time."
+      },
+      {
+        "mins": "6 min",
+        "title": "Voice toolkit",
+        "body": "Tone, pace and volume show feeling — match the voice to the turning point.",
+        "tip": "Link voice choices explicitly to the App. G peak."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Voice Swap", "Same line — “Wait, look over there!” — in three voices/emotions. Quick whole-class unmuted round."],
+      ["8 min · Teach · Devising", "App. H techniques; demo one with a volunteer (<2 min)."],
+      ["22 min · Breakout devising", "Find and lock lines with a partner prompting/listening; note lines on App. E. Suggest a technique if stuck."],
+      ["6 min · Teach · Voice toolkit", "Tone/pace/volume at the turning point."],
+      ["12 min · First full run", "Solo: run start to finish once (even roughly) with voice choices applied."],
+      ["4 min · Wrap", "Share one proud line + exit ticket. Preview rehearsal lessons."]
+    ],
+    "model": "“Talk it out” live for ~30 sec in role, then say which line you’d keep — modelling how devising works.",
+    "watch": "Using your voice as an actor · National Theatre (~4 min)",
+    "exit": [
+      "A. “We need to talk” three ways: scared, excited, furious",
+      "B. 30-sec rant in character about a tiny annoyance",
+      "C. Same line, two emotions — show the switch on camera"
+    ],
+    "apps": "Appendices H & E",
+    "resources": "Breakout pairs · App. H Devising Techniques · App. E Planning Template",
+    "notes": "<p>Improvisation to find words and voice. Keep demos under two minutes. Piece should hang together end to end by the end of the lesson.</p>"
+  },
+  {
+    "n": 7, "week": 7, "title": "Performance Skills for the Camera",
+    "mode": "BREAKOUT PAIRS",
+    "strand": "Presenting & Performing · Performance Skills",
+    "walt": "Use performance skills suited to performing on camera.",
+    "img": "images/lessons/lesson-07.jpg",
+    "success": [
+      "I can project my voice clearly through the microphone.",
+      "I can use facial expression and the camera frame effectively."
+    ],
+    "wp": [
+      ["framing", "how much of you appears in the shot"],
+      ["projection", "clear voice without shouting"],
+      ["lens", "where your eyes look on camera"],
+      ["gesture", "small, clear moves that read on screen"]
+    ],
+    "brain": [
+      "What ruins an otherwise great performance on camera?",
+      "Why does looking at the lens matter?",
+      "What one tip would you give a peer?"
+    ],
+    "teach": [
+      {
+        "mins": "10 min",
+        "title": "On-camera skills",
+        "body": "Voice projection vs mic distance; facial expression close to camera; small clear gestures in frame; check background and lighting.",
+        "tip": "Model a less-effective then more-effective example side by side."
+      },
+      {
+        "mins": "6 min",
+        "title": "Peer-tip protocol",
+        "body": "How to give one quick, specific tip on framing or voice — kind and concrete.",
+        "tip": "Ban vague “be better” — require one concrete action."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up · Frame Test", "Check how much body is visible; tips on sitting/standing back, lighting, mic. Share 1–2 good framing examples."],
+      ["10 min · Teach · On-camera", "Projection, expression, gestures, frame, light — less vs more effective model."],
+      ["22 min · Solo rehearse", "Several full runs using App. I checklist. On mute, cameras on; spotlights for quick tips."],
+      ["6 min · Teach · Peer tips", "Protocol for one kind, concrete tip."],
+      ["10 min · Breakout peer tips", "Partners watch one run each; one tip on framing or voice."],
+      ["4 min · Wrap", "Share one improvement + exit ticket. Action at least one feedback point before Lesson 8."]
+    ],
+    "model": "Same few lines twice: too far/flat/glancing away → good frame, eyes to lens, clear voice.",
+    "watch": "Acting for camera — tips · StageMilk / BBC Bitesize (~4 min)",
+    "exit": [
+      "A. Strongest 30 sec to camera — eyes to the lens",
+      "B. 30-sec news report in character",
+      "C. Close-up emotion change using just your face"
+    ],
+    "apps": "Appendix I · Rehearsal checklist",
+    "resources": "Breakout pairs · App. I Rehearsal Checklist",
+    "notes": "<p>Model less-effective then more-effective side by side. Circulate via spotlight during solo rehearsals.</p>"
+  },
+  {
+    "n": 8, "week": 8, "title": "Rehearsal & Peer Feedback",
+    "mode": "BREAKOUT PAIRS",
+    "strand": "Exploring + Presenting · Refining & Explaining",
+    "walt": "Refine our performance using peer feedback and explain how we used elements of drama.",
+    "img": "images/lessons/lesson-08.jpg",
+    "success": [
+      "I can give a helpful comment using drama vocabulary.",
+      "I can explain one element of drama used in my piece."
+    ],
+    "wp": [
+      ["feedback", "specific, kind comments that help refine"],
+      ["element", "one of the 10 drama building blocks"],
+      ["effect", "what the choice makes the audience feel"],
+      ["refine", "improve a small part with intention"]
+    ],
+    "brain": [
+      "What makes feedback useful?",
+      "Which element did you use on purpose?",
+      "What will you change after today?"
+    ],
+    "teach": [
+      {
+        "mins": "8 min",
+        "title": "Feedback language (App. J)",
+        "body": "Recap specific, kind feedback using elements-of-drama vocabulary and App. J sentence starters.",
+        "tip": "Model vague “good job” vs specific element feedback so the difference is clear."
+      },
+      {
+        "mins": "6 min",
+        "title": "Explain your elements",
+        "body": "How to say, in one sentence, which element you used and what effect it had — folio evidence language.",
+        "tip": "Bring App. A back on screen for vocabulary."
+      }
+    ],
+    "sequence": [
+      ["8 min · Warm-up", "Vocal & physical warm-up + tongue-twister. Short and energetic before peer performing."],
+      ["8 min · Teach · Feedback", "App. J + App. A — specific vs vague feedback."],
+      ["26 min · Perform & feedback", "Pairs perform; listener completes App. J sheet; swap; final adjustments. Check sheets are completed."],
+      ["6 min · Teach · Explain", "One sentence: element used + effect."],
+      ["8 min · Note your element", "Write the explanation + one final tweak from feedback (folio evidence)."],
+      ["4 min · Wrap", "Volunteer shares feedback they’ll use + exit ticket. Pieces close to final before Week 9."]
+    ],
+    "model": "Two comments on the same performance: vague “good job” vs “the pause before your final line really built the tension.” Ask which helps more.",
+    "watch": "A powerful short monologue — spot the elements · teacher-selected (~2 min)",
+    "exit": [
+      "A. Re-record your turning point after today’s feedback",
+      "B. Director’s note to self — what you improved and why",
+      "C. Final line three different ways"
+    ],
+    "apps": "Appendices J & A",
+    "resources": "Breakout pairs · App. J Peer Feedback Sheet · App. A Elements reference",
+    "notes": "<p><b>Appendix A</b> vocabulary again. Check feedback sheets are completed — this feeds the folio.</p>"
+  },
+  {
+    "n": 9, "week": 9, "title": "Independent Preparation",
+    "mode": "INDEPENDENT",
+    "strand": "Presenting + Creating · Finalising",
+    "walt": "Finalise and polish our piece, ready for filming.",
+    "img": "images/lessons/lesson-09.jpg",
+    "success": [
+      "I can perform my piece confidently from memory.",
+      "I know how I will film and submit my piece."
+    ],
+    "wp": [
+      ["finalise", "last polish before filming"],
+      ["landscape", "sideways filming orientation"],
+      ["take", "one continuous performance take"],
+      ["submit", "send the finished film by the agreed method"]
+    ],
+    "brain": [
+      "What still needs polishing?",
+      "Where will you film, and how will you light it?",
+      "What question will you bring to the help room?"
+    ],
+    "teach": [
+      {
+        "mins": "6 min",
+        "title": "Goal + Filming Guide (App. K)",
+        "body": "Finalise and rehearse. Share App. K filming & submission guide: landscape, light, frame, quiet, one full take, watch back.",
+        "tip": "Pin App. K in the chat for the whole lesson."
+      },
+      {
+        "mins": "10 min",
+        "title": "Whole-class readiness Q&A",
+        "body": "Show of hands on readiness; troubleshoot common tech questions (orientation, file size, upload) together.",
+        "tip": "Answer FAQs once for everyone to save independent time."
+      }
+    ],
+    "sequence": [
+      ["6 min · Teach", "Goal + App. K on screen and pinned in chat."],
+      ["40 min · Independent", "Rehearse on camera; fine-tune lines/movement; optional help-room check-ins one at a time."],
+      ["10 min · Q&A", "Readiness + tech FAQs together."],
+      ["4 min · Wrap", "Confirm due date for Lesson 10 + exit ticket. Send a written reminder after class."]
+    ],
+    "model": "Walk App. K checklist aloud: landscape · face a window · upper body in frame · quiet · one full take · watch back.",
+    "watch": "A student monologue performance · teacher-selected example (~2 min)",
+    "exit": [
+      "A. Opening 30 sec — no script, one take",
+      "B. Confidence take in your actual filming spot",
+      "C. Best-framing test — strongest 30 sec, well lit"
+    ],
+    "apps": "Appendices I & K",
+    "resources": "App. I Rehearsal Checklist · App. K Filming & Submission Guide · help breakout",
+    "notes": "<p><b>Appendix K</b>. Keep a help breakout open as a virtual queue (raise hand / chat). Weeks 9–10 are long DO by design.</p>"
+  },
+  {
+    "n": 10, "week": 10, "title": "Final Rehearsal, Filming & Reflection",
+    "mode": "INDEPENDENT",
+    "strand": "Presenting + Exploring · Performing & Reflecting",
+    "walt": "Perform our final piece with confidence and reflect on our drama journey.",
+    "img": "images/lessons/lesson-10.jpg",
+    "success": [
+      "I can perform my piece and sustain my character for one minute.",
+      "I can explain how I used elements of drama and what my piece communicates."
+    ],
+    "wp": [
+      ["sustain", "keep character and focus for the full minute"],
+      ["reflect", "think back on what you learned"],
+      ["folio", "collection of evidence for assessment"],
+      ["audience", "who your piece is speaking to"]
+    ],
+    "brain": [
+      "What are you most proud of?",
+      "Which element did the most work in your piece?",
+      "What would you try differently next time?"
+    ],
+    "teach": [
+      {
+        "mins": "10 min",
+        "title": "Final filming tips",
+        "body": "Good light, quiet room, one full take with no stopping, watch the recording back before submitting. Reconfirm exact submission method and deadline.",
+        "tip": "Keep the App. K checklist on screen during the film block."
+      }
+    ],
+    "sequence": [
+      ["6 min · Warm-up", "Individual vocal & physical warm-up on camera — stretches, breathing, tongue-twister. Guide whole-class to settle nerves."],
+      ["10 min · Teach", "Final filming tips + submission method/deadline."],
+      ["35 min · Film & submit", "Final rehearsals; film the one-minute piece; submit via agreed method. Help breakout open."],
+      ["5 min · Celebrate", "Whole-class return — how it felt (chat or aloud). Keep it light."],
+      ["4 min · Wrap", "Reflection Sheet (App. L) for the folio — elements used + what the piece communicates. May finish as homework."]
+    ],
+    "model": "Reconfirm: quiet · landscape · light · upper body · one full take · watch back before submit.",
+    "watch": "How to film yourself well at home — framing, light & sound (~3 min)",
+    "exit": [
+      "A. Favourite 30 sec of your final piece",
+      "B. Reflection: the moment you’re proudest of",
+      "C. Director’s wrap speech — thank your “cast and crew”"
+    ],
+    "apps": "Appendices K & L",
+    "resources": "App. K · App. L Reflection Sheet · agreed submission method · help breakout",
+    "notes": "<p>Celebrate first — then App. L reflection for the folio. Filming checklist from App. K stays visible.</p>"
+  }
+]

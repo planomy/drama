@@ -9,345 +9,10 @@ ROOT = Path(__file__).resolve().parent
 STYLE_SRC = Path("/tmp/re_style.css")
 RUNTIME_SRC = Path("/tmp/re_runtime.js")
 
-LESSONS = [
-  {
-    "n": 1, "week": 1, "title": "Elements of Drama Warm-Up",
-    "mode": "WHOLE-CLASS",
-    "walt": "Identify and use the elements of drama through online drama games.",
-    "img": "images/unit/04-lesson-01.jpg",
-    "success": [
-      "I can name at least three elements of drama.",
-      "I can use two elements in a short improvisation.",
-    ],
-    "wp": [
-      ("role", "who you are pretending to be"),
-      ("situation", "where you are and what is happening"),
-      ("voice", "tone, pace and volume"),
-      ("tension", "suspense that keeps us hooked"),
-    ],
-    "brain": [
-      "Which element makes a freeze frame feel dramatic?",
-      "How can voice alone change the mood of one line?",
-      "Why does drama need contrast?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Camera Freeze — celebration, storm, mystery poses. Gallery view + spotlight."),
-      ("10 min · Teach", "Elements mini-lesson with Appendix A."),
-      ("14 min · Solo build", "30–45 sec moment (mysterious box) using at least two elements."),
-      ("8 min · Re-teach", "Spotlight a volunteer; refine voice + tension."),
-      ("16 min · Share", "Spotlight shares; class names elements in chat."),
-      ("4 min · Wrap", "Exit ticket + preview Lesson 2."),
-    ],
-    "model": "Perform a 30-sec mini-scene live and narrate how you used voice and tension.",
-    "watch": "Drama warm-up & improv games · National Theatre / BBC Teach (~3 min)",
-    "exit": ["A. Phone call with fantastic news", "B. Mystery package at the door", "C. Winning a strange competition"],
-    "apps": "Appendix A · Elements",
-    "notes": "<p><b>Appendix A</b> on screen. Camera Freeze → elements mini-lesson → 30-sec exit ticket.</p>",
-  },
-  {
-    "n": 2, "week": 2, "title": "A Short History of Drama",
-    "mode": "WHOLE-CLASS",
-    "walt": "Understand how drama has changed across time, and what a monologue and a soliloquy are.",
-    "img": "images/unit/05-lesson-02.jpg",
-    "success": [
-      "I can describe one feature of drama from at least two time periods.",
-      "I can explain monologue vs soliloquy.",
-    ],
-    "wp": [
-      ("monologue", "one character speaks to someone or the audience"),
-      ("soliloquy", "private thoughts spoken aloud, usually alone"),
-      ("chorus", "group that helped tell the story in Greek theatre"),
-      ("Globe", "Shakespearean open-air theatre"),
-    ],
-    "brain": [
-      "Why did Greek actors wear masks?",
-      "How is a soliloquy different from chatting to a friend on stage?",
-      "What stayed the same from Greek theatre to filming at home?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Then & Now poses: Greek, medieval, Shakespearean, modern film star."),
-      ("9 min · Teach", "Timeline part 1 (App. B): Ancient Greek & medieval."),
-      ("8 min · Quick-fire", "Pose or mime one feature per era + one fact in chat."),
-      ("9 min · Teach", "Timeline part 2 + monologue vs soliloquy (App. C)."),
-      ("22 min · Character seeds", "Jot 2–3 character ideas for later."),
-      ("4 min · Wrap", "Exit ticket + preview Lesson 3 breakouts."),
-    ],
-    "model": "Say one line twice: monologue (to someone), then soliloquy (private thoughts).",
-    "watch": "Shakespeare’s Theatre (the Globe) · BBC Teach (~4 min) · youtube.com/watch?v=D1rbtHchv1g",
-    "exit": ["A. Masked Greek actor announces huge news", "B. Soliloquy: alone, deciding something big", "C. Shakespearean town crier"],
-    "apps": "Appendices B & C",
-    "notes": "<p><b>Appendices B &amp; C</b>. Act the same line both ways.</p>",
-  },
-  {
-    "n": 3, "week": 3, "title": "Drama Across Cultures",
-    "mode": "BREAKOUT DEBUT",
-    "walt": "Describe how drama communicates ideas and helps continue and revitalise culture.",
-    "img": "images/unit/06-lesson-03.jpg",
-    "success": [
-      "I can describe one way a performance communicated meaning.",
-      "I can explain why storytelling matters to a culture.",
-    ],
-    "wp": [
-      ("culture", "shared beliefs, stories and ways of life"),
-      ("folktale", "a story passed down through generations"),
-      ("trickster", "clever character who outwits a stronger foe"),
-      ("revitalise", "bring new life and energy to something"),
-    ],
-    "brain": [
-      "What feelings did the performance communicate?",
-      "Why might this story matter to its culture?",
-      "Which story pattern could inspire your own piece?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Story Circle — build a class tale one sentence at a time."),
-      ("10 min · Teach / watch", "Play storytelling clip; pause for meaning and feeling."),
-      ("12 min · First breakouts", "Think-pair-share: meaning + why the story matters."),
-      ("8 min · Teach", "App. D patterns — choose character + situation."),
-      ("18 min · Narrow it down", "Choose character + situation; note inspiration."),
-      ("4 min · Wrap", "Exit ticket. Idea due start of Lesson 4."),
-    ],
-    "model": "Model answering “what did this communicate?” using App. D patterns.",
-    "watch": "Storytelling traditions around the world · TED-Ed / ABC Education",
-    "exit": ["A. Opening of a folktale from your culture", "B. Wise elder passing on one lesson", "C. Hero discovers something amazing"],
-    "apps": "Appendix D · Characters",
-    "notes": "<p><b>Appendix D</b>. First breakout pairs — pin two questions in each room.</p>",
-  },
-  {
-    "n": 4, "week": 4, "title": "Building Your Character",
-    "mode": "BREAKOUT PAIRS",
-    "walt": "Build a character through role, situation and voice.",
-    "img": "images/unit/07-lesson-04.jpg",
-    "success": [
-      "I can describe my character’s role and situation.",
-      "I can find a voice and posture for my character.",
-    ],
-    "wp": [
-      ("hot-seat", "answering questions in role as your character"),
-      ("role", "who you are pretending to be"),
-      ("want", "what your character desires most"),
-      ("posture", "how your body shows the character"),
-    ],
-    "brain": [
-      "What does your character want most right now?",
-      "How would they walk into a room?",
-      "Which App. F question reveals the most?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Walk As — queen, trickster, giant, animal."),
-      ("8 min · Teach", "Demonstrate hot-seating (App. F)."),
-      ("20 min · Breakout", "Pairs hot-seat with App. F prompts."),
-      ("6 min · Teach", "Turn answers into App. E planning template."),
-      ("14 min · Lock it in", "Finalise character, situation and voice."),
-      ("4 min · Wrap", "Share one-sentence character + exit ticket."),
-    ],
-    "model": "Volunteer interviews you in role for ~30 sec.",
-    "watch": "Hot-seating: building a character · BBC Bitesize (~3 min)",
-    "exit": ["A. Return a faulty product", "B. Voicemail explaining why you’re late", "C. Talk-show intro"],
-    "apps": "Appendices E & F",
-    "notes": "<p><b>Appendix F</b> hot-seat. Model in role before pairs swap.</p>",
-  },
-  {
-    "n": 5, "week": 5, "title": "Finding Your Moment — Structure & Tension",
-    "mode": "BREAKOUT PAIRS",
-    "walt": "Combine elements of drama to shape and sustain a one-minute piece.",
-    "img": "images/unit/08-lesson-05.jpg",
-    "success": [
-      "I can choose a key dramatic moment for my piece.",
-      "I can plan how tension builds across my piece.",
-    ],
-    "wp": [
-      ("opening", "first line that grabs us"),
-      ("turning point", "the peak of the piece"),
-      ("contrast", "opposites: loud/quiet, fast/slow"),
-      ("focus", "where we point attention"),
-    ],
-    "brain": [
-      "Where is the peak of your story?",
-      "What happens if you pause before the big line?",
-      "How can stillness create tension?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Tension tableaux — before/after freeze frames."),
-      ("10 min · Teach", "One-minute structure (App. G)."),
-      ("8 min · Test peak", "Before/after tableaux for your turning point."),
-      ("6 min · Teach", "Model pause and contrast on one line."),
-      ("24 min · Plan", "Draft structure on planning template."),
-      ("4 min · Wrap", "Share lines + exit ticket."),
-    ],
-    "model": "Deliver one line flat, then with pause + contrast.",
-    "watch": "Building tension & using tableaux · BBC Bitesize (~3 min)",
-    "exit": ["A. Opening a mysterious box", "B. Countdown before something huge", "C. Waiting for news"],
-    "apps": "Appendices E & G",
-    "notes": "<p><b>Appendix G</b>. Slow the turning point; use contrast and pause.</p>",
-  },
-  {
-    "n": 6, "week": 6, "title": "Devising the Words & Voice",
-    "mode": "BREAKOUT PAIRS",
-    "walt": "Use improvisation to devise the words and voice for our piece.",
-    "img": "images/unit/09-lesson-06.jpg",
-    "success": [
-      "I can improvise to find lines for my monologue or soliloquy.",
-      "I can use voice to show my character’s feelings.",
-    ],
-    "wp": [
-      ("devise", "create the piece through improvisation"),
-      ("tone", "the feeling colour in your voice"),
-      ("pace", "how fast or slow you speak"),
-      ("volume", "how loud or soft you speak"),
-    ],
-    "brain": [
-      "Which line would you keep from that improv?",
-      "How does pace change meaning?",
-      "Where should the voice match the turning point?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Voice Swap — same line in three emotions."),
-      ("8 min · Teach", "Devising techniques (App. H)."),
-      ("22 min · Breakout", "Find and lock lines with a partner."),
-      ("6 min · Teach", "Voice toolkit for the turning point."),
-      ("12 min · Full run", "Solo run start to finish once."),
-      ("4 min · Wrap", "Share a proud line + exit ticket."),
-    ],
-    "model": "Talk it out live for ~30 sec, then say which line you’d keep.",
-    "watch": "Using your voice as an actor · National Theatre (~4 min)",
-    "exit": ["A. “We need to talk” three ways", "B. 30-sec rant about a tiny annoyance", "C. Same line, two emotions"],
-    "apps": "Appendices H & E",
-    "notes": "<p>Improvisation to find words and voice. Keep demos under two minutes.</p>",
-  },
-  {
-    "n": 7, "week": 7, "title": "Performance Skills for the Camera",
-    "mode": "BREAKOUT PAIRS",
-    "walt": "Use performance skills suited to performing on camera.",
-    "img": "images/unit/10-lesson-07.jpg",
-    "success": [
-      "I can project my voice clearly through the microphone.",
-      "I can use facial expression and the camera frame effectively.",
-    ],
-    "wp": [
-      ("framing", "how much of you appears in the shot"),
-      ("projection", "clear voice without shouting"),
-      ("lens", "where your eyes look on camera"),
-      ("gesture", "small, clear moves that read on screen"),
-    ],
-    "brain": [
-      "What ruins an otherwise great performance on camera?",
-      "Why does looking at the lens matter?",
-      "What one tip would you give a peer?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Frame Test — framing, light, mic."),
-      ("10 min · Teach", "On-camera skills: distance, expression, gestures."),
-      ("22 min · Solo rehearse", "Rehearse with App. I checklist."),
-      ("6 min · Teach", "Peer-tip protocol — kind and concrete."),
-      ("10 min · Breakout", "One tip each on framing or voice."),
-      ("4 min · Wrap", "Share one improvement + exit ticket."),
-    ],
-    "model": "Same lines twice: weak frame/flat → strong frame/eyes to lens.",
-    "watch": "Acting for camera — tips · StageMilk / BBC Bitesize (~4 min)",
-    "exit": ["A. Strongest 30 sec to camera", "B. News report in character", "C. Close-up emotion change"],
-    "apps": "Appendix I · Rehearsal checklist",
-    "notes": "<p>Model less-effective then more-effective side by side.</p>",
-  },
-  {
-    "n": 8, "week": 8, "title": "Rehearsal & Peer Feedback",
-    "mode": "BREAKOUT PAIRS",
-    "walt": "Refine our performance using peer feedback and explain how we used elements of drama.",
-    "img": "images/unit/11-lesson-08.jpg",
-    "success": [
-      "I can give a helpful comment using drama vocabulary.",
-      "I can explain one element of drama used in my piece.",
-    ],
-    "wp": [
-      ("feedback", "specific, kind comments that help refine"),
-      ("element", "one of the 10 drama building blocks"),
-      ("effect", "what the choice makes the audience feel"),
-      ("refine", "improve a small part with intention"),
-    ],
-    "brain": [
-      "What makes feedback useful?",
-      "Which element did you use on purpose?",
-      "What will you change after today?",
-    ],
-    "sequence": [
-      ("8 min · Warm-up", "Vocal & physical warm-up + tongue-twister."),
-      ("8 min · Teach", "Specific feedback with App. J + App. A."),
-      ("26 min · Perform & feedback", "Pairs perform; complete App. J sheet; swap."),
-      ("6 min · Teach", "One sentence: element used + effect."),
-      ("8 min · Note element", "Write explanation + final tweak."),
-      ("4 min · Wrap", "Share feedback used + exit ticket."),
-    ],
-    "model": "Model vague “good job” vs specific element feedback.",
-    "watch": "A powerful short monologue — spot the elements (~2 min)",
-    "exit": ["A. Re-record turning point", "B. Director’s note to self", "C. Final line three ways"],
-    "apps": "Appendices J & A",
-    "notes": "<p><b>Appendix A</b> vocabulary again. Check feedback sheets are completed.</p>",
-  },
-  {
-    "n": 9, "week": 9, "title": "Independent Preparation",
-    "mode": "INDEPENDENT",
-    "walt": "Finalise and polish our piece, ready for filming.",
-    "img": "images/unit/12-lesson-09.jpg",
-    "success": [
-      "I can perform my piece confidently from memory.",
-      "I know how I will film and submit my piece.",
-    ],
-    "wp": [
-      ("finalise", "last polish before filming"),
-      ("landscape", "sideways filming orientation"),
-      ("take", "one continuous performance take"),
-      ("submit", "send the finished film by the agreed method"),
-    ],
-    "brain": [
-      "What still needs polishing?",
-      "Where will you film, and how will you light it?",
-      "What question will you bring to the help room?",
-    ],
-    "sequence": [
-      ("6 min · Teach", "Goal + share App. K filming guide."),
-      ("40 min · Independent", "Rehearse on camera; optional help-room check-ins."),
-      ("10 min · Q&A", "Readiness + tech FAQs together."),
-      ("4 min · Wrap", "Confirm due date + exit ticket."),
-    ],
-    "model": "Walk App. K checklist aloud: landscape, light, frame, one full take.",
-    "watch": "A student monologue performance (~2 min, teacher-selected)",
-    "exit": ["A. Dress-rehearsal strongest 30 sec", "B. Opening into turning point", "C. Final line with contrast"],
-    "apps": "Appendices I & K",
-    "notes": "<p><b>Appendix K</b>. Keep a help breakout open.</p>",
-  },
-  {
-    "n": 10, "week": 10, "title": "Final Rehearsal, Filming & Reflection",
-    "mode": "INDEPENDENT",
-    "walt": "Perform our final piece with confidence and reflect on our drama journey.",
-    "img": "images/unit/13-lesson-10.jpg",
-    "success": [
-      "I can perform my piece and sustain my character for one minute.",
-      "I can explain how I used elements of drama and what my piece communicates.",
-    ],
-    "wp": [
-      ("sustain", "keep character and focus for the full minute"),
-      ("reflect", "think back on what you learned"),
-      ("folio", "collection of evidence for assessment"),
-      ("audience", "who your piece is speaking to"),
-    ],
-    "brain": [
-      "What are you most proud of?",
-      "Which element did the most work in your piece?",
-      "What would you try differently next time?",
-    ],
-    "sequence": [
-      ("6 min · Warm-up", "Individual vocal & physical warm-up."),
-      ("10 min · Teach", "Final filming tips + submission method."),
-      ("35 min · Film & submit", "Film one-minute piece and submit."),
-      ("5 min · Celebrate", "Whole-class return — how it felt."),
-      ("4 min · Wrap", "Reflection Sheet (App. L)."),
-    ],
-    "model": "Reconfirm: quiet · landscape · light · upper body · one full take · watch back.",
-    "watch": "How to film yourself well at home (~3 min)",
-    "exit": ["A. Favourite 30 sec of final piece", "B. Moment you’re proudest of", "C. Director’s wrap speech"],
-    "apps": "Appendices K & L",
-    "notes": "<p>Celebrate first — then App. L reflection for the folio.</p>",
-  },
-]
+LESSONS = json.loads((ROOT / "lessons.json").read_text())
+# normalize wp tuples
+for _L in LESSONS:
+  _L["wp"] = [tuple(x) for x in _L["wp"]]
 
 APPENDICES = [
   ("App A — Elements", "images/appendix/slide-02.jpg", "Lessons 1 & 8",
@@ -710,22 +375,49 @@ def main() -> None:
 
     n = lesson["n"]
     success_html = "".join(f"<li>{s}</li>" for s in lesson["success"])
+    teach_blocks = lesson.get("teach") or []
+    teach_notes = "".join(
+      f"<li><b>{t['mins']} · {t['title']}</b><br>{t['body']}"
+      + (f"<br><i>Tip:</i> {t['tip']}" if t.get("tip") else "")
+      + "</li>"
+      for t in teach_blocks
+    )
+    teach_card_body = "".join(
+      f'<div style="margin-top:10px"><b style="color:var(--accent2)">{t["mins"]}</b>'
+      f' <b>{t["title"]}</b>'
+      f'<p style="margin-top:4px;font-size:14.5px;line-height:1.4">{t["body"]}</p>'
+      + (f'<p style="margin-top:4px;font-size:13px;color:#4a5a54"><i>Tip:</i> {t["tip"]}</p>' if t.get("tip") else "")
+      + "</div>"
+      for t in teach_blocks
+    )
     notes_a = (
       f"<h4>Learn — Lesson {n}</h4>{lesson['notes']}"
+      f"<p><b>Strand:</b> {lesson.get('strand','')} · <b>Mode:</b> {lesson['mode']}</p>"
+      f"<h4>Teach (from unit)</h4><ul>{teach_notes}</ul>"
       f"{discussion_notes(lesson['brain'])}"
       f"<h4>Word Work</h4><ul>"
       + "".join(f"<li><b>{t}</b> — {d}</li>" for t, d in lesson["wp"])
       + "</ul>"
+      + f"<p><b>Resources:</b> {lesson.get('resources', lesson['apps'])}</p>"
     )
     notes_b = (
       f"<h4>Apply — Lesson {n}</h4>{lesson['notes']}"
       f"<p><b>Mode:</b> {lesson['mode']} · <b>Model:</b> {lesson['model']}</p>"
+      f"<h4>Teach reminders</h4><ul>{teach_notes}</ul>"
       f"<p><b>Exit ticket:</b> {' · '.join(lesson['exit'])}</p>"
       f"{discussion_notes(lesson['brain'])}"
     )
     left_a = [
       {"k": "img", "src": lesson["img"], "cap": lesson["title"], "hero": True, "fit": True},
       {"k": "hook", "q": lesson["walt"]},
+      {
+        "k": "html",
+        "html": (
+          '<div class="card cream"><span class="tag do">TEACH · KEY CONTENT</span>'
+          f'{teach_card_body}'
+          f'<p style="margin-top:12px;font-size:13px;color:#4a5a54"><b>On screen:</b> {lesson["apps"]}</p></div>'
+        ),
+      },
     ]
     right_a = [
       {"k": "wp", "list": [{"t": a, "d": b} for a, b in lesson["wp"]]},
@@ -733,9 +425,8 @@ def main() -> None:
       {
         "k": "html",
         "html": (
-          '<div class="card cream"><span class="tag do">SUCCESS CRITERIA</span>'
-          f'<ul style="margin:8px 0 0 18px">{success_html}</ul>'
-          f'<p style="margin-top:10px;font-size:14px;color:#4a5a54"><b>On screen:</b> {lesson["apps"]}</p></div>'
+          '<div class="card dark"><span class="tag try">SUCCESS CRITERIA</span>'
+          f'<ul style="margin:8px 0 0 18px;color:var(--ink)">{success_html}</ul></div>'
         ),
       },
     ]

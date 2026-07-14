@@ -1,0 +1,70 @@
+{
+  "1": {
+    "id": "38561051",
+    "url": "https://www.pexels.com/photo/38561051/",
+    "photographer": "Pexels",
+    "file": "images/lessons/lesson-01.jpg",
+    "title": ""
+  },
+  "2": {
+    "id": "12616962",
+    "url": "https://www.pexels.com/photo/empty-seats-in-theater-12616962/",
+    "photographer": "Ann H",
+    "file": "images/lessons/lesson-02.jpg",
+    "title": ""
+  },
+  "3": {
+    "id": "16282697",
+    "url": "https://www.pexels.com/photo/man-reading-book-16282697/",
+    "photographer": "Atahan Demir",
+    "file": "images/lessons/lesson-03.jpg",
+    "title": ""
+  },
+  "4": {
+    "id": "25916242",
+    "url": "https://www.pexels.com/photo/woman-wearing-pirate-costume-25916242/",
+    "photographer": "Chris F",
+    "file": "images/lessons/lesson-04.jpg",
+    "title": ""
+  },
+  "5": {
+    "id": "4722577",
+    "url": "https://www.pexels.com/photo/4722577/",
+    "photographer": "Pexels contributor",
+    "file": "images/lessons/lesson-05.jpg"
+  },
+  "6": {
+    "id": "7807298",
+    "url": "https://www.pexels.com/photo/microphone-on-a-microphone-stand-7807298/",
+    "photographer": "Aaron Johnson",
+    "file": "images/lessons/lesson-06.jpg",
+    "title": ""
+  },
+  "7": {
+    "id": "4050315",
+    "url": "https://www.pexels.com/photo/young-lady-typing-on-keyboard-of-laptop-in-living-room-4050315/",
+    "photographer": "Vlada Karpovich",
+    "file": "images/lessons/lesson-07.jpg",
+    "title": ""
+  },
+  "8": {
+    "id": "9010073",
+    "url": "https://www.pexels.com/photo/9010073/",
+    "photographer": "Pexels contributor",
+    "file": "images/lessons/lesson-08.jpg"
+  },
+  "9": {
+    "id": "7514830",
+    "url": "https://www.pexels.com/photo/a-woman-vlogging-7514830/",
+    "photographer": "Kampus Production",
+    "file": "images/lessons/lesson-09.jpg",
+    "title": ""
+  },
+  "10": {
+    "id": "7514830",
+    "url": "https://www.pexels.com/photo/a-woman-vlogging-7514830/",
+    "photographer": "Kampus Production",
+    "file": "images/lessons/lesson-10.jpg",
+    "note": "same source as filming-example / L9 \u2014 film-day visual"
+  }
+}
