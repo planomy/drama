@@ -5,173 +5,226 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Year 5/6 Drama · Finding Your Voice</title>
 <style>
+
   :root{
     --bg0:#140a1e; --bg1:#1e1230; --bg2:#2a1a42;
     --ink:#fcfaf8; --ink-dim:#ddd0ec; --ink-faint:#a89cb8;
-    --line:#5a4870; --panel:#2a1a42; --panel2:#342450;
-    --accent:#c8a0ff; --accent2:#e0c0ff; --gold:#e8b838; --gold2:#ffe8a0;
+    --panel:#2a1a42; --panel2:#342450; --line:#5a4870;
+    --chip-bg:#241836;
+    --cream:#fef9e7; --cream-ink:#1e2a28;
+    --amber:#e8b838; --amber2:#ffe8a0;
+    --accent:#9b6fd4; --accent2:#c8a0ff; --teal:#9b6fd4; --mint:#e0c0ff;
+    --notice-bg:#efe4ff; --notice-ink:#2a1840; --notice-border:#c8a0ff;
+    --p1:#ff5a6e; --p2:#e0c0ff; --p3:#5aa9ff; --p4:#b88bff; --p5:#ffb347;
     --radius:18px;
-    --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{
-    font-family:var(--font);color:var(--ink);
-    background:var(--bg0);
-    display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
-  }
-  #app{width:100vw;height:100vh;display:flex;flex-direction:column}
-  #stageWrap{
-    flex:1;display:flex;align-items:center;justify-content:center;
-    padding:18px 18px 6px;min-height:0;
-  }
-  .slide{
-    position:relative;width:min(1180px,100%);aspect-ratio:16/10;max-height:100%;
-    background:linear-gradient(160deg,var(--bg1),var(--bg2));
-    border:1px solid var(--line);border-radius:26px;
-    box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04);
-    overflow:hidden;display:flex;flex-direction:column;
-  }
-  .slide.img-slide{padding:0;background:#0a0610;border-color:#3a2850}
-  .slide.img-slide img{
-    width:100%;height:100%;object-fit:contain;display:block;background:#0a0610;
-  }
-  .deck-tag{
-    position:absolute;top:14px;left:16px;z-index:2;
-    background:rgba(20,10,30,.82);border:1px solid rgba(200,160,255,.35);
-    color:var(--accent2);font-weight:800;font-size:11px;letter-spacing:.12em;
-    text-transform:uppercase;padding:6px 12px;border-radius:999px;
-  }
-
-  .appendix-cue{
-    position:absolute;bottom:20px;right:20px;z-index:3;
-    display:flex;flex-direction:column;align-items:flex-end;gap:8px;
-    max-width:min(320px,46%);
-  }
-  .appendix-cue .cue-label{
-    display:flex;align-items:center;gap:6px;
-    font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--gold2);text-shadow:0 1px 10px rgba(0,0,0,.9);
-  }
-  .appendix-cue .cue-label::before{
-    content:'';width:8px;height:8px;border-radius:50%;
-    background:var(--gold);box-shadow:0 0 10px var(--gold);
-    animation:cue-blink 1.8s ease-in-out infinite;
-  }
-  .appendix-cue .cue-btn{
-    background:linear-gradient(145deg,rgba(210,170,255,.97),rgba(150,90,220,.97));
-    border:1px solid rgba(255,255,255,.4);color:#fff;
-    font-weight:800;font-size:14px;padding:11px 18px;border-radius:999px;
-    cursor:pointer;box-shadow:0 10px 28px rgba(60,20,100,.55);
-    transition:transform .15s,box-shadow .15s;
-    white-space:nowrap;
-  }
-  .appendix-cue .cue-btn:hover{
-    transform:translateY(-2px);
-    box-shadow:0 14px 32px rgba(80,30,130,.65);
-  }
-  @keyframes cue-blink{0%,100%{opacity:1}50%{opacity:.45}}
-
-  .appendix-close{
-    position:absolute;top:14px;right:16px;z-index:4;
-    display:flex;align-items:center;gap:8px;
-    background:rgba(20,10,30,.92);border:1px solid rgba(200,160,255,.45);
-    color:var(--accent2);border-radius:999px;padding:8px 14px 8px 12px;
-    font-size:13px;font-weight:800;cursor:pointer;
-    box-shadow:0 8px 24px rgba(0,0,0,.45);
-    transition:background .15s,border-color .15s;
-  }
-  .appendix-close:hover{background:rgba(50,30,70,.95);border-color:var(--accent)}
-  .appendix-close .x{
-    width:28px;height:28px;border-radius:50%;
-    background:rgba(200,160,255,.2);border:1px solid rgba(200,160,255,.4);
-    display:grid;place-items:center;font-size:16px;line-height:1;
-  }
-  html.presenting .appendix-cue,html:fullscreen .appendix-cue{bottom:28px;right:28px}
-  html.presenting .appendix-close,html:fullscreen .appendix-close{top:20px;right:24px}
-
-  html.presenting body,html:fullscreen body{align-items:stretch;justify-content:stretch;background:var(--bg1)}
-  html.presenting #app,html:fullscreen #app{height:100dvh}
-  html.presenting #nav,html:fullscreen #nav{
-    flex-shrink:0;padding:8px 10px;background:var(--bg0);border-top:1px solid var(--line);
-  }
+  body{font-family:var(--font);color:var(--ink);background:var(--bg0);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  #app{width:100vw;height:100vh;display:flex;flex-direction:column;}
+  #stageWrap{flex:1;display:flex;align-items:center;justify-content:center;padding:18px 18px 6px;min-height:0;}
+  .slide{position:relative;width:min(1180px,100%);aspect-ratio:16/10;max-height:100%;
+    background:radial-gradient(1200px 500px at 80% -10%, rgba(200,160,255,.06), transparent 60%), linear-gradient(160deg,var(--bg1),var(--bg2) 60%, #101c22);
+    border:1px solid var(--line);border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+    padding:26px 38px 48px;overflow:hidden;display:flex;flex-direction:column;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:rgba(200,160,255,.10);color:var(--accent2);border:1px solid rgba(200,160,255,.28);
+    font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;padding:7px 14px;border-radius:999px;}
+  h1.title{font-size:clamp(28px,3.6vw,46px);line-height:1.02;margin:10px 0 12px;letter-spacing:-.01em;}
+  .slide.cover h1.title{font-size:clamp(40px,6vw,76px);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0;}
+  .cols.wide-left{grid-template-columns:1.25fr .9fr;}
+  .cols.screen-a{grid-template-columns:1.15fr .92fr;align-items:stretch;}
+  .col{display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden;}
+  .col.left-a .imgframe.hero{flex:1 1 auto;min-height:min(44vh,360px);}
+  .col.left-a .hook{flex:0 0 auto;margin-top:auto;}
+  .col.right-a .wp{flex:0 0 auto;}
+  .col.right-a .brain{flex:1 1 auto;min-height:0;overflow:auto;}
+  .col.right-a > .card.cream{margin-top:auto;flex:0 0 auto;}
+  .col::-webkit-scrollbar{width:6px;} .col::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px;}
+  .col > .card.cream,
+  .col > .steps{flex:0 1 auto;min-height:0;max-height:62%;overflow:auto;}
+  .col.left-a > .card.cream{max-height:none;}
+  .col > .imgframe, .col > .imgrow{flex:1 1 0;min-height:100px;min-width:0;width:100%;}
+  .card{border-radius:var(--radius);padding:20px 22px;}
+  .card.cream{background:var(--cream);color:var(--cream-ink);box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:auto;}
+  .card.dark{background:var(--panel);border:1px solid var(--line);}
+  .tag{display:inline-block;font-weight:900;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:var(--amber);color:#3a2c00;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
+  .tag.read{background:var(--amber)} .tag.wow{background:#ff6b8a;color:#3a0010}
+  .tag.do{background:var(--mint);color:#063a2c} .tag.try{background:#ffd766;color:#3a2c00}
+  .card h3{font-size:clamp(18px,2vw,24px);margin-bottom:8px;}
+  .card.cream p,.card.cream li{font-size:clamp(15px,1.45vw,19px);line-height:1.45;}
+  .spell-words{display:flex;flex-wrap:wrap;gap:0 1.75em;margin-top:10px;font-size:17px;line-height:1.45;font-weight:700;color:var(--cream-ink);}
+  .spell-words span{white-space:nowrap;}
+  .notice{margin-top:12px;background:var(--notice-bg);border-left:5px solid var(--notice-border);color:var(--notice-ink);padding:10px 13px;border-radius:10px;font-size:14.5px;}
+  .notice b{color:#2d6b58}
+  .hook{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);padding:10px 15px;}
+  .hook .lbl{color:var(--amber2);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+  .hook p{font-size:clamp(15px,1.5vw,20px);margin-top:5px;line-height:1.3;}
+  .card.dark.wp{padding:14px 16px;}
+  .wp h4{color:var(--ink);font-size:16px;margin-bottom:8px;}
+  .wp-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+  .chip{background:var(--chip-bg);border:1px solid var(--line);border-radius:11px;padding:7px 10px;}
+  .chip b{display:block;font-size:14.5px;color:var(--mint);}
+  .chip span{font-size:12px;color:var(--ink-dim);line-height:1.25;}
+  .brain{background:linear-gradient(150deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;}
+  .brain .lbl{display:flex;align-items:center;gap:9px;color:var(--amber2);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:12px;margin-bottom:8px;}
+  .brain ol{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .brain li{display:flex;gap:10px;font-size:clamp(13.5px,1.35vw,17px);line-height:1.28;}
+  .brain .n{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:13px;color:#2a1840;background:linear-gradient(135deg,var(--mint),var(--accent));}
+  .steps{background:var(--cream);color:var(--cream-ink);border-radius:var(--radius);padding:18px 20px;}
+  .steps .tag{margin-bottom:14px}
+  .steps .row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #d8cda6;}
+  .steps .row:last-child{border-bottom:none}
+  .steps .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--panel2);color:var(--mint);display:grid;place-items:center;font-weight:900;}
+  .steps .row b{font-size:18px;display:block;} .steps .row span{font-size:15px;color:#4a5a54;}
+  .exit{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;}
+  .exit h4{font-size:20px;margin-bottom:12px;}
+  .exit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .echk{display:flex;gap:10px;align-items:center;background:var(--chip-bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px;}
+  .echk .bx{flex:none;width:24px;height:24px;border-radius:7px;background:var(--mint);color:#2a1840;display:grid;place-items:center;font-weight:900;}
+  .imgframe{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--chip-bg);min-height:100px;}
+  .imgframe.hero{min-height:min(44vh,360px);}
+  .imgframe img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .imgframe.hero img{min-height:min(44vh,360px);}
+  .imgframe:not(.hero) img{position:absolute;inset:0;}
+  .imgframe.diagram img{object-fit:contain;background:var(--bg0);}
+  .imgframe.hero.diagram img{object-fit:contain;min-height:min(44vh,360px);}
+  .imgframe.fit img{object-fit:contain;}
+  .imgframe .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;background:linear-gradient(transparent,rgba(10,20,25,.92));color:#e8f0ee;font-size:12.5px;padding:18px 12px 8px;font-weight:600;}
+  .slide.cover{align-items:flex-start;justify-content:center;text-align:left;}
+  .cover .sub{font-size:clamp(18px,2.2vw,26px);color:var(--ink-dim);max-width:760px;line-height:1.4;}
+  .cover .meta{margin-top:auto;display:flex;gap:22px;flex-wrap:wrap;color:var(--ink-faint);font-weight:700;letter-spacing:.05em;}
+  .cover .pill{background:rgba(200,160,255,.10);border:1px solid rgba(200,160,255,.25);color:var(--mint);padding:8px 16px;border-radius:999px;}
+  .slide.divider{justify-content:center;}
+  .divider .pkr{font-size:clamp(20px,3vw,30px);color:var(--ink-dim);font-weight:800;letter-spacing:.2em;text-transform:uppercase;}
+  .divider h1{font-size:clamp(40px,6vw,72px);margin:10px 0 18px;}
+  .divider .goals{display:flex;flex-direction:column;gap:12px;max-width:840px;}
+  .divider .goal{display:flex;gap:14px;align-items:center;font-size:clamp(17px,1.9vw,22px);background:var(--panel);border:1px solid var(--line);padding:14px 18px;border-radius:14px;}
+  .divider .goal i{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-style:normal;font-weight:900;color:#06251c;}
+  .slide.checkpoint{justify-content:center;text-align:center;align-items:center;}
+  .checkpoint h1{font-size:clamp(34px,5vw,60px)} .checkpoint p{font-size:clamp(18px,2vw,24px);color:var(--ink-dim);max-width:780px;margin:14px auto 24px;}
+  .corner{position:absolute;right:26px;bottom:18px;color:var(--ink-faint);font-size:12px;letter-spacing:.08em;}
+  .corner kbd{background:var(--chip-bg);border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:11px;}
+  .screenlbl{position:absolute;left:38px;bottom:18px;color:var(--ink-faint);font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
+  .eyebrow-r{position:absolute;right:38px;top:30px;color:var(--ink-faint);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;}
+  /* Present mode — scale slide to fill viewport (Teams / laptop share) */
+  html.presenting body,html:fullscreen body{align-items:stretch;justify-content:stretch;background:var(--bg1);}
+  html.presenting #app,html:fullscreen #app{height:100dvh;}
+  html.presenting #nav,html:fullscreen #nav{flex-shrink:0;padding:8px 10px;background:var(--bg0);border-top:1px solid var(--line);}
   html.presenting #stageWrap,html:fullscreen #stageWrap{
-    flex:1;min-height:0;padding:0;align-items:center;justify-content:center;
+    padding:0;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:var(--bg1);
   }
   html.presenting .slide,html:fullscreen .slide{
-    width:1180px;max-width:none;max-height:none;aspect-ratio:16/10;
-    border-radius:0;border:none;box-shadow:none;transform-origin:center center;
+    width:1180px;height:738px;max-width:none;max-height:none;aspect-ratio:auto;flex-shrink:0;
+    border-radius:0;border:none;box-shadow:none;
+    padding:26px 38px 48px;
+    transform-origin:center center;
   }
+  html.presenting .corner,html.presenting .screenlbl,html:fullscreen .corner,html:fullscreen .screenlbl{display:none;}
+  html.presenting .cols,html:fullscreen .cols{flex:1;min-height:0;align-items:stretch;}
+  html.presenting .col,html:fullscreen .col{height:100%;}
+  html.presenting .col > .card.cream,html.presenting .col > .steps,html.presenting .col > .brain,html.presenting .col > .hook,html.presenting .col > .imgframe,
+  html:fullscreen .col > .card.cream,html:fullscreen .col > .steps,html:fullscreen .col > .brain,html:fullscreen .col > .hook,html:fullscreen .col > .imgframe{
+    flex:1 1 0;min-height:0;max-height:none;overflow:auto;
+  }
+  html.presenting .col > .exit,html:fullscreen .col > .exit{flex:0 0 auto;}
+  html.presenting .col.left-a .hook,html:fullscreen .col.left-a .hook{margin-top:0;}
+  html.presenting .col.right-a > .card.cream,html:fullscreen .col.right-a > .card.cream{margin-top:0;}
+  #nav{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;flex-wrap:wrap;}
+  .btn{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+  .btn:hover{border-color:var(--mint);color:#fff;}
+  .btn.primary{background:var(--mint);color:#2a1840;border-color:var(--mint);}
+  .btn.assess{background:linear-gradient(135deg,var(--amber),#ff9d3c);color:#3a2400;border:none;font-weight:900;}
+  .btn.inforeport{background:linear-gradient(135deg,#6a9fd4,#e0c0ff);color:#102028;border:none;font-weight:900;}
+  .btn.inforeport.hidden{display:none;}
+  .btn.notes-open{border-color:var(--mint);color:#fff;box-shadow:0 0 0 1px rgba(200,160,255,.35);}
+  #counter{font-weight:800;color:var(--ink-dim);min-width:74px;text-align:center;}
+  select#jump{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:13px;max-width:230px;}
+  #tnotes{position:fixed;right:0;top:0;height:100%;width:min(440px,90vw);transform:translateX(100%);transition:transform .28s ease;background:var(--bg1);border-left:1px solid var(--line);z-index:40;box-shadow:-20px 0 60px rgba(0,0,0,.5);display:flex;flex-direction:column;}
+  #tnotes.open{transform:none;}
+  html.presenting #tnotes,html:fullscreen #tnotes{z-index:100;height:100dvh;}
+  #tnotes header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-shrink:0;}
+  #tnotes header b{color:var(--amber2);letter-spacing:.04em;}
+  #tnotes header .slide-label{display:block;font-size:12px;font-weight:700;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;}
+  #tnotes .body{padding:20px;overflow:auto;flex:1;min-height:0;font-size:15.5px;line-height:1.55;color:var(--ink-dim);}
+  #tnotes .body h4{color:var(--mint);margin:14px 0 6px;font-size:16px;}
+  #tnotes .body ul{margin:6px 0 6px 18px;} #tnotes .body li{margin:4px 0;}
+  #overlay{position:fixed;inset:0;background:rgba(8,14,18,.84);backdrop-filter:blur(6px);z-index:60;display:none;align-items:center;justify-content:center;padding:24px;}
+  #overlay.open{display:flex;}
+  .modal{width:min(1100px,100%);height:min(88vh,820px);background:linear-gradient(160deg,var(--bg1),var(--bg2));border:1px solid var(--line);border-radius:22px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.6);}
+  .modal header{padding:16px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;}
+  .modal header h2{font-size:22px;margin-right:auto;}
+  .tabs{display:flex;gap:8px;}
+  .tab{background:var(--panel2);border:1px solid var(--line);color:var(--ink-dim);padding:8px 16px;border-radius:999px;cursor:pointer;font-weight:700;font-size:14px;}
+  .tab.active{background:var(--amber);color:#3a2400;border-color:var(--amber);}
+  .modal .content{padding:24px;overflow:auto;flex:1;}
+  .modal .content h3{color:var(--mint);margin:18px 0 8px;font-size:20px;}
+  .modal .content p,.modal .content li{font-size:16px;line-height:1.55;color:var(--ink);}
+  .modal .content ul{margin:6px 0 6px 20px}
+  .panelpane{display:none} .panelpane.active{display:block}
+  .rubric{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+  .rubric th,.rubric td{border:1px solid var(--line);padding:8px;vertical-align:top;text-align:left;}
+  .rubric th{background:var(--panel2);color:var(--amber2);}
+  .rubric td:first-child{background:var(--chip-bg);color:var(--mint);font-weight:800;width:150px;}
+  .rubric .A{background:rgba(200,160,255,.08)}
+  .assess-doc .assess-open{margin-bottom:12px;} .assess-doc .assess-open a{color:var(--amber2);font-weight:800;}
+  .assess-doc .assess-source{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fff;}
+  .assess-task-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0 14px;}
+  .assess-task-meta .fld{background:var(--chip-bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px;}
+  .assess-task-meta .fld b{display:block;color:var(--mint);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+  .assess-steps{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+  .assess-steps th,.assess-steps td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left;}
+  .assess-steps th{background:var(--panel2);color:var(--amber2);width:33%;}
+  .assess-steps td{color:var(--ink);}
+  .assess-due{margin-top:12px;padding:10px 14px;border-radius:10px;background:rgba(245,197,66,.12);border:1px solid rgba(245,197,66,.35);color:var(--amber2);font-weight:800;font-size:15px;}
+  .assess-inforeport{margin:14px 0;padding:12px 14px;border-radius:12px;background:rgba(90,169,255,.1);border:1px solid rgba(90,169,255,.35);}
+  .assess-inforeport p{margin:0 0 8px;color:var(--ink);font-size:15px;line-height:1.4;}
+  #pane-task.active,#pane-reading.active{display:flex;flex-direction:column;min-height:0;flex:1;}
+  .assess-pdfFrame{flex:1;min-height:min(68vh,640px);border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg0);}
+  .assess-pdfFrame iframe{width:100%;height:100%;border:0;display:block;min-height:min(68vh,640px);}
+  .modal footer{padding:14px 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
+  .hint{color:var(--ink-faint);font-size:13px;}
+  .slide.overview h1.title{font-size:clamp(24px,3vw,38px);margin-bottom:6px;}
+  .slide.overview .sub{font-size:clamp(13px,1.35vw,17px);color:var(--ink-dim);margin-bottom:10px;max-width:920px;line-height:1.4;}
+  .overview-wrap{flex:1;min-height:0;overflow:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel);}
+  table.unit-map{width:100%;border-collapse:collapse;font-size:12.5px;}
+  table.unit-map th,table.unit-map td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top;}
+  table.unit-map th{background:var(--panel2);color:var(--mint);font-size:11px;letter-spacing:.06em;text-transform:uppercase;position:sticky;top:0;z-index:1;}
+  table.unit-map .wk{background:rgba(200,160,255,.12);color:var(--accent2);font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;width:54px;}
+  table.unit-map .ln{color:var(--amber2);font-weight:800;white-space:nowrap;width:34px;}
+  table.unit-map .topic{color:var(--ink);font-weight:700;width:16%;}
+  table.unit-map .eng-td{width:34%;padding:5px 8px;}
+  table.unit-map .eng-wrap{display:flex;gap:8px;align-items:flex-start;}
+  table.unit-map .eng-wrap .blk{flex:1;min-width:0;}
+  table.unit-map .eng-wrap b{color:var(--mint);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:3px;}
+  table.unit-map .eng-row{display:flex;flex-wrap:wrap;gap:3px 5px;}
+  table.unit-map .eng-item{display:inline-block;font-size:10px;line-height:1.25;padding:2px 5px;border-radius:5px;background:var(--chip-bg);border:1px solid var(--line);color:var(--ink-dim);}
+  table.unit-map .learn{color:var(--ink-dim);line-height:1.35;width:17%;}
+  table.unit-map .rpt{color:var(--ink-faint);font-size:10.5px;line-height:1.3;width:13%;}
+  table.unit-map tbody tr:nth-child(even) td:not(.wk){background:rgba(26,38,46,.35);}
+  @media (max-width:720px){.cols{grid-template-columns:1fr;overflow:auto;}.wp-grid,.exit-grid{grid-template-columns:1fr;}select#jump{max-width:130px;}}
 
-  #nav{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;flex-wrap:wrap}
-  .btn{
-    background:var(--panel);border:1px solid var(--line);color:var(--ink);
-    border-radius:999px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;
-    transition:background .15s,border-color .15s;
-  }
-  .btn:hover{background:var(--panel2);border-color:var(--accent)}
-  .btn.primary{background:rgba(200,160,255,.18);border-color:rgba(200,160,255,.45);color:var(--accent2)}
-  .btn.active{background:rgba(232,184,56,.18);border-color:rgba(232,184,56,.45);color:var(--gold2)}
-  #counter{font-weight:800;font-size:13px;min-width:72px;text-align:center;color:var(--ink-dim)}
-  select#jump{
-    background:var(--panel2);color:var(--ink);border:1px solid var(--line);
-    border-radius:999px;padding:9px 12px;font-size:13px;max-width:min(280px,42vw);
-  }
-  .deck-toggle{display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px}
-  .deck-toggle .btn{border:none;background:transparent;padding:8px 14px}
-  .deck-toggle .btn.active{background:rgba(200,160,255,.22);color:var(--accent2)}
+  .btn.inforeport{background:linear-gradient(135deg,#9b6fd4,#c8a0ff);color:#1a1028;}
+  table.unit-map th:nth-child(4){letter-spacing:.04em;}
 
-  #tnotes{
-    position:fixed;top:0;right:0;width:min(400px,92vw);height:100dvh;
-    background:var(--bg1);border-left:1px solid var(--line);
-    transform:translateX(100%);transition:transform .2s;z-index:50;
-    display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.4);
-  }
-  #tnotes.open{transform:translateX(0)}
-  #tnotes header{
-    display:flex;justify-content:space-between;align-items:center;gap:10px;
-    padding:14px 16px;border-bottom:1px solid var(--line);
-  }
-  #tnotes header b{display:block;font-size:15px}
-  #tnotes .slide-label{display:block;font-size:12px;color:var(--ink-faint);margin-top:2px}
-  #tnotes .body{padding:16px 18px;overflow:auto;flex:1;font-size:14.5px;line-height:1.55;color:var(--ink-dim)}
-  #tnotes .body p{margin-bottom:10px}
-  .btn.notes-open{border-color:var(--accent);color:var(--accent2)}
-
-  .downloads{
-    position:fixed;bottom:72px;right:14px;z-index:5;display:flex;flex-direction:column;gap:6px;
-  }
-  .downloads a{
-    font-size:11px;font-weight:700;color:var(--ink-faint);text-decoration:none;
-    background:rgba(20,10,30,.75);border:1px solid var(--line);padding:5px 10px;border-radius:999px;
-  }
-  .downloads a:hover{color:var(--gold2);border-color:var(--gold)}
-  html.presenting .downloads,html:fullscreen .downloads{display:none}
-
-  @media(max-width:720px){
-    select#jump{max-width:120px}
-    .deck-toggle .btn{padding:8px 10px;font-size:12px}
-  }
 </style>
 </head>
 <body>
 <div id="app">
-  <div id="stageWrap"><div class="slide img-slide" id="slide"></div></div>
+  <div id="stageWrap"><div class="slide" id="slide"></div></div>
   <div id="nav">
-    <div class="deck-toggle">
-      <button class="btn active" id="deckUnit" type="button">Unit plan</button>
-      <button class="btn" id="deckApp" type="button">Appendices</button>
-    </div>
-    <button class="btn" id="prev" type="button">← Prev</button>
-    <span id="counter">1 / 24</span>
-    <select id="jump" aria-label="Jump to slide"></select>
-    <button class="btn" id="notesBtn" type="button">Teacher notes</button>
-    <button class="btn" id="presentBtn" type="button" title="Fullscreen for screen share (F)">⛶ Present</button>
-    <button class="btn" id="next" type="button">Next →</button>
+    <button class="btn" id="prev">← Prev</button>
+    <span id="counter">1 / 1</span>
+    <select id="jump"></select>
+    <button class="btn assess" id="assessBtn">📋 Assessment</button>
+    <button class="btn inforeport" id="inforeportBtn" title="Jump to appendices (I)">📎 Appendices</button>
+    <button class="btn" id="notesBtn">Teacher notes</button>
+    <button class="btn" id="presentBtn" title="Maximise slide for screen share (F · Esc to exit)">⛶ Present</button>
+    <button class="btn" id="next">Next →</button>
   </div>
 </div>
-
 <aside id="tnotes">
   <header>
     <div><b>Teacher notes</b><span class="slide-label" id="tnotesTitle"></span></div>
@@ -182,234 +235,330 @@
   </header>
   <div class="body" id="tnotesBody"></div>
 </aside>
-
-<div class="downloads">
-  <a href="Finding%20Your%20Voice%20Unit.pdf" target="_blank" rel="noopener">PDF ↗</a>
-  <a href="Finding%20Your%20Voice%20Presentation.pptx" download>PPTX ↓</a>
+<div id="overlay">
+  <div class="modal">
+    <header>
+      <h2>Assessment</h2>
+      <div class="tabs">
+        <button class="tab active" data-pane="task">Task</button>
+        <button class="tab" data-pane="reading">Unit PDF</button>
+        <button class="tab" data-pane="guide">Guide</button>
+      </div>
+      <button class="btn" id="overlayClose" type="button">✕</button>
+    </header>
+    <div class="content">
+      <div class="panelpane active" id="pane-task"></div>
+      <div class="panelpane" id="pane-reading"></div>
+      <div class="panelpane" id="pane-guide"></div>
+    </div>
+    <footer>
+      <span class="hint">Press A to toggle · Esc to close</span>
+      <button class="btn primary" id="backBtn">← Back to my slide</button>
+    </footer>
+  </div>
 </div>
 
 <script>
-const UNIT = [
-  { nav:'Cover', src:'images/unit/01-cover.jpg', notes:'<p>Open the unit. Students are building towards a one-minute monologue filmed at home.</p>' },
-  { nav:'Unit overview', src:'images/unit/02-overview.jpg', notes:'<p>Walk through delivery context, lesson rhythm and assessment at a glance.</p>' },
-  { nav:'The journey', src:'images/unit/03-journey.jpg', notes:'<p>Whole-class Weeks 1–2 → breakout pairs 3–8 → independent 9–10.</p>' },
-  { nav:'Lesson 1 — Elements', src:'images/unit/04-lesson-01.jpg', notes:'<p><b>Appendix A</b> on screen. Camera Freeze warm-up → elements mini-lesson → 30-sec exit ticket.</p>', apps:[1] },
-  { nav:'Lesson 2 — History', src:'images/unit/05-lesson-02.jpg', notes:'<p><b>Appendices B &amp; C</b>. Drama through time; monologue vs soliloquy — act the same line both ways.</p>', apps:[2,3] },
-  { nav:'Lesson 3 — Cultures', src:'images/unit/06-lesson-03.jpg', notes:'<p><b>Appendix D</b>. First breakout pairs. Invite folktales from students’ own cultures.</p>', apps:[4] },
-  { nav:'Lesson 4 — Character', src:'images/unit/07-lesson-04.jpg', notes:'<p><b>Appendix F</b> (hot-seat). Model in role before pairs swap.</p>', apps:[5] },
-  { nav:'Lesson 5 — Structure', src:'images/unit/08-lesson-05.jpg', notes:'<p><b>Appendix G</b>. Four-part one-minute structure; slow the turning point.</p>', apps:[6] },
-  { nav:'Lesson 6 — Devising', src:'images/unit/09-lesson-06.jpg', notes:'<p>Improvisation to find words and voice. Appendix H in the PDF.</p>' },
-  { nav:'Lesson 7 — Camera', src:'images/unit/10-lesson-07.jpg', notes:'<p>Performance skills for camera. Appendix I rehearsal checklist in PDF.</p>' },
-  { nav:'Lesson 8 — Feedback', src:'images/unit/11-lesson-08.jpg', notes:'<p><b>Appendix A</b> again. Peer feedback; name elements used. Appendix J in PDF.</p>', apps:[1] },
-  { nav:'Lesson 9 — Finalise', src:'images/unit/12-lesson-09.jpg', notes:'<p><b>Appendix K</b> filming guide. Long independent DO block; help-room breakout.</p>', apps:[7] },
-  { nav:'Lesson 10 — Perform', src:'images/unit/13-lesson-10.jpg', notes:'<p>Final performance and reflection. Appendix L reflection sheet in PDF.</p>', apps:[7] },
-  { nav:'Appendix A — Elements', src:'images/unit/14-appendix-a.jpg' },
-  { nav:'Appendix B — History', src:'images/unit/15-appendix-b.jpg' },
-  { nav:'Appendix C — Monologue', src:'images/unit/16-appendix-c.jpg' },
-  { nav:'Appendix D — Characters', src:'images/unit/17-appendix-d.jpg' },
-  { nav:'Appendix E — Planning', src:'images/unit/18-appendix-e.jpg' },
-  { nav:'Appendix F–G — Hot-seat & structure', src:'images/unit/19-appendix-f.jpg' },
-  { nav:'Appendix H–I — Devising & rehearsal', src:'images/unit/20-appendix-g.jpg' },
-  { nav:'Appendix J–K — Feedback & filming', src:'images/unit/21-appendix-h.jpg?v=4' },
-  { nav:'Appendix L — Reflection', src:'images/unit/22-appendix-i.jpg' },
-  { nav:'Appendix M — Rubric', src:'images/unit/23-appendix-j.jpg' },
-  { nav:'Appendix N — Teacher notes', src:'images/unit/24-appendix-klm.jpg' }
-];
+const INFOREPORT_URL = '';
+const ASSESS_TASK_IMG = 'images/unit/02-overview.jpg';
+const ASSESS_READING_PDF = 'Finding%20Your%20Voice%20Unit.pdf';
+const ASSESS_TASK = `
+<div class="assess-doc">
+  <h3>Assessment — Individual 1-minute monologue or soliloquy</h3>
+  <div class="assess-task-meta">
+    <div class="fld"><b>Format</b>Filmed performance · ~1 minute · landscape</div>
+    <div class="fld"><b>Setting</b>Recorded at home · submitted via agreed method</div>
+    <div class="fld"><b>Due</b>End of Lesson 10 / published deadline</div>
+  </div>
+  <p>Students devise and film a one-minute monologue or soliloquy that uses drama elements with intention.</p>
+  <table class="assess-steps">
+    <tr><th>Exploring &amp; responding</th><th>Creating &amp; making</th><th>Presenting &amp; performing</th></tr>
+    <tr>
+      <td>Discussion notes (L2–3) · Peer feedback (L8) · Reflection Sheet (L10, App. L)</td>
+      <td>Paired devising (L3–8) · Monologue Planning Template (App. E)</td>
+      <td>Rehearsal observations (L7–9) · Final filmed piece (L10)</td>
+    </tr>
+  </table>
+  <p class="assess-due">Student-friendly A–E rubric: Appendix M in the unit PDF.</p>
+</div>
+`;
+const ASSESS_READING = `
+<div class="assess-doc">
+  <p class="assess-open"><a href="Finding%20Your%20Voice%20Unit.pdf" target="_blank" rel="noopener">Open full unit PDF ↗</a></p>
+  <div class="assess-pdfFrame"><iframe title="Finding Your Voice unit PDF" src="Finding%20Your%20Voice%20Unit.pdf"></iframe></div>
+</div>
+`;
+const ASSESS_GUIDE = `
+<div class="assess-doc">
+  <h3>Teaching guide — quick hits</h3>
+  <ul>
+    <li><b>Rhythm:</b> short TEACH bursts (≤10 min) then DO — keep students performing.</li>
+    <li><b>Weeks 1–2:</b> whole-class · <b>Weeks 3–8:</b> breakout pairs · <b>Weeks 9–10:</b> independent + help room.</li>
+    <li><b>Exit tickets:</b> 30-sec recorded clips every lesson.</li>
+    <li><b>Appendices:</b> jump with <kbd>I</kbd> or the Appendices button.</li>
+  </ul>
+  <h3>Australian Curriculum v9.0 Drama (Years 5–6)</h3>
+  <ul>
+    <li>Exploring &amp; responding — elements + culture / meaning</li>
+    <li>Creating &amp; making — collaborate, improvise, devise</li>
+    <li>Presenting &amp; performing — sustain action on camera</li>
+  </ul>
+</div>
+`;
+const ASSESS_TAB_BY_NAV = {};
+const INFOREPORT_NAV = new Set();
+const TEACHER_NOTES = {};
+const SLIDES = [];
+SLIDES.push({"type": "cover", "nav": "Cover", "eyebrow": "Year 5/6 Drama · Fully online", "title": "Finding Your Voice", "sub": "A history of drama and the solo performance — building to your own one-minute monologue.", "notes": "<p>Destination: a one-minute monologue filmed at home. Length: 10 × 60-min lessons · Live online + breakouts · Assessment: individual 1-min film.</p><h4>Navigation</h4><ul><li><b>← →</b> · Jump · <b>T</b> notes · <b>A</b> assessment · <b>I</b> appendices · <b>F</b> present</li></ul>"});
+SLIDES.push({"type": "overview", "nav": "Unit overview", "eyebrow": "Year 5/6 Drama · 10 × 60-min lessons", "title": "About this unit", "sub": "Teach/Do rhythm · breakouts from Week 3 · filmed one-minute assessment.", "rows": [{"week": "L1", "n": "1", "topic": "Elements", "englishA": "Online drama games", "englishB": "Warm-up → invent → exit", "learn": "Online drama games", "report": "App. A"}, {"week": "L2", "n": "2", "topic": "Across time", "englishA": "History + mono/soliloquy", "englishB": "Timeline → character seeds", "learn": "History + mono/soliloquy", "report": "App. B–C"}, {"week": "L3", "n": "3", "topic": "Cultures", "englishA": "Meaning & culture", "englishB": "First breakouts → choose", "learn": "Meaning & culture", "report": "App. D"}, {"week": "L4", "n": "4", "topic": "Character", "englishA": "Role, situation, voice", "englishB": "Hot-seat → plan", "learn": "Role, situation, voice", "report": "App. E–F"}, {"week": "L5", "n": "5", "topic": "Structure", "englishA": "Shape one minute", "englishB": "Peak → plan structure", "learn": "Shape one minute", "report": "App. G"}, {"week": "L6", "n": "6", "topic": "Devising", "englishA": "Words & voice", "englishB": "Improv → first full run", "learn": "Words & voice", "report": "App. H"}, {"week": "L7", "n": "7", "topic": "Camera", "englishA": "On-camera skills", "englishB": "Rehearse + peer tips", "learn": "On-camera skills", "report": "App. I"}, {"week": "L8", "n": "8", "topic": "Feedback", "englishA": "Refine & explain", "englishB": "Perform + feedback sheet", "learn": "Refine & explain", "report": "App. J"}, {"week": "L9", "n": "9", "topic": "Finalise", "englishA": "Polish for film", "englishB": "Independent + help room", "learn": "Polish for film", "report": "App. K"}, {"week": "L10", "n": "10", "topic": "Perform", "englishA": "Film & reflect", "englishB": "Submit + App. L", "learn": "Film & reflect", "report": "App. L–M"}], "notes": "<p>Walk delivery context, lesson rhythm and assessment strands.</p>"});
+SLIDES.push({"type": "divider", "nav": "Weeks 1–2", "eyebrow": "Phase · Exploring", "title": "Whole-class launch", "goals": ["Elements of drama through online games", "Drama across time + monologue vs soliloquy", "Build confidence before first breakouts"], "notes": "<p>Weeks 1–2 stay whole-class.</p>"});
+SLIDES.push({"nav": "L1A — Elements of Drama Warm-Up", "eyebrow": "Week 1 · Lesson 1 · Learn", "eyebrowR": "Lesson 1 · Screen A", "title": "Elements of Drama Warm-Up", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/04-lesson-01.jpg", "cap": "Elements of Drama Warm-Up", "hero": true, "fit": true}, {"k": "hook", "q": "Identify and use the elements of drama through online drama games."}], "right": [{"k": "wp", "list": [{"t": "role", "d": "who you are pretending to be"}, {"t": "situation", "d": "where you are and what is happening"}, {"t": "voice", "d": "tone, pace and volume"}, {"t": "tension", "d": "suspense that keeps us hooked"}]}, {"k": "brain", "q": ["Which element makes a freeze frame feel dramatic?", "How can voice alone change the mood of one line?", "Why does drama need contrast?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can name at least three elements of drama.</li><li>I can use two elements in a short improvisation.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendix A · Elements</p></div>"}], "notes": "<p><b>Appendix A</b> on screen. Camera Freeze → elements mini-lesson → 30-sec exit ticket.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L1B — Apply", "eyebrow": "Week 1 · Lesson 1 · Apply", "eyebrowR": "Lesson 1 · Screen B", "title": "Elements of Drama Warm-Up — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Camera Freeze — celebration, storm, mystery poses. Gallery view + spotlight.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>10 min · Teach</b><span>Elements mini-lesson with Appendix A.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>14 min · Solo build</b><span>30–45 sec moment (mysterious box) using at least two elements.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>8 min · Re-teach</b><span>Spotlight a volunteer; refine voice + tension.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>16 min · Share</b><span>Spotlight shares; class names elements in chat.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Exit ticket + preview Lesson 2.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Perform a 30-sec mini-scene live and narrate how you used voice and tension.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Drama warm-up & improv games · National Theatre / BBC Teach (~3 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Phone call with fantastic news", "Exit · B. Mystery package at the door", "Exit · C. Winning a strange competition"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>WHOLE-CLASS</b>.</p></div>"}], "notes": "<p><b>Appendix A</b> on screen. Camera Freeze → elements mini-lesson → 30-sec exit ticket.</p>"});
+SLIDES.push({"nav": "L2A — A Short History of Drama", "eyebrow": "Week 2 · Lesson 2 · Learn", "eyebrowR": "Lesson 2 · Screen A", "title": "A Short History of Drama", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/05-lesson-02.jpg", "cap": "A Short History of Drama", "hero": true, "fit": true}, {"k": "hook", "q": "Understand how drama has changed across time, and what a monologue and a soliloquy are."}], "right": [{"k": "wp", "list": [{"t": "monologue", "d": "one character speaks to someone or the audience"}, {"t": "soliloquy", "d": "private thoughts spoken aloud, usually alone"}, {"t": "chorus", "d": "group that helped tell the story in Greek theatre"}, {"t": "Globe", "d": "Shakespearean open-air theatre"}]}, {"k": "brain", "q": ["Why did Greek actors wear masks?", "How is a soliloquy different from chatting to a friend on stage?", "What stayed the same from Greek theatre to filming at home?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can describe one feature of drama from at least two time periods.</li><li>I can explain monologue vs soliloquy.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices B & C</p></div>"}], "notes": "<p><b>Appendices B &amp; C</b>. Act the same line both ways.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L2B — Apply", "eyebrow": "Week 2 · Lesson 2 · Apply", "eyebrowR": "Lesson 2 · Screen B", "title": "A Short History of Drama — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Then & Now poses: Greek, medieval, Shakespearean, modern film star.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>9 min · Teach</b><span>Timeline part 1 (App. B): Ancient Greek & medieval.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>8 min · Quick-fire</b><span>Pose or mime one feature per era + one fact in chat.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>9 min · Teach</b><span>Timeline part 2 + monologue vs soliloquy (App. C).</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>22 min · Character seeds</b><span>Jot 2–3 character ideas for later.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Exit ticket + preview Lesson 3 breakouts.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Say one line twice: monologue (to someone), then soliloquy (private thoughts).</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Shakespeare’s Theatre (the Globe) · BBC Teach (~4 min) · youtube.com/watch?v=D1rbtHchv1g</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Masked Greek actor announces huge news", "Exit · B. Soliloquy: alone, deciding something big", "Exit · C. Shakespearean town crier"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>WHOLE-CLASS</b>.</p></div>"}], "notes": "<p><b>Appendices B &amp; C</b>. Act the same line both ways.</p>"});
+SLIDES.push({"type": "divider", "nav": "Weeks 3–8", "eyebrow": "Phase · Creating & presenting", "title": "Breakout pairs", "goals": ["First breakouts — culture & character", "Devise structure, words and voice", "Rehearse for camera with peer feedback"], "notes": "<p>Lessons 3–8 run in paired breakouts.</p>"});
+SLIDES.push({"nav": "L3A — Drama Across Cultures", "eyebrow": "Week 3 · Lesson 3 · Learn", "eyebrowR": "Lesson 3 · Screen A", "title": "Drama Across Cultures", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/06-lesson-03.jpg", "cap": "Drama Across Cultures", "hero": true, "fit": true}, {"k": "hook", "q": "Describe how drama communicates ideas and helps continue and revitalise culture."}], "right": [{"k": "wp", "list": [{"t": "culture", "d": "shared beliefs, stories and ways of life"}, {"t": "folktale", "d": "a story passed down through generations"}, {"t": "trickster", "d": "clever character who outwits a stronger foe"}, {"t": "revitalise", "d": "bring new life and energy to something"}]}, {"k": "brain", "q": ["What feelings did the performance communicate?", "Why might this story matter to its culture?", "Which story pattern could inspire your own piece?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can describe one way a performance communicated meaning.</li><li>I can explain why storytelling matters to a culture.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendix D · Characters</p></div>"}], "notes": "<p><b>Appendix D</b>. First breakout pairs — pin two questions in each room.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L3B — Apply", "eyebrow": "Week 3 · Lesson 3 · Apply", "eyebrowR": "Lesson 3 · Screen B", "title": "Drama Across Cultures — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Story Circle — build a class tale one sentence at a time.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>10 min · Teach / watch</b><span>Play storytelling clip; pause for meaning and feeling.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>12 min · First breakouts</b><span>Think-pair-share: meaning + why the story matters.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>8 min · Teach</b><span>App. D patterns — choose character + situation.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>18 min · Narrow it down</b><span>Choose character + situation; note inspiration.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Exit ticket. Idea due start of Lesson 4.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Model answering “what did this communicate?” using App. D patterns.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Storytelling traditions around the world · TED-Ed / ABC Education</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Opening of a folktale from your culture", "Exit · B. Wise elder passing on one lesson", "Exit · C. Hero discovers something amazing"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT DEBUT</b>.</p></div>"}], "notes": "<p><b>Appendix D</b>. First breakout pairs — pin two questions in each room.</p>"});
+SLIDES.push({"nav": "L4A — Building Your Character", "eyebrow": "Week 4 · Lesson 4 · Learn", "eyebrowR": "Lesson 4 · Screen A", "title": "Building Your Character", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/07-lesson-04.jpg", "cap": "Building Your Character", "hero": true, "fit": true}, {"k": "hook", "q": "Build a character through role, situation and voice."}], "right": [{"k": "wp", "list": [{"t": "hot-seat", "d": "answering questions in role as your character"}, {"t": "role", "d": "who you are pretending to be"}, {"t": "want", "d": "what your character desires most"}, {"t": "posture", "d": "how your body shows the character"}]}, {"k": "brain", "q": ["What does your character want most right now?", "How would they walk into a room?", "Which App. F question reveals the most?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can describe my character’s role and situation.</li><li>I can find a voice and posture for my character.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices E & F</p></div>"}], "notes": "<p><b>Appendix F</b> hot-seat. Model in role before pairs swap.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L4B — Apply", "eyebrow": "Week 4 · Lesson 4 · Apply", "eyebrowR": "Lesson 4 · Screen B", "title": "Building Your Character — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Walk As — queen, trickster, giant, animal.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>8 min · Teach</b><span>Demonstrate hot-seating (App. F).</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>20 min · Breakout</b><span>Pairs hot-seat with App. F prompts.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>6 min · Teach</b><span>Turn answers into App. E planning template.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>14 min · Lock it in</b><span>Finalise character, situation and voice.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Share one-sentence character + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Volunteer interviews you in role for ~30 sec.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Hot-seating: building a character · BBC Bitesize (~3 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Return a faulty product", "Exit · B. Voicemail explaining why you’re late", "Exit · C. Talk-show intro"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT PAIRS</b>.</p></div>"}], "notes": "<p><b>Appendix F</b> hot-seat. Model in role before pairs swap.</p>"});
+SLIDES.push({"nav": "L5A — Finding Your Moment — Structure & Tension", "eyebrow": "Week 5 · Lesson 5 · Learn", "eyebrowR": "Lesson 5 · Screen A", "title": "Finding Your Moment — Structure & Tension", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/08-lesson-05.jpg", "cap": "Finding Your Moment — Structure & Tension", "hero": true, "fit": true}, {"k": "hook", "q": "Combine elements of drama to shape and sustain a one-minute piece."}], "right": [{"k": "wp", "list": [{"t": "opening", "d": "first line that grabs us"}, {"t": "turning point", "d": "the peak of the piece"}, {"t": "contrast", "d": "opposites: loud/quiet, fast/slow"}, {"t": "focus", "d": "where we point attention"}]}, {"k": "brain", "q": ["Where is the peak of your story?", "What happens if you pause before the big line?", "How can stillness create tension?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can choose a key dramatic moment for my piece.</li><li>I can plan how tension builds across my piece.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices E & G</p></div>"}], "notes": "<p><b>Appendix G</b>. Slow the turning point; use contrast and pause.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L5B — Apply", "eyebrow": "Week 5 · Lesson 5 · Apply", "eyebrowR": "Lesson 5 · Screen B", "title": "Finding Your Moment — Structure & Tension — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Tension tableaux — before/after freeze frames.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>10 min · Teach</b><span>One-minute structure (App. G).</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>8 min · Test peak</b><span>Before/after tableaux for your turning point.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>6 min · Teach</b><span>Model pause and contrast on one line.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>24 min · Plan</b><span>Draft structure on planning template.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Share lines + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Deliver one line flat, then with pause + contrast.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Building tension & using tableaux · BBC Bitesize (~3 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Opening a mysterious box", "Exit · B. Countdown before something huge", "Exit · C. Waiting for news"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT PAIRS</b>.</p></div>"}], "notes": "<p><b>Appendix G</b>. Slow the turning point; use contrast and pause.</p>"});
+SLIDES.push({"nav": "L6A — Devising the Words & Voice", "eyebrow": "Week 6 · Lesson 6 · Learn", "eyebrowR": "Lesson 6 · Screen A", "title": "Devising the Words & Voice", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/09-lesson-06.jpg", "cap": "Devising the Words & Voice", "hero": true, "fit": true}, {"k": "hook", "q": "Use improvisation to devise the words and voice for our piece."}], "right": [{"k": "wp", "list": [{"t": "devise", "d": "create the piece through improvisation"}, {"t": "tone", "d": "the feeling colour in your voice"}, {"t": "pace", "d": "how fast or slow you speak"}, {"t": "volume", "d": "how loud or soft you speak"}]}, {"k": "brain", "q": ["Which line would you keep from that improv?", "How does pace change meaning?", "Where should the voice match the turning point?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can improvise to find lines for my monologue or soliloquy.</li><li>I can use voice to show my character’s feelings.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices H & E</p></div>"}], "notes": "<p>Improvisation to find words and voice. Keep demos under two minutes.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L6B — Apply", "eyebrow": "Week 6 · Lesson 6 · Apply", "eyebrowR": "Lesson 6 · Screen B", "title": "Devising the Words & Voice — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Voice Swap — same line in three emotions.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>8 min · Teach</b><span>Devising techniques (App. H).</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>22 min · Breakout</b><span>Find and lock lines with a partner.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>6 min · Teach</b><span>Voice toolkit for the turning point.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>12 min · Full run</b><span>Solo run start to finish once.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Share a proud line + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Talk it out live for ~30 sec, then say which line you’d keep.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Using your voice as an actor · National Theatre (~4 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. “We need to talk” three ways", "Exit · B. 30-sec rant about a tiny annoyance", "Exit · C. Same line, two emotions"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT PAIRS</b>.</p></div>"}], "notes": "<p>Improvisation to find words and voice. Keep demos under two minutes.</p>"});
+SLIDES.push({"nav": "L7A — Performance Skills for the Camera", "eyebrow": "Week 7 · Lesson 7 · Learn", "eyebrowR": "Lesson 7 · Screen A", "title": "Performance Skills for the Camera", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/10-lesson-07.jpg", "cap": "Performance Skills for the Camera", "hero": true, "fit": true}, {"k": "hook", "q": "Use performance skills suited to performing on camera."}], "right": [{"k": "wp", "list": [{"t": "framing", "d": "how much of you appears in the shot"}, {"t": "projection", "d": "clear voice without shouting"}, {"t": "lens", "d": "where your eyes look on camera"}, {"t": "gesture", "d": "small, clear moves that read on screen"}]}, {"k": "brain", "q": ["What ruins an otherwise great performance on camera?", "Why does looking at the lens matter?", "What one tip would you give a peer?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can project my voice clearly through the microphone.</li><li>I can use facial expression and the camera frame effectively.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendix I · Rehearsal checklist</p></div>"}], "notes": "<p>Model less-effective then more-effective side by side.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L7B — Apply", "eyebrow": "Week 7 · Lesson 7 · Apply", "eyebrowR": "Lesson 7 · Screen B", "title": "Performance Skills for the Camera — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Frame Test — framing, light, mic.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>10 min · Teach</b><span>On-camera skills: distance, expression, gestures.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>22 min · Solo rehearse</b><span>Rehearse with App. I checklist.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>6 min · Teach</b><span>Peer-tip protocol — kind and concrete.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>10 min · Breakout</b><span>One tip each on framing or voice.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Share one improvement + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Same lines twice: weak frame/flat → strong frame/eyes to lens.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">Acting for camera — tips · StageMilk / BBC Bitesize (~4 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Strongest 30 sec to camera", "Exit · B. News report in character", "Exit · C. Close-up emotion change"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT PAIRS</b>.</p></div>"}], "notes": "<p>Model less-effective then more-effective side by side.</p>"});
+SLIDES.push({"nav": "L8A — Rehearsal & Peer Feedback", "eyebrow": "Week 8 · Lesson 8 · Learn", "eyebrowR": "Lesson 8 · Screen A", "title": "Rehearsal & Peer Feedback", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/11-lesson-08.jpg", "cap": "Rehearsal & Peer Feedback", "hero": true, "fit": true}, {"k": "hook", "q": "Refine our performance using peer feedback and explain how we used elements of drama."}], "right": [{"k": "wp", "list": [{"t": "feedback", "d": "specific, kind comments that help refine"}, {"t": "element", "d": "one of the 10 drama building blocks"}, {"t": "effect", "d": "what the choice makes the audience feel"}, {"t": "refine", "d": "improve a small part with intention"}]}, {"k": "brain", "q": ["What makes feedback useful?", "Which element did you use on purpose?", "What will you change after today?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can give a helpful comment using drama vocabulary.</li><li>I can explain one element of drama used in my piece.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices J & A</p></div>"}], "notes": "<p><b>Appendix A</b> vocabulary again. Check feedback sheets are completed.</p>", "assessTab": "guide"});
+SLIDES.push({"nav": "L8B — Apply", "eyebrow": "Week 8 · Lesson 8 · Apply", "eyebrowR": "Lesson 8 · Screen B", "title": "Rehearsal & Peer Feedback — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>8 min · Warm-up</b><span>Vocal & physical warm-up + tongue-twister.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>8 min · Teach</b><span>Specific feedback with App. J + App. A.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>26 min · Perform & feedback</b><span>Pairs perform; complete App. J sheet; swap.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>6 min · Teach</b><span>One sentence: element used + effect.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>8 min · Note element</b><span>Write explanation + final tweak.</span></div></div><div class=\"row\"><div class=\"num\">6</div><div><b>4 min · Wrap</b><span>Share feedback used + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Model vague “good job” vs specific element feedback.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">A powerful short monologue — spot the elements (~2 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Re-record turning point", "Exit · B. Director’s note to self", "Exit · C. Final line three ways"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>BREAKOUT PAIRS</b>.</p></div>"}], "notes": "<p><b>Appendix A</b> vocabulary again. Check feedback sheets are completed.</p>"});
+SLIDES.push({"type": "divider", "nav": "Weeks 9–10", "eyebrow": "Phase · Independent", "title": "Film & reflect", "goals": ["Independent polish with a help room", "Film the one-minute piece", "Celebrate and reflect (App. L)"], "notes": "<p>Long independent DO blocks + help room.</p>"});
+SLIDES.push({"nav": "L9A — Independent Preparation", "eyebrow": "Week 9 · Lesson 9 · Learn", "eyebrowR": "Lesson 9 · Screen A", "title": "Independent Preparation", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/12-lesson-09.jpg", "cap": "Independent Preparation", "hero": true, "fit": true}, {"k": "hook", "q": "Finalise and polish our piece, ready for filming."}], "right": [{"k": "wp", "list": [{"t": "finalise", "d": "last polish before filming"}, {"t": "landscape", "d": "sideways filming orientation"}, {"t": "take", "d": "one continuous performance take"}, {"t": "submit", "d": "send the finished film by the agreed method"}]}, {"k": "brain", "q": ["What still needs polishing?", "Where will you film, and how will you light it?", "What question will you bring to the help room?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can perform my piece confidently from memory.</li><li>I know how I will film and submit my piece.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices I & K</p></div>"}], "notes": "<p><b>Appendix K</b>. Keep a help breakout open.</p>", "assessTab": "task"});
+SLIDES.push({"nav": "L9B — Apply", "eyebrow": "Week 9 · Lesson 9 · Apply", "eyebrowR": "Lesson 9 · Screen B", "title": "Independent Preparation — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>6 min · Teach</b><span>Goal + share App. K filming guide.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>40 min · Independent</b><span>Rehearse on camera; optional help-room check-ins.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>10 min · Q&A</b><span>Readiness + tech FAQs together.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>4 min · Wrap</b><span>Confirm due date + exit ticket.</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Walk App. K checklist aloud: landscape, light, frame, one full take.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">A student monologue performance (~2 min, teacher-selected)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Dress-rehearsal strongest 30 sec", "Exit · B. Opening into turning point", "Exit · C. Final line with contrast"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>INDEPENDENT</b>.</p></div>"}], "notes": "<p><b>Appendix K</b>. Keep a help breakout open.</p>"});
+SLIDES.push({"nav": "L10A — Final Rehearsal, Filming & Reflection", "eyebrow": "Week 10 · Lesson 10 · Learn", "eyebrowR": "Lesson 10 · Screen A", "title": "Final Rehearsal, Filming & Reflection", "screenlbl": "Student screen 1 of 2", "wideLeft": true, "left": [{"k": "img", "src": "images/unit/13-lesson-10.jpg", "cap": "Final Rehearsal, Filming & Reflection", "hero": true, "fit": true}, {"k": "hook", "q": "Perform our final piece with confidence and reflect on our drama journey."}], "right": [{"k": "wp", "list": [{"t": "sustain", "d": "keep character and focus for the full minute"}, {"t": "reflect", "d": "think back on what you learned"}, {"t": "folio", "d": "collection of evidence for assessment"}, {"t": "audience", "d": "who your piece is speaking to"}]}, {"k": "brain", "q": ["What are you most proud of?", "Which element did the most work in your piece?", "What would you try differently next time?"]}, {"k": "html", "html": "<div class=\"card cream\"><span class=\"tag do\">SUCCESS CRITERIA</span><ul style=\"margin:8px 0 0 18px\"><li>I can perform my piece and sustain my character for one minute.</li><li>I can explain how I used elements of drama and what my piece communicates.</li></ul><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\"><b>On screen:</b> Appendices K & L</p></div>"}], "notes": "<p>Celebrate first — then App. L reflection for the folio.</p>", "assessTab": "task"});
+SLIDES.push({"nav": "L10B — Apply", "eyebrow": "Week 10 · Lesson 10 · Apply", "eyebrowR": "Lesson 10 · Screen B", "title": "Final Rehearsal, Filming & Reflection — Apply", "screenlbl": "Student screen 2 of 2", "wideLeft": true, "left": [{"k": "html", "html": "<div class=\"steps\"><span class=\"tag do\">DO THIS · LESSON SEQUENCE</span><div class=\"row\"><div class=\"num\">1</div><div><b>6 min · Warm-up</b><span>Individual vocal & physical warm-up.</span></div></div><div class=\"row\"><div class=\"num\">2</div><div><b>10 min · Teach</b><span>Final filming tips + submission method.</span></div></div><div class=\"row\"><div class=\"num\">3</div><div><b>35 min · Film & submit</b><span>Film one-minute piece and submit.</span></div></div><div class=\"row\"><div class=\"num\">4</div><div><b>5 min · Celebrate</b><span>Whole-class return — how it felt.</span></div></div><div class=\"row\"><div class=\"num\">5</div><div><b>4 min · Wrap</b><span>Reflection Sheet (App. L).</span></div></div></div>"}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag try\">TEACHER MODEL · 30 SEC</span><p style=\"margin-top:10px;color:var(--ink);font-size:15px;line-height:1.45\">Reconfirm: quiet · landscape · light · upper body · one full take · watch back.</p></div>"}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">WATCH · DRAMA IN ACTION</span><p style=\"margin-top:8px\">How to film yourself well at home (~3 min)</p><p style=\"margin-top:8px;font-size:13px;color:#4a5a54\">Teacher: preview the full clip before showing.</p></div>"}, {"k": "exit", "items": ["Exit · A. Favourite 30 sec of final piece", "Exit · B. Moment you’re proudest of", "Exit · C. Director’s wrap speech"]}, {"k": "html", "html": "<div class=\"card dark\"><span class=\"tag wow\">30-SEC EXIT TICKET</span><p style=\"margin-top:8px;color:var(--ink);font-size:14px\">Record &amp; upload — pick one. Mode: <b>INDEPENDENT</b>.</p></div>"}], "notes": "<p>Celebrate first — then App. L reflection for the folio.</p>"});
+SLIDES.push({"type": "checkpoint", "nav": "★ Assessment", "eyebrow": "Assessment · Filmed performance", "title": "Your one-minute film", "sub": "Devise · rehearse · film · submit · reflect. Open Assessment anytime with A.", "assessTab": "task", "notes": "<p>Use Assessment for strands, PDF and teaching guide.</p>"});
+SLIDES.push({"type": "cover", "nav": "Keep performing", "eyebrow": "End of unit", "title": "Lights. Camera. You.", "sub": "Every 30-second challenge built toward your own one-minute monologue. Break a leg!", "notes": "<p>Celebrate the journey. Reflection sheets still count as folio evidence.</p>"});
+SLIDES.push({"nav": "App A — Elements", "eyebrow": "On-screen appendix · Lessons 1 & 8", "eyebrowR": "Appendix", "title": "Appendix A — Elements", "screenlbl": "Lessons 1 & 8", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-02.jpg", "cap": "App A — Elements", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">The 10 elements: role, situation, movement, space, tension, focus, contrast, voice, time, mood.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App A — Elements</b> — Lessons 1 & 8. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App B — Through time", "eyebrow": "On-screen appendix · Lesson 2", "eyebrowR": "Appendix", "title": "Appendix B — Through time", "screenlbl": "Lesson 2", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-03.jpg", "cap": "App B — Through time", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Greek → medieval → Shakespearean → modern/digital performance.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App B — Through time</b> — Lesson 2. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App C — Monologue vs soliloquy", "eyebrow": "On-screen appendix · Lesson 2", "eyebrowR": "Appendix", "title": "Appendix C — Monologue vs soliloquy", "screenlbl": "Lesson 2", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-04.jpg", "cap": "App C — Monologue vs soliloquy", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Monologue speaks to someone/audience; soliloquy reveals private thoughts alone.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App C — Monologue vs soliloquy</b> — Lesson 2. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App D — Characters", "eyebrow": "On-screen appendix · Lesson 3", "eyebrowR": "Appendix", "title": "Appendix D — Characters", "screenlbl": "Lesson 3", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-05.jpg", "cap": "App D — Characters", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Story patterns: race/contest, wise elder, stranger, trickster, loyal animal, sky & earth.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App D — Characters</b> — Lesson 3. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App F — Hot-seat", "eyebrow": "On-screen appendix · Lesson 4", "eyebrowR": "Appendix", "title": "Appendix F — Hot-seat", "screenlbl": "Lesson 4", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-06.jpg", "cap": "App F — Hot-seat", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Five in-role questions: name/age, want, who matters, problem, feeling now.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App F — Hot-seat</b> — Lesson 4. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App G — One-minute piece", "eyebrow": "On-screen appendix · Lesson 5", "eyebrowR": "Appendix", "title": "Appendix G — One-minute piece", "screenlbl": "Lesson 5", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-07.jpg", "cap": "App G — One-minute piece", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Opening → build → turning point → final line. Pause. Stillness. Contrast.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App G — One-minute piece</b> — Lesson 5. Keep this up while students work.</p>"});
+SLIDES.push({"nav": "App K — Filming", "eyebrow": "On-screen appendix · Lessons 9 & 10", "eyebrowR": "Appendix", "title": "Appendix K — Filming", "screenlbl": "Lessons 9 & 10", "wideLeft": true, "left": [{"k": "img", "src": "images/appendix/slide-08.jpg", "cap": "App K — Filming", "hero": true, "fit": true}], "right": [{"k": "html", "html": "<div class=\"card cream\"><span class=\"tag read\">USE THIS SLIDE</span><p style=\"margin-top:10px\">Landscape · face a window · upper body in frame · quiet · one full take · watch back.</p><p style=\"margin-top:10px;font-size:14px;color:#4a5a54\">Return to the lesson with Jump when done.</p></div>"}, {"k": "brain", "q": ["What should students notice first?", "Which success criterion does this support?", "How will you freeze or zoom while teaching from it?"]}], "notes": "<p><b>App K — Filming</b> — Lessons 9 & 10. Keep this up while students work.</p>"});
 
-const APPENDIX = [
-  { nav:'Cover & jump menu', src:'images/appendix/slide-01.jpg', notes:'<p>Welcome students. This deck is your on-screen guide. Press right arrow through appendices as you reach them in lessons.</p>' },
-  { nav:'App A — Elements', src:'images/appendix/slide-02.jpg', notes:'<p><b>Lessons 1 &amp; 8.</b> Read a few aloud; students show one with face or body. They use at least two elements in every task.</p>' },
-  { nav:'App B — Through time', src:'images/appendix/slide-03.jpg', notes:'<p><b>Lesson 2.</b> Walk each era briefly. Drama travelled from open-air stages to online performance.</p>' },
-  { nav:'App C — Monologue vs soliloquy', src:'images/appendix/slide-04.jpg', notes:'<p><b>Lesson 2.</b> Act the same line as monologue and soliloquy so students hear the difference.</p>' },
-  { nav:'App D — Characters', src:'images/appendix/slide-05.jpg', notes:'<p><b>Lesson 3.</b> Story patterns from world cultures — invite students’ own folktales and families.</p>' },
-  { nav:'App F — Hot-seat', src:'images/appendix/slide-06.jpg', notes:'<p><b>Lesson 4.</b> One partner answers in role, then swap. Model first — let a student interview you.</p>' },
-  { nav:'App G — One-minute piece', src:'images/appendix/slide-07.jpg', notes:'<p><b>Lesson 5.</b> Opening → build → turning point → final line. Slow the peak; use contrast.</p>' },
-  { nav:'App K — Filming', src:'images/appendix/slide-08.jpg?v=4', notes:'<p><b>Lessons 9 &amp; 10.</b> Landscape, face a window, upper body in frame, one full take. Watch back before submitting.</p>' },
-  { nav:'Lights. Camera. You!', src:'images/appendix/slide-09.jpg', notes:'<p>Remind students of the 30-second exit ticket each lesson. Everything builds to the one-minute film.</p>' }
-];
-
-let deck = 'unit';
-let unitIdx = 0;
-let appendixIdx = 0;
-let returnUnitIdx = null;
-
-function slides(){ return deck === 'unit' ? UNIT : APPENDIX; }
-function deckLabel(){ return deck === 'unit' ? 'Unit plan' : 'Appendices'; }
-function curIdx(){ return deck === 'unit' ? unitIdx : appendixIdx; }
-
-function appendixLabel(appIdx){
-  return APPENDIX[appIdx].nav.replace(/^App /, 'Appendix ');
+function hook(q){ return `<div class="hook"><div class="lbl">Warm-up — discuss with your teacher</div><p>${q}</p></div>`; }
+function bq(arr){
+  return `<div class="brain"><div class="lbl">💬 Discussion starters — talk it out</div>
+    <ol>${arr.map((q,i)=>`<li><span class="n">${i+1}</span><span>${q}</span></li>`).join('')}</ol></div>`;
 }
-
-function appendixCueHtml(lesson){
-  if(deck !== 'unit' || !lesson?.apps?.length) return '';
-  const btns = lesson.apps.map(ai =>
-    `<button type="button" class="cue-btn" onclick="openAppendix(${ai})">${appendixLabel(ai)} →</button>`
-  ).join('');
-  return `<div class="appendix-cue" aria-label="On-screen appendix available">
-    <span class="cue-label">Appendix on screen</span>${btns}
-  </div>`;
+function wordpower(list){
+  return `<div class="card dark wp"><h4>Word Work — Vocabulary</h4><div class="wp-grid">${
+    list.map(w=>`<div class="chip"><b>${w.t}</b><span>${w.d}</span></div>`).join('')}</div></div>`;
 }
-
-function appendixCloseHtml(){
-  if(deck !== 'appendix' || returnUnitIdx == null) return '';
-  const lesson = UNIT[returnUnitIdx];
-  const label = lesson?.nav?.replace(/^Lesson \d+ — /, '') || 'lesson';
-  return `<button type="button" class="appendix-close" onclick="closeAppendix()" title="Back to ${lesson?.nav || 'lesson'}">
-    <span class="x" aria-hidden="true">✕</span> Back to ${label}
-  </button>`;
+function readCard(r){
+  return `<div class="card cream"><span class="tag ${r.wow?'wow':'read'}">${r.label||(r.wow?'WOW · READ':'READ')}</span>
+    <h3>${r.heading}</h3>${(r.body||[]).map(p=>`<p style="margin-bottom:10px">${p}</p>`).join('')}
+    ${r.notice?`<div class="notice"><b>Notice:</b> ${r.notice}</div>`:''}</div>`;
 }
-
-function render(){
-  const s = slides()[curIdx()];
-  const el = document.getElementById('slide');
-  const cue = deck === 'unit' ? appendixCueHtml(s) : '';
-  const closeBtn = appendixCloseHtml();
-  el.innerHTML = `<span class="deck-tag">${deckLabel()}</span>${closeBtn}<img src="${s.src}" alt="${s.nav}">${cue}`;
-  document.getElementById('counter').textContent = `${curIdx() + 1} / ${slides().length}`;
-  document.getElementById('jump').value = curIdx();
-  if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
-  requestAnimationFrame(updatePresentScale);
+function exitCheck(items){
+  return `<div class="exit"><h4>Exit check — I can…</h4><div class="exit-grid">${
+    items.map(i=>`<div class="echk"><span class="bx">✓</span><span>${i}</span></div>`).join('')}</div></div>`;
 }
-
-function buildJump(){
-  const sel = document.getElementById('jump');
-  sel.innerHTML = '';
-  slides().forEach((s, i) => {
-    const o = document.createElement('option');
-    o.value = i;
-    o.textContent = `${i + 1}. ${s.nav}`;
-    sel.appendChild(o);
-  });
+function steps(s){
+  return `<div class="steps"><span class="tag do">${s.label||'DO THIS'}</span>
+    ${s.rows.map((r,i)=>`<div class="row"><div class="num">${i+1}</div><div><b>${r.t}</b><span>${r.d||''}</span></div></div>`).join('')}</div>`;
 }
-
-function show(i){
-  const n = Math.max(0, Math.min(slides().length - 1, i));
-  if(deck === 'unit') unitIdx = n;
-  else appendixIdx = n;
-  render();
+function engItems(s){
+  return s.split(' · ').map(x=>`<span class="eng-item">${x}</span>`).join('');
 }
-
-function openAppendix(appIdx){
-  returnUnitIdx = unitIdx;
-  deck = 'appendix';
-  appendixIdx = appIdx;
-  document.getElementById('deckUnit').classList.remove('active');
-  document.getElementById('deckApp').classList.add('active');
-  buildJump();
-  render();
+function engBlock(a,b){
+  return `<div class="eng-wrap">${a?`<div class="blk"><b>A</b><div class="eng-row">${engItems(a)}</div></div>`:''}${b?`<div class="blk"><b>B</b><div class="eng-row">${engItems(b)}</div></div>`:''}</div>`;
 }
-
-function closeAppendix(){
-  if(returnUnitIdx == null) return;
-  unitIdx = returnUnitIdx;
-  returnUnitIdx = null;
-  deck = 'unit';
-  document.getElementById('deckUnit').classList.add('active');
-  document.getElementById('deckApp').classList.remove('active');
-  buildJump();
-  render();
+function progressionTable(rows){
+  const counts={};
+  rows.forEach(r=>{ counts[r.week]=(counts[r.week]||0)+1; });
+  const seen=new Set();
+  const body=rows.map(r=>{
+    let wk='';
+    if(!seen.has(r.week)){ wk=`<td class="wk" rowspan="${counts[r.week]}">Week ${r.week}</td>`; seen.add(r.week); }
+    const eng = engBlock(r.englishA||r.english||'', r.englishB||'');
+    return `<tr>${wk}<td class="ln">${r.n}</td><td class="topic">${r.topic}</td><td class="eng-td">${eng}</td><td class="learn">${r.learn}</td><td class="rpt">${r.report||''}</td></tr>`;
+  }).join('');
+  return `<div class="overview-wrap"><table class="unit-map"><thead><tr>
+    <th>L</th><th>#</th><th>Focus</th><th>Teach / Do</th><th>You'll learn</th><th>Appendix</th>
+  </tr></thead><tbody>${body}</tbody></table></div>`;
 }
-
-function setDeck(d){
-  if(deck === d) return;
-  const fromUnit = deck === 'unit';
-  deck = d;
-  document.getElementById('deckUnit').classList.toggle('active', deck === 'unit');
-  document.getElementById('deckApp').classList.toggle('active', deck === 'appendix');
-  if(fromUnit && d === 'appendix'){
-    returnUnitIdx = unitIdx;
-    const lesson = UNIT[unitIdx];
-    if(lesson?.apps?.length) appendixIdx = lesson.apps[0];
-  } else if(d === 'unit'){
-    returnUnitIdx = null;
+function renderBlock(b){
+  switch(b.k){
+    case 'read': return readCard(b);
+    case 'hook': return hook(b.q);
+    case 'brain': return bq(b.q);
+    case 'wp': return wordpower(b.list);
+    case 'steps': return steps(b);
+    case 'exit': return exitCheck(b.items);
+    case 'img': return `<div class="imgframe${b.hero?' hero':''}${b.diagram?' diagram':''}${b.fit?' fit':''}"><img src="${b.src}" alt="${b.alt||''}" loading="lazy" onerror="this.style.opacity='0.3'">${b.cap?`<div class="cap">${b.cap}</div>`:''}</div>`;
+    case 'html': return b.html;
+    default: return '';
   }
-  buildJump();
-  render();
 }
-
+function renderSlide(s){
+  const el = document.getElementById('slide');
+  el.className = 'slide ' + (s.type||'lesson');
+  el.style.background = '';
+  if(s.type==='cover' && s.bg){
+    el.style.background = `linear-gradient(90deg, rgba(20,10,30,.95) 30%, rgba(20,10,30,.45) 70%, rgba(20,10,30,.25)), url('${s.bg}') right center / cover no-repeat`;
+  }
+  let html='';
+  if(s.eyebrowR) html+=`<div class="eyebrow-r">${s.eyebrowR}</div>`;
+  if(s.type==='cover'){
+    html += `<span class="eyebrow">${s.eyebrow||''}</span><h1 class="title">${s.title}</h1><p class="sub">${s.sub||''}</p>`;
+  } else if(s.type==='divider'){
+    html += `<div class="pkr">${s.eyebrow||''}</div><h1>${s.title}</h1>
+      <div class="goals">${(s.goals||[]).map((g,i)=>`<div class="goal"><i style="background:var(--p${(i%5)+1})">${i+1}</i><span>${g}</span></div>`).join('')}</div>`;
+  } else if(s.type==='checkpoint'){
+    html += `<span class="eyebrow" style="align-self:center">${s.eyebrow||''}</span><h1>${s.title}</h1><p>${s.sub||''}</p>
+      <button class="btn assess" style="padding:14px 26px;font-size:17px" onclick="openOverlay()">📋 Open assessment task</button>`;
+  } else if(s.type==='overview'){
+    if(s.eyebrow) html+=`<span class="eyebrow">${s.eyebrow}</span>`;
+    html += `<h1 class="title">${s.title}</h1>`;
+    if(s.sub) html += `<p class="sub">${s.sub}</p>`;
+    html += progressionTable(s.rows||[]);
+  } else {
+    if(s.eyebrow) html+=`<span class="eyebrow">${s.eyebrow}</span>`;
+    html += `<h1 class="title">${s.title}</h1>`;
+    const isScreenA = (s.eyebrowR||'').includes('Screen A');
+    const colClass = isScreenA ? 'cols screen-a wide-left' : `cols ${s.wideLeft?'wide-left':''}`;
+    const leftCls = isScreenA ? 'col left-a' : 'col';
+    const rightCls = isScreenA ? 'col right-a' : 'col';
+    const left = (s.left||[]).map(renderBlock).join('');
+    const right = (s.right||[]).map(renderBlock).join('');
+    html += `<div class="${colClass}"><div class="${leftCls}">${left}</div><div class="${rightCls}">${right}</div></div>`;
+  }
+  if(s.screenlbl) html+=`<div class="screenlbl">${s.screenlbl}</div>`;
+  html += `<div class="corner"><kbd>T</kbd> notes · <kbd>D</kbd> detach · <kbd>A</kbd> assessment · <kbd>I</kbd> appendices</div>`;
+  el.innerHTML = html;
+}
+let idx = 0;
+function syncInfoReportBtn(){
+  const btn = document.getElementById('inforeportBtn');
+  if(!btn) return;
+  btn.textContent = '📎 Appendices';
+  btn.title = 'Jump to on-screen appendices (I)';
+}
+function show(i){
+  idx = Math.max(0, Math.min(SLIDES.length-1, i));
+  renderSlide(SLIDES[idx]);
+  document.getElementById('counter').textContent = `${idx+1} / ${SLIDES.length}`;
+  document.getElementById('jump').value = idx;
+  if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
+  syncInfoReportBtn();
+  updatePresentScale();
+}
+function buildJump(){
+  const sel=document.getElementById('jump'); sel.innerHTML='';
+  SLIDES.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=`${i+1}. ${s.nav||s.title||('Slide '+(i+1))}`; sel.appendChild(o); });
+}
 function fillNotes(){
-  const s = slides()[curIdx()];
-  document.getElementById('tnotesTitle').textContent = s.nav;
-  document.getElementById('tnotesBody').innerHTML = s.notes || '<p>No notes for this screen.</p>';
+  const s=SLIDES[idx];
+  document.getElementById('tnotesTitle').textContent=s.nav||s.title||`Slide ${idx+1}`;
+  document.getElementById('tnotesBody').innerHTML=(typeof TEACHER_NOTES!=='undefined'&&TEACHER_NOTES[s.nav])||s.notes||'<p>No notes for this screen.</p>';
 }
-
-function openNotes(){
-  document.getElementById('tnotes').classList.add('open');
-  document.getElementById('notesBtn').classList.add('notes-open');
-  fillNotes();
-}
-function closeNotes(){
-  document.getElementById('tnotes').classList.remove('open');
-  document.getElementById('notesBtn').classList.remove('notes-open');
-}
+function openNotes(){ document.getElementById('tnotes').classList.add('open'); document.getElementById('notesBtn').classList.add('notes-open'); fillNotes(); }
+function closeNotes(){ document.getElementById('tnotes').classList.remove('open'); document.getElementById('notesBtn').classList.remove('notes-open'); }
 function detachNotes(){
-  const s = slides()[curIdx()];
-  const w = window.open('', 'tnotes', 'width=460,height=760');
-  w.document.write(`<title>Teacher Notes — ${s.nav}</title>
-    <style>body{font-family:system-ui;background:#1e1230;color:#ddd0ec;line-height:1.6;padding:22px}h2{color:#ffe8a0}</style>
-    <h2>${s.nav}</h2>${s.notes || '<p>No notes.</p>'}`);
+  const s=SLIDES[idx];
+  const w=window.open('','tnotes','width=460,height=760');
+  w.document.write(`<title>Teacher Notes — ${s.nav||s.title}</title><style>body{font-family:system-ui;background:#0f1c24;color:#b4c2c6;line-height:1.6;padding:22px;}h2{color:#ffe082}h4{color:#7ec4b4;margin:14px 0 4px}ul{margin-left:18px}li{margin:4px 0}</style><h2>${s.nav||s.title}</h2>${(typeof TEACHER_NOTES!=='undefined'&&TEACHER_NOTES[s.nav])||s.notes||'<p>No notes.</p>'}`);
   w.document.close();
 }
-
+let savedIdxForOverlay=null;
+function switchAssessTab(pane){
+  document.querySelectorAll('#overlay .tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('#overlay .panelpane').forEach(x=>x.classList.remove('active'));
+  document.querySelector(`#overlay .tab[data-pane="${pane}"]`)?.classList.add('active');
+  document.getElementById('pane-'+pane)?.classList.add('active');
+}
+function openOverlay(forcedPane){
+  savedIdxForOverlay=idx;
+  const slide = SLIDES[idx];
+  const pane = (typeof forcedPane === 'string' && forcedPane) || slide?.assessTab || ASSESS_TAB_BY_NAV[slide?.nav] || 'task';
+  switchAssessTab(pane);
+  document.getElementById('overlay').classList.add('open');
+}
+function closeOverlay(){ document.getElementById('overlay').classList.remove('open'); if(savedIdxForOverlay!=null) show(savedIdxForOverlay); }
+function openInfoReport(){
+  const i = SLIDES.findIndex(s => (s.nav||'').startsWith('App A'));
+  if(i >= 0) show(i);
+}
+document.getElementById('prev').onclick=()=>show(idx-1);
+document.getElementById('next').onclick=()=>show(idx+1);
+document.getElementById('jump').onchange=e=>show(+e.target.value);
+document.getElementById('notesBtn').onclick=openNotes;
+document.getElementById('notesClose').onclick=closeNotes;
+document.getElementById('detachBtn').onclick=detachNotes;
+document.getElementById('assessBtn').onclick=()=>openOverlay();
+document.getElementById('inforeportBtn').onclick=openInfoReport;
+const _backBtn=document.getElementById('backBtn'); if(_backBtn) _backBtn.onclick=closeOverlay;
 function isPresenting(){
   return document.documentElement.classList.contains('presenting')
     || document.fullscreenElement || document.webkitFullscreenElement;
 }
-function setPresenting(on){
-  document.documentElement.classList.toggle('presenting', on);
-  syncPresentBtn();
-  requestAnimationFrame(() => requestAnimationFrame(updatePresentScale));
-}
+function setPresenting(on){ document.documentElement.classList.toggle('presenting', on); syncPresentBtn(); updatePresentScale(); }
 function updatePresentScale(){
-  const slide = document.getElementById('slide');
-  if(!isPresenting()){ slide.style.transform = ''; return; }
-  const wrap = document.getElementById('stageWrap');
-  const scale = Math.min(wrap.clientWidth / 1180, wrap.clientHeight / 738);
-  slide.style.transform = `scale(${scale})`;
+  const slide=document.getElementById('slide');
+  if(!isPresenting()){ slide.style.transform=''; return; }
+  const wrap=document.getElementById('stageWrap');
+  const scale=Math.min(wrap.clientWidth/1180, wrap.clientHeight/738);
+  slide.style.transform=`scale(${scale})`;
 }
 function togglePresent(){
   if(isPresenting()){
     setPresenting(false);
-    (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+    if(document.fullscreenElement||document.webkitFullscreenElement)
+      (document.exitFullscreen||document.webkitExitFullscreen||document.msExitFullscreen)?.call(document);
   } else {
     setPresenting(true);
-    const req = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
-    req?.call(document.documentElement)?.catch?.(() => {});
+    const el=document.documentElement;
+    const req=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
+    if(req) req.call(el).catch(()=>{});
   }
 }
 function syncPresentBtn(){
   document.getElementById('presentBtn').textContent = isPresenting() ? '⤢ Exit' : '⛶ Present';
 }
-
-document.getElementById('deckUnit').onclick = () => setDeck('unit');
-document.getElementById('deckApp').onclick = () => setDeck('appendix');
-document.getElementById('prev').onclick = () => show(curIdx() - 1);
-document.getElementById('next').onclick = () => show(curIdx() + 1);
-document.getElementById('jump').onchange = e => show(+e.target.value);
-document.getElementById('notesBtn').onclick = openNotes;
-document.getElementById('notesClose').onclick = closeNotes;
-document.getElementById('detachBtn').onclick = detachNotes;
-document.getElementById('presentBtn').onclick = togglePresent;
-
-document.addEventListener('keydown', e => {
-  if(e.target.matches('select,input,textarea')) return;
-  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(curIdx() + 1); }
-  if(e.key === 'ArrowLeft') { e.preventDefault(); show(curIdx() - 1); }
-  if(e.key === 'f' || e.key === 'F') { e.preventDefault(); togglePresent(); }
-  if(e.key === 'n' || e.key === 'N') { e.preventDefault(); openNotes(); }
-  if(e.key === 'Escape'){
-    if(returnUnitIdx != null && deck === 'appendix'){ e.preventDefault(); closeAppendix(); return; }
-    closeNotes();
+function onFullscreenChange(){
+  if(!document.fullscreenElement&&!document.webkitFullscreenElement)
+    document.documentElement.classList.remove('presenting');
+  syncPresentBtn();
+  updatePresentScale();
+}
+document.getElementById('presentBtn').onclick=togglePresent;
+document.addEventListener('fullscreenchange',onFullscreenChange);
+document.addEventListener('webkitfullscreenchange',onFullscreenChange);
+window.addEventListener('resize',updatePresentScale);
+document.querySelectorAll('#overlay .tab').forEach(t=>t.onclick=()=>switchAssessTab(t.dataset.pane));
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT') return;
+  if(e.key==='ArrowRight') show(idx+1);
+  else if(e.key==='ArrowLeft') show(idx-1);
+  else if(e.key.toLowerCase()==='t'){ document.getElementById('tnotes').classList.contains('open')?closeNotes():openNotes(); }
+  else if(e.key.toLowerCase()==='d') detachNotes();
+  else if(e.key.toLowerCase()==='a'){ document.getElementById('overlay').classList.contains('open')?closeOverlay():openOverlay(); }
+  else if(e.key.toLowerCase()==='i') openInfoReport();
+  else if(e.key.toLowerCase()==='f') togglePresent();
+  else if(e.key==='Escape'){
+    if(document.getElementById('tnotes').classList.contains('open')){ closeNotes(); return; }
+    if(isPresenting()){ togglePresent(); return; }
+    closeOverlay();
   }
 });
-document.addEventListener('fullscreenchange', () => {
-  if(!document.fullscreenElement && !document.webkitFullscreenElement) setPresenting(false);
-  else syncPresentBtn();
-});
+document.getElementById('pane-task').innerHTML = ASSESS_TASK;
+document.getElementById('pane-reading').innerHTML = ASSESS_READING;
+document.getElementById('pane-guide').innerHTML = ASSESS_GUIDE;
+buildJump(); show(0);
 
-buildJump();
-render();
+
+document.getElementById('overlayClose').onclick = closeOverlay;
+syncInfoReportBtn();
+
 </script>
 </body>
 </html>
