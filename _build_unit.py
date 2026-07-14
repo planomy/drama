@@ -175,6 +175,22 @@ def theme_style(css: str) -> str:
   return css + """
   .btn.inforeport{background:linear-gradient(135deg,#9b6fd4,#c8a0ff);color:#1a1028;}
   table.unit-map th:nth-child(4){letter-spacing:.04em;}
+  /* Screen A: roomy discussion starters; compact Word Work + success */
+  .cols.screen-a{grid-template-columns:1fr 1.05fr;}
+  .col.right-a .wp{flex:0 0 auto;padding:10px 12px;}
+  .col.right-a .wp h4{font-size:14px;margin-bottom:6px;}
+  .col.right-a .wp-grid{gap:5px;}
+  .col.right-a .chip{padding:5px 8px;}
+  .col.right-a .chip b{font-size:13px;}
+  .col.right-a .chip span{font-size:11px;}
+  .col.right-a .brain{flex:1 1 auto;min-height:0;padding:16px 18px;}
+  .col.right-a .brain .lbl{font-size:13px;margin-bottom:12px;}
+  .col.right-a .brain ol{gap:12px;}
+  .col.right-a .brain li{font-size:clamp(16px,1.7vw,21px);line-height:1.35;}
+  .col.right-a .brain .n{width:28px;height:28px;font-size:14px;}
+  .col.right-a > .card.cream{padding:12px 14px;}
+  .col.right-a > .card.cream .tag{margin-bottom:8px;font-size:11px;padding:4px 10px;}
+  .col.right-a > .card.cream ul{font-size:14px;line-height:1.35;}
 """
 
 
@@ -452,11 +468,6 @@ def main() -> None:
       for t in teach_blocks
     )
     apps_nav = LESSON_APPS.get(n, ["App A — Elements"])
-    apps_btns = "".join(
-      f'<button type="button" class="btn inforeport" style="margin:4px 6px 0 0;padding:7px 12px;font-size:13px" '
-      f'onclick="openLessonAppendix({json.dumps(nav)})">{nav.split(" — ")[0]}</button>'
-      for nav in apps_nav
-    )
     notes_a = (
       f"<h4>Learn — Lesson {n}</h4>{lesson['notes']}"
       f"<p><b>Strand:</b> {lesson.get('strand','')} · <b>Mode:</b> {lesson['mode']}</p>"
@@ -466,7 +477,7 @@ def main() -> None:
       + "".join(f"<li><b>{t}</b> — {d}</li>" for t, d in lesson["wp"])
       + "</ul>"
       + f"<p><b>Resources:</b> {lesson.get('resources', lesson['apps'])}</p>"
-      + f"<p><b>On-screen appendices:</b> {' · '.join(apps_nav)}. Press <kbd>I</kbd> or use the buttons — then <b>← Back to lesson</b>.</p>"
+      + f"<p><b>On-screen appendices:</b> {' · '.join(apps_nav)}. Press <kbd>I</kbd> — then <b>← Back to lesson</b>.</p>"
     )
     notes_b = (
       f"<h4>Apply — Lesson {n}</h4>{lesson['notes']}"
@@ -486,10 +497,7 @@ def main() -> None:
         "k": "html",
         "html": (
           '<div class="card cream"><span class="tag do">SUCCESS CRITERIA</span>'
-          f'<ul style="margin:8px 0 0 18px">{success_html}</ul>'
-          f'<p style="margin-top:12px;font-size:14px;color:#4a5a54"><b>On screen this lesson:</b></p>'
-          f'<div style="margin-top:6px">{apps_btns}</div>'
-          '<p style="margin-top:10px;font-size:13px;color:#4a5a54">After an appendix, press <kbd>I</kbd> or <b>← Back to lesson</b>.</p></div>'
+          f'<ul style="margin:8px 0 0 18px">{success_html}</ul></div>'
         ),
       },
     ]
