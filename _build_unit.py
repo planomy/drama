@@ -366,6 +366,98 @@ APPENDICES = [
    "Landscape · face a window · upper body in frame · quiet · one full take · watch back."),
 ]
 
+# Answer / coaching tips for Screen A discussion starters (shown in teacher notes only).
+BRAIN_TIPS = {
+  "Which element makes a freeze frame feel dramatic?":
+    "Tension, focus or contrast — and a clear role/situation. Push students to name the element, not just “it looks cool.”",
+  "How can voice alone change the mood of one line?":
+    "Same words, different tone/pace/volume: whisper = mystery; rushing = panic; slow + low = threat. Model with one shared line.",
+  "Why does drama need contrast?":
+    "Contrast (loud/quiet, still/move) wakes the audience and makes the peak land. Without it, everything flattens.",
+
+  "Why did Greek actors wear masks?":
+    "Large theatres + one actor playing many roles; masks amplified emotion/character type so the audience could “read” the figure from far away.",
+  "How is a soliloquy different from chatting to a friend on stage?":
+    "Soliloquy = private thoughts spoken alone (or as if alone). Chatting to a friend is addressed speech/dialogue. The audience hears secrets others don’t.",
+  "What stayed the same from Greek theatre to filming at home?":
+    "Storytelling with body, voice, role and situation — wanting an audience to feel something. Forms change; holding attention doesn’t.",
+
+  "What feelings did the performance communicate?":
+    "Ask for evidence from voice, movement or situation — not one vague word. Sample: fear then relief; pride; playfulness.",
+  "Why might this story matter to its culture?":
+    "Passes on values, history, humour, warning or belonging. Stories keep culture alive and help communities share who they are.",
+  "Which story pattern could inspire your own piece?":
+    "Point to App. D: race/contest, wise elder, stranger, trickster, loyal animal, sky &amp; earth. Pick one pattern + their own twist.",
+
+  "What does your character want most right now?":
+    "The want drives the minute — e.g. to confess, to win, to escape, to be believed. If the want is weak, tension collapses.",
+  "How would they walk into a room?":
+    "Posture shows status/mood: chin high vs shoulders hunched; quick vs careful steps. Link the walk to a voice choice.",
+  "Which App. F question reveals the most?":
+    "Often “What do you want?” or “What’s the problem right now?” — those unlock the dramatic situation.",
+
+  "Where is the peak of your story?":
+    "Usually the decision, discovery or confession — about 40–50 sec into a one-minute piece (App. G turning point).",
+  "What happens if you pause before the big line?":
+    "Pause = focus + tension; the audience leans in. Rushing past it kills the moment.",
+  "How can stillness create tension?":
+    "Still body + working eyes/breath makes us wait — space and time do the work before voice returns.",
+
+  "Which line would you keep from that improv?":
+    "Keep the line that reveals the want or turns the emotion — scrap clever but empty lines.",
+  "How does pace change meaning?":
+    "Fast = panic/excitement; slow = weight, threat or sadness. Same sentence can flip meaning with pace alone.",
+  "Where should the voice match the turning point?":
+    "At the App. G peak — change tone/volume/pace there so the audience feels the shift.",
+
+  "What ruins an otherwise great performance on camera?":
+    "Dark face (backlit), looking at the preview instead of the lens, mumbling, huge gestures leaving the frame, portrait mode.",
+  "Why does looking at the lens matter?":
+    "Lens = the audience’s eyes. Looking at your own image breaks connection; eyes-to-lens feels direct.",
+  "What one tip would you give a peer?":
+    "Model specific tips: “Chin tip down / sit closer / lift volume on the last line / light from the window.” Ban vague “be better.”",
+
+  "What makes feedback useful?":
+    "Specific + kind + actionable: name an element and the effect (“Your pause before the confession built tension”). Avoid “good job.”",
+  "Which element did you use on purpose?":
+    "Name one from App. A and say what it did to the audience — this is folio evidence language.",
+  "What will you change after today?":
+    "One concrete tweak only (pace at the turning point, framing, opening line). Small refinements stick.",
+
+  "What still needs polishing?":
+    "Guide toward: shaky opening, weak peak, mumbling, or rushing past the pause — one priority, not a laundry list.",
+  "Where will you film, and how will you light it?":
+    "Quiet room, phone in landscape, face a window (light in front), upper body in frame — App. K. Avoid backlight/silhouette.",
+  "What question will you bring to the help room?":
+    "Encourage tech or structure questions (“Is my turning point clear?” / “Does this fill a minute?”) so help rooms stay purposeful.",
+
+  "What are you most proud of?":
+    "Open — celebrate risk and growth. Prompt element language if they only say “I finished.”",
+  "Which element did the most work in your piece?":
+    "Must name one element + effect (e.g. “Voice: I slowed at the confession so the audience felt the weight”). Folio gold.",
+  "What would you try differently next time?":
+    "One forward-looking tweak is enough — shows reflective practice for App. L.",
+
+  # Appendix teaching prompts (meta — for the teacher using the slide)
+  "What should students notice first?":
+    "Lead with the bold idea of this appendix (definition, timeline step, or checklist item) before details.",
+  "Which success criterion does this support?":
+    "Link aloud to today’s criteria so the appendix feels purposeful, not decorative.",
+  "How will you freeze or zoom while teaching from it?":
+    "Spotlight one section; hide the rest of the slide with cursor or jump away when the DO block starts.",
+}
+
+
+def discussion_notes(questions: list[str]) -> str:
+  items = []
+  for i, q in enumerate(questions, 1):
+    tip = BRAIN_TIPS.get(
+      q,
+      "Invite several answers; push students to use drama vocabulary and cite what they saw/heard.",
+    )
+    items.append(f"<li><b>Q{i}:</b> {q}<br><i>Answer / tip:</i> {tip}</li>")
+  return f"<h4>Discussion starters</h4><ul>{''.join(items)}</ul>"
+
 
 def theme_style(css: str) -> str:
   repls = [
@@ -618,6 +710,19 @@ def main() -> None:
 
     n = lesson["n"]
     success_html = "".join(f"<li>{s}</li>" for s in lesson["success"])
+    notes_a = (
+      f"<h4>Learn — Lesson {n}</h4>{lesson['notes']}"
+      f"{discussion_notes(lesson['brain'])}"
+      f"<h4>Word Work</h4><ul>"
+      + "".join(f"<li><b>{t}</b> — {d}</li>" for t, d in lesson["wp"])
+      + "</ul>"
+    )
+    notes_b = (
+      f"<h4>Apply — Lesson {n}</h4>{lesson['notes']}"
+      f"<p><b>Mode:</b> {lesson['mode']} · <b>Model:</b> {lesson['model']}</p>"
+      f"<p><b>Exit ticket:</b> {' · '.join(lesson['exit'])}</p>"
+      f"{discussion_notes(lesson['brain'])}"
+    )
     left_a = [
       {"k": "img", "src": lesson["img"], "cap": lesson["title"], "hero": True, "fit": True},
       {"k": "hook", "q": lesson["walt"]},
@@ -646,7 +751,7 @@ def main() -> None:
           "wideLeft": True,
           "left": left_a,
           "right": right_a,
-          "notes": lesson["notes"],
+          "notes": notes_a,
           "assessTab": "task" if n >= 9 else "guide",
         }
       )
@@ -700,7 +805,7 @@ def main() -> None:
           "wideLeft": True,
           "left": left_b,
           "right": right_b,
-          "notes": lesson["notes"],
+          "notes": notes_b,
         }
       )
       + ");"
@@ -766,7 +871,17 @@ def main() -> None:
               ],
             },
           ],
-          "notes": f"<p><b>{nav}</b> — {used}. Keep this up while students work.</p>",
+          "notes": (
+            f"<p><b>{nav}</b> — {used}. Keep this up while students work.</p>"
+            f"<p>{blurb}</p>"
+            + discussion_notes(
+              [
+                "What should students notice first?",
+                "Which success criterion does this support?",
+                "How will you freeze or zoom while teaching from it?",
+              ]
+            )
+          ),
         }
       )
       + ");"
