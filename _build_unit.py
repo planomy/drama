@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 STYLE_SRC = Path("/tmp/re_style.css")
 RUNTIME_SRC = Path("/tmp/re_runtime.js")
+CURRENT_HTML = ROOT / "finding-your-voice.html"
 
 LESSONS = json.loads((ROOT / "lessons.json").read_text())
 # normalize wp tuples
@@ -194,6 +195,86 @@ def theme_style(css: str) -> str:
 """
 
 
+LIVE_LESSON_STYLE = """
+  /* paced live-online lesson blocks */
+  .lesson-run{display:flex;flex-direction:column;gap:8px;}
+  .run-row{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;}
+  .run-time{color:var(--amber2);font-weight:900;font-size:12px;letter-spacing:.04em;}
+  .run-row b{display:block;font-size:15px;margin-bottom:3px;}
+  .run-row span{font-size:13.5px;line-height:1.35;color:var(--ink-dim);}
+  .response-call{border-radius:14px;padding:12px 14px;border:2px solid;margin-top:2px;}
+  .response-call.iboard{background:rgba(120,182,255,.12);border-color:#78b6ff;}
+  .response-call.onenote{background:rgba(114,213,176,.12);border-color:#72d5b0;}
+  .response-label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px;}
+  .response-call.iboard .response-label{color:#a9d2ff;}
+  .response-call.onenote .response-label{color:#9aebcc;}
+  .response-call p{font-size:14px;line-height:1.38;margin:0;}
+  .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px;}
+  .scenario-tile{background:#f2e8d8;border:1px solid #dacbb7;border-radius:11px;padding:9px 10px;color:#243832;font-size:13.5px;line-height:1.32;}
+  .scenario-tile b{display:block;color:#633c80;font-size:14px;margin-bottom:3px;}
+  .live-content h4{font-size:19px;color:#633c80;margin:8px 0;}
+  .live-content p{font-size:14px;line-height:1.43;margin:7px 0;}
+  .live-content ul{font-size:14px;line-height:1.4;margin:8px 0 0 20px;}
+"""
+
+
+def source_style() -> str:
+  if STYLE_SRC.exists():
+    css = theme_style(STYLE_SRC.read_text())
+  else:
+    html = CURRENT_HTML.read_text()
+    css = html.split("<style>", 1)[1].split("</style>", 1)[0]
+  if "/* paced live-online lesson blocks */" not in css:
+    css += LIVE_LESSON_STYLE
+  return css
+
+
+def source_runtime() -> str:
+  if RUNTIME_SRC.exists():
+    return patch_runtime(RUNTIME_SRC.read_text())
+  html = CURRENT_HTML.read_text()
+  runtime = "function hook(q)" + html.split("function hook(q)", 1)[1].split("</script>", 1)[0]
+  # The generated page adds these two lines after the reusable runtime.
+  runtime = runtime.split("\n\ndocument.getElementById('overlayClose')", 1)[0].rstrip()
+  return patch_runtime(runtime)
+
+
+def live_content_html(screen: dict) -> str:
+  paragraphs = "".join(f"<p>{p}</p>" for p in screen.get("content", []))
+  ideas = screen.get("ideas", [])
+  ideas_html = ""
+  if ideas:
+    ideas_html = '<div class="scenario-grid">' + "".join(
+      f'<div class="scenario-tile"><b>{title}</b>{body}</div>' for title, body in ideas
+    ) + "</div>"
+  return (
+    '<div class="card cream live-content">'
+    f'<span class="tag {screen.get("tag_class", "read")}">{screen.get("tag", "LEARN")}</span>'
+    f'<h4>{screen["content_heading"]}</h4>{paragraphs}{ideas_html}</div>'
+  )
+
+
+def live_schedule_html(screen: dict) -> str:
+  rows = "".join(
+    '<div class="run-row">'
+    f'<div class="run-time">{time}</div><div><b>{title}</b><span>{body}</span></div></div>'
+    for time, title, body in screen["schedule"]
+  )
+  iboard = screen["iboard"]
+  html = (
+    f'<div class="lesson-run">{rows}</div>'
+    '<div class="response-call iboard">'
+    f'<div class="response-label">{iboard["label"]}</div><p>{iboard["prompt"]}</p></div>'
+  )
+  onenote = screen.get("onenote")
+  if onenote:
+    html += (
+      '<div class="response-call onenote">'
+      f'<div class="response-label">{onenote["label"]}</div><p>{onenote["prompt"]}</p></div>'
+    )
+  return html
+
+
 def patch_runtime(js: str) -> str:
   js = js.replace(
     "<th>Wk</th><th>#</th><th>Lesson focus</th><th>English work</th><th>You'll learn</th><th>Report work</th>",
@@ -280,8 +361,8 @@ def dumps(obj) -> str:
 
 
 def main() -> None:
-  style = theme_style(STYLE_SRC.read_text())
-  runtime = patch_runtime(RUNTIME_SRC.read_text())
+  style = source_style()
+  runtime = source_runtime()
 
   chunks: list[str] = []
   chunks.append("const INFOREPORT_URL = '';")
@@ -468,6 +549,36 @@ def main() -> None:
       for t in teach_blocks
     )
     apps_nav = LESSON_APPS.get(n, ["App A — Elements"])
+
+    if lesson.get("live_screens"):
+      for screen in lesson["live_screens"]:
+        letter = screen["letter"]
+        screen_notes = (
+          f'<h4>Lesson {n}{letter} · {screen["phase"]}</h4>'
+          f'{screen.get("notes", "")}'
+          f'<p><b>WALT:</b> {lesson["walt"]}</p>'
+          f'<p><b>Resources:</b> {lesson.get("resources", lesson["apps"])}</p>'
+        )
+        chunks.append(
+          "SLIDES.push("
+          + dumps(
+            {
+              "nav": f'L{n}{letter} — {screen["nav"]}',
+              "eyebrow": f'Week {lesson["week"]} · Lesson {n} · {screen["phase"]}',
+              "eyebrowR": f'Lesson {n} · Screen {letter}',
+              "title": screen["title"],
+              "screenlbl": f'Student screen {ord(letter) - 64} of 4',
+              "wideLeft": True,
+              "left": [{"k": "html", "html": live_content_html(screen)}],
+              "right": [{"k": "html", "html": live_schedule_html(screen)}],
+              "notes": screen_notes,
+              "appsNav": apps_nav,
+              "assessTab": "task" if n >= 9 else "guide",
+            }
+          )
+          + ");"
+        )
+      continue
     notes_a = (
       f"<h4>Learn — Lesson {n}</h4>{lesson['notes']}"
       f"<p><b>Strand:</b> {lesson.get('strand','')} · <b>Mode:</b> {lesson['mode']}</p>"
@@ -619,7 +730,7 @@ def main() -> None:
         '<p style="margin-top:12px;font-size:13px;color:#4a5a54"><b>Also this lesson:</b></p>'
         + "".join(
           f'<button type="button" class="btn inforeport" style="margin:4px 6px 0 0;padding:7px 12px;font-size:13px" '
-          f'onclick="openLessonAppendix({json.dumps(a)})">{a.split(" — ")[0]}</button>'
+          f"onclick='openLessonAppendix({json.dumps(a)})'>{a.split(' — ')[0]}</button>"
           for a in siblings
         )
       )
