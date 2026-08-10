@@ -267,6 +267,48 @@
     ],
     "apps": "Appendices E & G",
     "resources": "Breakout pairs · App. E (continued) · App. G Structure Prompt Card",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "EXPERIENCE · NOTICE · NAME", "nav": "Make us wait", "title": "Make the audience wait", "tag": "LEARN + RESPOND", "tag_class": "read",
+        "content_heading": "Tension is more than being scary",
+        "content": [
+          "Imagine you are home alone. The lights cut out. Something scrapes outside. Then: <b>three slow knocks</b>. What makes that tense?",
+          "<b>Tension = uncertainty + waiting + important consequences.</b> An actor controls it by delaying what the audience wants to know."
+        ],
+        "ideas": [["Six tension tools", "Pace · pause or silence · voice · body and eye focus · sound · delayed information"], ["Teacher model", "Say <i>‘There’s someone at the door’</i> once quickly and evenly, then again with stillness, a pause and a quiet final word. Name the exact difference."]],
+        "schedule": [["0–5 min", "Hook", "Build the home-alone scene one detail at a time. Students show a 1–5 tension score in chat or on fingers."], ["5–9 min", "Notice", "Students identify the moment tension rose and the clue that caused it."], ["9–13 min", "Teach + model", "Name the formula and six tools. Compare the flat and shaped versions of the same line."], ["13–15 min", "Respond", "Everyone posts one precise choice-and-effect sentence."]],
+        "iboard": {"label": "iBoard check 1 · Choice and effect", "prompt": "Complete: <b>The actor used ___, which made the audience ___ because ___.</b> Name one exact moment—not just ‘it was good’."},
+        "notes": "<h4>Evidence sweep</h4><p>Scan for an acting choice <em>and</em> an audience effect. Prompt vague responses with: ‘What exactly changed?’ Cameras are optional throughout.</p>"
+      },
+      {
+        "letter": "B", "phase": "TRY · BREAKOUT · EXPLAIN", "nav": "Three tense frames", "title": "Three frames, rising tension", "tag": "BREAKOUT 1", "tag_class": "do",
+        "content_heading": "Build a visual tension ladder",
+        "content": ["In a small group, create three freeze frames: <b>1 Normal → 2 A clue → 3 Almost revealed</b>.", "Choose one trigger: a bag moves · a note appears · a door opens · an object is missing. The audience should feel a clear rise without anyone explaining the story."],
+        "ideas": [["Roles", "Actor · director/scribe · sound-maker · reporter. With two people, combine roles."], ["Camera-off access", "Describe the actor’s pose, choose the sound, write the three stage directions or report the group’s choices."]],
+        "schedule": [["15–18 min", "Enter + assign", "Choose the trigger and roles. The reporter opens a shared note."], ["18–24 min", "Make", "Create Normal, Clue and Almost Revealed. Hold each frame for three seconds."], ["24–27 min", "Add tension", "Add one sound or deliberate silence and strengthen the change in focus/body."], ["27–30 min", "Explain", "Reporter posts the group’s strongest change and its audience effect."]],
+        "iboard": {"label": "iBoard check 2 · Group evidence", "prompt": "Between Frame 1 and Frame 3 we changed <b>___</b>. This increased tension because the audience <b>___</b>."},
+        "notes": "<h4>Room sweep</h4><p>Visit briefly: ask ‘What changes across the three frames?’ Give one actionable note, then leave the group to revise.</p>"
+      },
+      {
+        "letter": "C", "phase": "MODEL · MAP · TEST", "nav": "Shape the minute", "title": "Structure the one-minute piece", "tag": "PLAN + REHEARSE", "tag_class": "try",
+        "content_heading": "Four beats give the minute a shape",
+        "content": ["Map your own monologue or soliloquy: <b>opening → build → turning point → final line</b>.", "The turning point is the peak: a discovery, decision, confession or change. Aim to reach it around <b>40–50 seconds</b>, then let the ending land."],
+        "ideas": [["Contrast makes a peak visible", "Before the peak: quick speech or restless movement. At the peak: stillness, silence or one controlled line."], ["Fast model", "Compare a flat four-line version with one that delays the reveal. Students point to the opening, build, turn and final beat."]],
+        "schedule": [["30–34 min", "Model", "Teacher performs the flat and shaped versions; class identifies where tension peaks."], ["34–39 min", "Map", "Write one short note or line for each of the four beats."], ["39–43 min", "Test", "Stand or sit in role and rehearse only the build into the turning point twice."], ["43–45 min", "Commit", "Post the four beats and the technique that marks the peak."]],
+        "iboard": {"label": "iBoard check 3 · Structure map", "prompt": "Post: <b>Opening / Build / Turning point / Final line</b>. Add the tension tool you will use at the turning point."},
+        "notes": "<h4>Keep it playable</h4><p>Accept dot points rather than polished writing. The purpose is dramatic structure students can immediately rehearse.</p>"
+      },
+      {
+        "letter": "D", "phase": "PERFORM · FEEDBACK · REPLAY", "nav": "Test the turn", "title": "Test the turning point", "tag": "BREAKOUT 2", "tag_class": "wow",
+        "content_heading": "Perform, receive one note, replay",
+        "content": ["Perform the <b>30–45 seconds around your turning point</b>. Your partner watches for the moment tension peaks.", "Directors give one note using: <b>‘When you used ___, the audience ___. Try ___ so that ___.’</b> Then replay the changed moment."],
+        "ideas": [["Partner roles", "Performer first · director first; swap after the replay."], ["Camera-off access", "Read the script aloud, create sound, listen for vocal choices or direct the performance."]],
+        "schedule": [["45–48 min", "Set roles", "Choose performer/director and name the turning point."], ["48–53 min", "First take", "Each performer tests the short section; director records one element-and-effect note."], ["53–56 min", "Revise", "Choose one exact change—pause, pace, focus, voice, body or sound."], ["56–58 min", "Replay", "Repeat the changed 10–20 seconds and compare the effect."], ["58–60 min", "Exit", "Post the change and save the plan to the folio."]],
+        "iboard": {"label": "iBoard check 4 · Exit evidence", "prompt": "I used <b>___</b> to make the audience <b>___</b>. After feedback, I changed <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L5", "prompt": "Save <b>Structure and tension plan</b>: character’s want · four beats · peak moment · three deliberate tension choices · feedback received · revision made."},
+        "notes": "<h4>Lesson close</h4><p>Use iBoard responses to identify students who can name element + effect and those who need a short structure conference in Lesson 6.</p>"
+      }
+    ],
     "notes": "<p><b>Appendix G</b>. Slow the turning point; use contrast and pause. Check in by room with one tip each.</p>"
   },
   {
@@ -321,6 +363,45 @@
     ],
     "apps": "Appendices H & E",
     "resources": "Breakout pairs · App. H Devising Techniques · App. E Planning Template",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "HEAR · COMPARE · NAME", "nav": "Voice and subtext", "title": "Voice makes subtext audible", "tag": "LEARN + TRY", "tag_class": "read",
+        "content_heading": "The words stay; the meaning changes",
+        "content": ["Say <i>‘We need to talk’</i> as if you are excited, frightened and furious. The words are identical, but the listener receives three different stories.", "<b>Subtext</b> is the meaning underneath the words. Actors reveal it through <b>tone, pace, volume and pause</b>."],
+        "ideas": [["Four controls", "Tone = feeling colour · pace = speed · volume = loud/soft · pause = chosen silence"], ["Teacher model", "Perform three versions. Students give each a tension score from 1–5 and identify the vocal evidence."]],
+        "schedule": [["0–4 min", "Voice swap", "Whole class tries the same line three ways—aloud, on mute, or by annotating it."], ["4–8 min", "Compare", "Hear teacher versions and collect tension scores."], ["8–12 min", "Teach", "Name subtext and the four voice controls; link choices to character want."], ["12–15 min", "Respond", "Identify one exact change and what it communicated."]],
+        "iboard": {"label": "iBoard check 1 · Vocal evidence", "prompt": "The meaning changed when the actor changed <b>___</b> from <b>___</b> to <b>___</b>. It suggested the character was <b>___</b>."},
+        "notes": "<h4>Listen for evidence</h4><p>Students may perform muted and type their intended choices. The check is whether they can connect a vocal control to meaning.</p>"
+      },
+      {
+        "letter": "B", "phase": "IMPROVISE · SELECT · JUSTIFY", "nav": "Talk it out", "title": "Talk it out to find the words", "tag": "BREAKOUT 1", "tag_class": "do",
+        "content_heading": "Do not write every word first",
+        "content": ["Performer speaks in character while the prompter asks: <b>What do you want? What stops you? What can’t you say?</b>", "The scribe captures only the strongest three lines. Swap halfway. Rough, surprising language is useful; polished writing comes later."],
+        "ideas": [["Roles", "Performer · prompter/scribe. The performer can speak, type or send short written answers."], ["Keep test", "Does the line reveal the want, obstacle, relationship or turning point? If not, let it go."]],
+        "schedule": [["15–18 min", "Set up", "Choose roles and restate each character’s want and problem."], ["18–23 min", "Round 1", "Prompt the first performer; capture three possible lines."], ["23–27 min", "Round 2", "Swap and repeat for the second performer."], ["27–30 min", "Select", "Each student chooses one line and explains why it belongs."]],
+        "iboard": {"label": "iBoard check 2 · Keep one line", "prompt": "My strongest improvised line is <b>‘___’</b>. I kept it because it reveals <b>___</b> about the character or problem."},
+        "notes": "<h4>Room prompt</h4><p>If a pair stalls, ask one question in role and leave them with a 60-second speaking challenge. Do not turn this into silent script-writing.</p>"
+      },
+      {
+        "letter": "C", "phase": "TEST · MAP · CHOOSE", "nav": "Voice ladder", "title": "Build a voice ladder", "tag": "BREAKOUT 2", "tag_class": "try",
+        "content_heading": "Test the turning-point line three ways",
+        "content": ["Perform your key line three times. Change one control each time: tone, pace, volume or pause.", "Your partner maps the choices, then names which version best serves the character and why. Create contrast between the moment <b>before</b> and the peak."],
+        "ideas": [["Example ladder", "Before: quick + breathless → pause → Peak: slow + quiet"], ["Director language", "‘Version 2 worked because the pause made us wait for the confession.’"]],
+        "schedule": [["30–33 min", "Choose", "Select the turning-point line and decide the intended audience feeling."], ["33–39 min", "Test", "Performer A tries three versions; partner maps and recommends one."], ["39–43 min", "Swap", "Performer B tests; partner maps and recommends."], ["43–45 min", "Lock", "Record the before/peak voice map."]],
+        "iboard": {"label": "iBoard check 3 · Before and peak", "prompt": "Before the turning point my voice is <b>___</b>. At the peak it becomes <b>___</b>. This makes the audience <b>___</b>."},
+        "notes": "<h4>Precision check</h4><p>Ask students to replace emotion-only answers with audible controls: how fast, how loud, what tone and exactly where the silence falls.</p>"
+      },
+      {
+        "letter": "D", "phase": "ASSEMBLE · RUN · REVISE", "nav": "Rough full run", "title": "Build the rough full run", "tag": "REHEARSE", "tag_class": "wow",
+        "content_heading": "Turn discoveries into a playable piece",
+        "content": ["Arrange kept lines into <b>opening → build → turning point → final line</b>. Add short voice annotations such as <i>[faster]</i>, <i>[pause]</i> or <i>[quiet]</i>.", "Run the whole piece once—even if it is imperfect. Listen to what feels repeated, unclear or too long; then cut or rewrite one part."],
+        "ideas": [["Success today", "A complete rough journey with intentional voice—not a polished memorised script."], ["If recording is unavailable", "Perform live to yourself, time it and immediately jot what you noticed."]],
+        "schedule": [["45–49 min", "Assemble", "Place chosen lines into the four-beat structure."], ["49–54 min", "Run", "Perform once from start to finish with voice choices."], ["54–57 min", "Listen + edit", "Identify one unclear/repeated section and cut or rewrite it."], ["57–60 min", "Exit + save", "Post the strongest line/voice choice and save the rough script."]],
+        "iboard": {"label": "iBoard check 4 · Exit evidence", "prompt": "My strongest line is <b>‘___’</b>. I will use <b>___</b> so it makes the audience <b>___</b>. My next revision is <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L6", "prompt": "Save <b>Devised words and voice</b>: rough script · highlight lines kept from improvisation · voice annotations · one cut/rewrite · a two-sentence reflection."},
+        "notes": "<h4>End point</h4><p>The piece should hang together end to end. Use iBoard to separate students needing line/structure help from those ready for camera work.</p>"
+      }
+    ],
     "notes": "<p>Improvisation to find words and voice. Keep demos under two minutes. Piece should hang together end to end by the end of the lesson.</p>"
   },
   {
@@ -375,6 +456,45 @@
     ],
     "apps": "Appendix I · Rehearsal checklist",
     "resources": "Breakout pairs · App. I Rehearsal Checklist",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "DIAGNOSE · MODEL · FIX", "nav": "Camera changes acting", "title": "The camera changes performance", "tag": "TECH + PERFORMANCE", "tag_class": "read",
+        "content_heading": "Spot what weakens the performance",
+        "content": ["A strong performance can disappear if the actor is backlit, too far away, hard to hear, looking at their own preview or using gestures outside the frame.", "Camera acting needs five checks: <b>frame · light · lens focus · microphone · gesture size</b>. Small, clear choices often read more strongly than stage-sized ones."],
+        "ideas": [["Teacher comparison", "Show the same lines badly set up, then improved. Freeze after each change and ask what became clearer."], ["Privacy first", "Use a plain wall or virtual background where allowed. No student must reveal a private room or turn on a camera."]],
+        "schedule": [["0–4 min", "Fault finder", "Students inspect a deliberately weak setup and list likely problems."], ["4–9 min", "Model", "Correct frame, light, eye line, sound and gesture one at a time."], ["9–13 min", "Teach", "Explain medium/close framing and why actors look near the lens."], ["13–15 min", "Respond", "Post three precise fault-and-fix pairs."]],
+        "iboard": {"label": "iBoard check 1 · Technical diagnosis", "prompt": "List <b>three faults and fixes</b>: ‘The ___ is ___, so I would ___.’ Include at least one performance fix and one setup fix."},
+        "notes": "<h4>Safeguard</h4><p>Never ask students to pan around their home. Camera-off students analyse the teacher model and can demonstrate framing with a drawn rectangle.</p>"
+      },
+      {
+        "letter": "B", "phase": "TEST · DIRECT · SELECT", "nav": "Framing lab", "title": "Find the frame that serves the story", "tag": "BREAKOUT 1", "tag_class": "do",
+        "content_heading": "Wide, medium or close?",
+        "content": ["Test three imagined or actual frames: <b>wide</b> for whole-body action, <b>medium</b> for gesture and face, <b>close</b> for thought and expression.", "Choose the frame that best communicates your monologue—not simply the one that looks coolest."],
+        "ideas": [["Roles", "Performer · director · tech/reporter. Rotate or combine roles."], ["Camera-off access", "Direct another performer, describe a safe setup, or draw and label the chosen shot."]],
+        "schedule": [["15–18 min", "Assign", "Choose roles and identify the most important moment in the piece."], ["18–23 min", "Test", "Try or mime wide, medium and close framing for the same lines."], ["23–27 min", "Direct", "Adjust headroom, eye line, light and mic distance."], ["27–30 min", "Select", "Choose one frame and justify its dramatic effect."]],
+        "iboard": {"label": "iBoard check 2 · Frame decision", "prompt": "I chose a <b>___ shot</b> because the audience needs to notice <b>___</b>. I adjusted <b>___</b> so that <b>___</b>."},
+        "notes": "<h4>Room sweep</h4><p>Check that choices are story-led. Ask: ‘What should the audience notice at this distance?’</p>"
+      },
+      {
+        "letter": "C", "phase": "PERFORM · NOTE · REPLAY", "nav": "Micro-performance", "title": "Micro-performance lab", "tag": "BREAKOUT 2", "tag_class": "try",
+        "content_heading": "Improve twenty seconds, not everything",
+        "content": ["Perform the <b>20 seconds around the turning point</b>. Test four camera-sized skills: lens focus, clear projection, readable facial expression and one controlled gesture.", "The director gives one concrete action. Replay the same section immediately so both people can compare."],
+        "ideas": [["Useful note", "‘Keep your eyes near the lens during the pause so the audience stays with the decision.’"], ["Camera-off access", "Read aloud for vocal feedback, listen as director, or annotate a script with eye line and gesture cues."]],
+        "schedule": [["30–33 min", "Choose", "Mark the 20-second turning-point section."], ["33–38 min", "First tests", "Each performer shares once; director notes one observable issue."], ["38–42 min", "Replay", "Apply the note and repeat the same moment."], ["42–45 min", "Compare", "Record what changed and the audience effect."]],
+        "iboard": {"label": "iBoard check 3 · Before and after", "prompt": "First, <b>___</b> weakened the moment. I changed <b>___</b>. The replay was stronger because <b>___</b>."},
+        "notes": "<h4>Make feedback observable</h4><p>Accept ‘move the camera closer’ or ‘slow the key line’; reject personality judgements such as ‘be more confident’ unless converted to an action.</p>"
+      },
+      {
+        "letter": "D", "phase": "CHECK · TAKE · REVIEW", "nav": "30-second take", "title": "Make a 30-second camera take", "tag": "REHEARSE + REVIEW", "tag_class": "wow",
+        "content_heading": "Set up, perform, watch back, revise",
+        "content": ["Complete a safe technical check, then capture one uninterrupted 30-second take. Watch or listen to the whole clip before judging it.", "Score <b>voice · face · frame · gesture</b> out of three: 1 not clear yet · 2 mostly clear · 3 deliberate and effective. Choose only one next action."],
+        "ideas": [["No recording?", "Perform live, ask a partner to score the four areas, or use an audio-only rehearsal."], ["Keep private", "A labelled setup diagram is valid evidence; no screenshot needs to show personal surroundings."]],
+        "schedule": [["45–49 min", "Check", "Use App. I: safe background, frame, light, sound, lens focus."], ["49–53 min", "Take", "Perform the strongest 30 seconds without stopping."], ["53–57 min", "Review", "Watch/listen once and score the four performance areas."], ["57–60 min", "Revise + save", "Name one action and save rehearsal evidence."]],
+        "iboard": {"label": "iBoard check 4 · Exit evidence", "prompt": "My camera strength is <b>___</b>; evidence: <b>___</b>. My next action is <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L7", "prompt": "Save <b>Camera rehearsal evidence</b>: setup checklist · voice/face/frame/gesture scores · feedback · screenshot OR labelled setup diagram · next action."},
+        "notes": "<h4>Diagnostic close</h4><p>Sort responses into performance, setup and access needs so Lesson 8 feedback pairs can be purposeful.</p>"
+      }
+    ],
     "notes": "<p>Model less-effective then more-effective side by side. Circulate via spotlight during solo rehearsals.</p>"
   },
   {
@@ -429,6 +549,45 @@
     ],
     "apps": "Appendices J & A",
     "resources": "Breakout pairs · App. J Peer Feedback Sheet · App. A Elements reference",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "COMPARE · NAME · UPGRADE", "nav": "Feedback that works", "title": "Feedback must cause a change", "tag": "LEARN + RESPOND", "tag_class": "read",
+        "content_heading": "Kind, specific and usable",
+        "content": ["Compare: <i>‘Good job!’</i> with <i>‘The pause before the confession built tension; hold it two seconds longer.’</i> Only one gives the performer an action.", "Use the feedback formula: <b>notice the element → explain its effect → suggest an exact action</b>."],
+        "ideas": [["Glow", "Name an element that worked and the audience effect it created."], ["Grow", "Suggest one small, observable action—not ‘be better’ or ‘have confidence’."], ["Vocabulary bank", "Tension · focus · contrast · mood · voice · movement · space · symbol"]],
+        "schedule": [["0–4 min", "Compare", "Vote for the comment that would actually improve a performance and explain why."], ["4–8 min", "Teach", "Model notice + effect + action using a short performed line."], ["8–12 min", "Upgrade", "Turn two vague comments into director-quality notes."], ["12–15 min", "Respond", "Post one upgraded feedback sentence."]],
+        "iboard": {"label": "iBoard check 1 · Upgrade the note", "prompt": "Upgrade <i>‘Speak better’</i>: <b>I noticed ___, which made the audience ___. Try ___ so that ___.</b>"},
+        "notes": "<h4>Evidence sweep</h4><p>Look for drama vocabulary plus a doable action. Read two anonymous responses aloud and improve them together.</p>"
+      },
+      {
+        "letter": "B", "phase": "PERFORM · OBSERVE · FEEDBACK", "nav": "Rehearsal round one", "title": "Peer rehearsal: round one", "tag": "BREAKOUT 1", "tag_class": "do",
+        "content_heading": "One performer, one director, then swap",
+        "content": ["Share your one-minute piece—or your strongest 45 seconds if it is unfinished. The director uses Appendix J to capture <b>one glow and one grow</b>.", "Feedback must refer to something that happened: the line, pause, focus, voice, expression, movement or framing."],
+        "ideas": [["Roles", "Performer A / director B, then swap. Keep time firmly."], ["Camera-off access", "Perform by audio, read the script, listen as director or give feedback from a written excerpt."]],
+        "schedule": [["15–17 min", "Set up", "Open App. J, choose order and tell the director what feedback is most needed."], ["17–22 min", "Round A", "First performance and one-minute spoken feedback."], ["22–27 min", "Round B", "Swap performance and feedback."], ["27–30 min", "Record", "Each student writes the most useful note received or given."]],
+        "iboard": {"label": "iBoard check 2 · Peer note", "prompt": "One specific note was: <b>___</b>. It is useful because the performer can <b>___</b>."},
+        "notes": "<h4>Teacher sweep</h4><p>Check that both students perform or contribute evidence. Prompt directors to name the audience effect, not simply the actor’s behaviour.</p>"
+      },
+      {
+        "letter": "C", "phase": "SELECT · REVISE · REPLAY", "nav": "Act on feedback", "title": "Prove the feedback changed something", "tag": "BREAKOUT 2", "tag_class": "try",
+        "content_heading": "Revise the highest-value moment",
+        "content": ["Choose the one note most likely to improve meaning for the audience. Apply it to a <b>10–20 second moment</b>, then replay that exact section.", "Compare before and after using element + effect language. A revision is successful only when it changes what the audience notices, understands or feels."],
+        "ideas": [["High-value change", "Strengthen a turning point, clarify the character’s want, or make the final line land."], ["Example", "Before: rushed confession. Revision: pause and stillness. Effect: audience anticipates the truth."]],
+        "schedule": [["30–33 min", "Select", "Underline one peer note and state the intended effect."], ["33–38 min", "Revise", "Rehearse the changed 10–20 seconds twice."], ["38–42 min", "Replay", "Show the partner; partner compares before and after."], ["42–45 min", "Explain", "Post the exact revision and changed effect."]],
+        "iboard": {"label": "iBoard check 3 · Before and after", "prompt": "Before, I <b>___</b>. I revised <b>___</b>. This changed the audience effect from <b>___</b> to <b>___</b>."},
+        "notes": "<h4>Keep the loop short</h4><p>Do not allow a full rewrite. Students need to experience feedback → action → visible improvement within this block.</p>"
+      },
+      {
+        "letter": "D", "phase": "FULL RUN · LOCK · REFLECT", "nav": "Final rehearsal", "title": "Lock the two improvements", "tag": "REHEARSE + EVIDENCE", "tag_class": "wow",
+        "content_heading": "One full run with deliberate choices",
+        "content": ["Perform the whole piece once. Use Appendix I to check voice, character, structure, tension and camera choices.", "Lock <b>two improvements</b> you will keep next lesson. Do not chase ten tiny fixes; choose the changes that most help the audience."],
+        "ideas": [["Self-check", "Can I name where each improvement appears and what it does?"], ["Ready for Week 9", "Piece runs end to end; feedback is recorded; remaining priority is specific."]],
+        "schedule": [["45–48 min", "Prepare", "Mark two revised moments and choose a feedback focus."], ["48–53 min", "Full run", "Perform without stopping; partner or self uses App. I."], ["53–57 min", "Lock", "Record two improvements that will stay and one remaining priority."], ["57–60 min", "Exit + save", "Post evidence and save the peer-feedback record."]],
+        "iboard": {"label": "iBoard check 4 · Exit evidence", "prompt": "The feedback I acted on was <b>___</b>. It improved <b>___</b> by <b>___</b>. My remaining priority is <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L8", "prompt": "Save <b>Rehearsal and peer feedback</b>: peer comment · exact revision · element-and-effect explanation · before/after reflection · remaining priority."},
+        "notes": "<h4>End point</h4><p>Use the four iBoard posts plus App. J to identify who revised from evidence and who still needs teacher-directed feedback.</p>"
+      }
+    ],
     "notes": "<p><b>Appendix A</b> vocabulary again. Check feedback sheets are completed — this feeds the folio.</p>"
   },
   {
@@ -481,6 +640,45 @@
     ],
     "apps": "Appendices I & K",
     "resources": "App. I Rehearsal Checklist · App. K Filming & Submission Guide · help breakout",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "CHECK · RATE · REPAIR", "nav": "Readiness audit", "title": "Pass the five readiness gates", "tag": "DIAGNOSE", "tag_class": "read",
+        "content_heading": "Independent does not mean invisible",
+        "content": ["Rate each gate <b>green, amber or red</b>: 1 complete structure · 2 about one minute · 3 lines secure enough · 4 drama choices deliberate · 5 safe filming setup possible.", "A red or amber rating is useful evidence when it names the exact repair. Choose the gate that most affects the whole performance."],
+        "ideas": [["Green", "Ready and supported by evidence."], ["Amber", "Mostly ready; one specific repair needed."], ["Red", "Blocked or incomplete; ask for targeted help now."]],
+        "schedule": [["0–4 min", "Retrieve", "Open script, App. I and App. K; locate the latest feedback."], ["4–9 min", "Audit", "Rate all five gates and write one piece of evidence for each."], ["9–12 min", "Prioritise", "Choose the highest-impact amber/red gate and one repair action."], ["12–15 min", "Report", "Post current status so teacher can form the help room."]],
+        "iboard": {"label": "iBoard check 1 · Readiness status", "prompt": "My priority gate is <b>___</b> and it is <b>green/amber/red</b>. Evidence: <b>___</b>. I will repair it by <b>___</b>."},
+        "notes": "<h4>Build the help queue</h4><p>Sort iBoard responses into structure, performance and technology/access. Invite red students first; do not wait for them to self-nominate again.</p>"
+      },
+      {
+        "letter": "B", "phase": "TARGET · REPEAT · TIME", "nav": "Rehearsal sprint", "title": "Targeted rehearsal sprint", "tag": "INDEPENDENT", "tag_class": "do",
+        "content_heading": "Repeat the moments that matter",
+        "content": ["Avoid ten unfocused full runs. Rehearse: <b>opening ×2 · turning point ×3 · final line ×2</b>, then perform one uninterrupted full run.", "Time the full run. Around one minute is the goal, but meaning matters more than racing to fit."],
+        "ideas": [["Opening", "Focus, character and a reason to keep watching."], ["Turning point", "Clear peak with deliberate contrast or tension."], ["Final line", "Land it; hold focus for a beat before relaxing."]],
+        "schedule": [["15–18 min", "Target", "Mark the opening, turning point and final line."], ["18–24 min", "Repeat", "Run the three moments using the 2–3–2 pattern."], ["24–28 min", "Full run", "Perform once without stopping and record the duration."], ["28–30 min", "Diagnose", "Name the strongest and weakest moment."]],
+        "iboard": {"label": "iBoard check 2 · Timed evidence", "prompt": "My full run was <b>___ seconds</b>. Strongest moment: <b>___</b> because <b>___</b>. Weakest moment: <b>___</b>."},
+        "notes": "<h4>Visible independence</h4><p>The timed response is a checkpoint, not a competition. Follow up implausible times or missing weakest moments with a quick conference.</p>"
+      },
+      {
+        "letter": "C", "phase": "CHOOSE LANE · GET HELP · RETEST", "nav": "Help room", "title": "Solve one real problem", "tag": "TARGETED HELP", "tag_class": "try",
+        "content_heading": "Choose the right support lane",
+        "content": ["Choose one lane: <b>structure</b> (the story is unclear) · <b>voice/tension</b> (the peak is flat) · <b>camera/tech</b> (setup or submission problem).", "Bring one question, test one piece of advice, then report the result. Students who are green can act as peer directors or continue targeted rehearsal."],
+        "ideas": [["Structure prompt", "What changes between the opening and final line?"], ["Performance prompt", "Which exact control will make the peak different?"], ["Tech prompt", "What is the safest simple setup or approved fallback?"]],
+        "schedule": [["30–33 min", "Choose lane", "State one problem as a question and join the relevant help group."], ["33–38 min", "Conference", "Teacher/peer gives one action; student records it."], ["38–42 min", "Retest", "Try the affected moment or setup immediately."], ["42–45 min", "Report", "Post problem, advice, action and result."]],
+        "iboard": {"label": "iBoard check 3 · Help acted on", "prompt": "Problem: <b>___</b>. Advice: <b>___</b>. I tried <b>___</b>. The result was <b>___</b>."},
+        "notes": "<h4>Access</h4><p>Keep a written queue. For technology blockers, agree on an approved fallback rather than repeatedly troubleshooting the same device.</p>"
+      },
+      {
+        "letter": "D", "phase": "FULL RUN · PLAN · COMMIT", "nav": "Finalise the plan", "title": "Make a finalisation contract", "tag": "READY FOR FILMING", "tag_class": "wow",
+        "content_heading": "Finish with evidence and a concrete next step",
+        "content": ["Complete one final uninterrupted rehearsal and recheck Appendices I and K. Then plan <b>where, when, device and submission method</b> without showing or describing private spaces publicly.", "Choose the final two actions that must happen before filming. If blocked, name the person or approved school pathway that can help."],
+        "ideas": [["Safe planning", "A simple labelled setup—light in front, device stable, quiet background—is enough."], ["Honest status", "Green means evidence-backed readiness, not optimism."]],
+        "schedule": [["45–50 min", "Final run", "Perform without stopping and notice whether the earlier repair held."], ["50–54 min", "Audit", "Recheck performance and filming readiness using I/K."], ["54–57 min", "Plan", "Record setup, timing, device, submission and fallback."], ["57–60 min", "Commit + save", "Post status and save the final readiness record."]],
+        "iboard": {"label": "iBoard check 4 · Final status", "prompt": "I am <b>green/amber/red</b> for filming because <b>___</b>. My next exact action is <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L9", "prompt": "Save <b>Final readiness record</b>: script status · duration · deliberate elements · safe setup diagram/checklist · help used · final two actions and fallback."},
+        "notes": "<h4>After class</h4><p>Contact amber/red students using the normal school process. The lesson now leaves four checkpoints instead of a forty-minute invisible work block.</p>"
+      }
+    ],
     "notes": "<p><b>Appendix K</b>. Keep a help breakout open as a virtual queue (raise hand / chat). Weeks 9–10 are long DO by design.</p>"
   },
   {
@@ -528,6 +726,45 @@
     ],
     "apps": "Appendices K & L",
     "resources": "App. K · App. L Reflection Sheet · agreed submission method · help breakout",
+    "live_screens": [
+      {
+        "letter": "A", "phase": "WARM · CHECK · READY", "nav": "Prepare to perform", "title": "Prepare the performer and space", "tag": "FINAL SETUP", "tag_class": "read",
+        "content_heading": "Calm body, clear voice, safe setup",
+        "content": ["Warm up without exhausting the performance: release shoulders and jaw, breathe low and steady, hum, then speak the opening and final line clearly.", "Use Appendix K for a final <b>frame · light · sound · device · privacy</b> check. Fix only what will materially help the audience."],
+        "ideas": [["Nerves are usable", "Slow the exhale, plant your feet and focus on the character’s want."], ["Privacy and access", "No public tour of the filming space. Use the approved background, audio/fallback or school support arrangement."]],
+        "schedule": [["0–5 min", "Warm up", "Guided physical release, breathing, humming and articulation."], ["5–9 min", "Line check", "Speak opening and final line with clear focus and breath."], ["9–13 min", "Setup check", "Complete App. K and solve one setup issue."], ["13–15 min", "Report", "Post readiness and the final fix."]],
+        "iboard": {"label": "iBoard check 1 · Ready state", "prompt": "I am <b>green/amber/red</b>. My final setup or performance fix is <b>___</b>, because <b>___</b>."},
+        "notes": "<h4>Teacher action</h4><p>Move red responses straight to the help pathway. Keep the emotional tone calm: this is a readiness check, not a public judgement.</p>"
+      },
+      {
+        "letter": "B", "phase": "DRESS RUN · REVIEW · ONE FIX", "nav": "Dress rehearsal", "title": "One uninterrupted dress rehearsal", "tag": "REHEARSE", "tag_class": "do",
+        "content_heading": "Finish the take before judging it",
+        "content": ["Perform the full piece without restarting for small mistakes. Watch or listen back once from beginning to end.", "Choose <b>one high-value revision</b>: the change that most improves clarity, character or audience effect. Endless restarting usually makes the work less focused, not more."],
+        "ideas": [["Review questions", "Was the character sustained? Did the turning point peak? Did the final line land?"], ["One-fix rule", "Make one precise adjustment, rehearse that moment once, then move on."]],
+        "schedule": [["15–18 min", "Prepare", "Silence notifications, open the checklist and settle into character."], ["18–23 min", "Dress take", "Perform one complete uninterrupted run."], ["23–27 min", "Review", "Watch/listen once; record duration and strongest element."], ["27–30 min", "One fix", "Rehearse the highest-value adjustment once and report it."]],
+        "iboard": {"label": "iBoard check 2 · Dress-run evidence", "prompt": "Duration: <b>___ seconds</b>. Strongest element: <b>___</b>, shown when <b>___</b>. My one fix is <b>___</b>."},
+        "notes": "<h4>Protect filming time</h4><p>At 30 minutes, students move forward. Perfectionism is not evidence of readiness; a complete reviewed take is.</p>"
+      },
+      {
+        "letter": "C", "phase": "FILM · VERIFY · SUBMIT", "nav": "Film and submit", "title": "Capture and verify the final performance", "tag": "FINAL TAKE", "tag_class": "try",
+        "content_heading": "A file is not finished until it is checked",
+        "content": ["Film the one-minute monologue or soliloquy using the agreed method. A second take is optional only if time allows and you know the exact reason.", "Watch the complete chosen file, use the required filename, then submit. If blocked, stop repeating the failed step and enter the help pathway with the exact error."],
+        "ideas": [["Verify", "Correct file · complete beginning/end · audible · visible if video required · opens successfully."], ["Submission status", "Submitted · uploading · blocked. All three require honest evidence."]],
+        "schedule": [["30–33 min", "Ready", "Confirm storage, filename, submission location and fallback."], ["33–39 min", "Final take", "Film one complete performance; optional purposeful second take."], ["39–42 min", "Verify", "Watch the chosen file from start to finish."], ["42–45 min", "Submit/report", "Upload and post status or the exact blocker."]],
+        "iboard": {"label": "iBoard check 3 · Submission tracker", "prompt": "Status: <b>submitted / uploading / blocked</b>. Evidence or exact blocker: <b>___</b>. Next action (if needed): <b>___</b>."},
+        "notes": "<h4>Teacher dashboard</h4><p>Use this response as the live submission sweep. Follow school privacy and storage rules; never request public links or personal cloud access.</p>"
+      },
+      {
+        "letter": "D", "phase": "CELEBRATE · ANALYSE · REFLECT", "nav": "Reflect and celebrate", "title": "Name the growth, not just the grade", "tag": "REFLECTION", "tag_class": "wow",
+        "content_heading": "What did your choices communicate?",
+        "content": ["Return together. Share one word for how performing felt; viewing selected clips is optional and follows class consent and privacy expectations.", "Complete Appendix L using <b>element + evidence + effect</b>. Compare your work with Lesson 5: what can you now shape deliberately that you could not shape then?"],
+        "ideas": [["Evidence sentence", "‘I used stillness before the final line, which focused the audience on the decision.’"], ["Growth sentence", "‘Since Lesson 5, I can build tension across four clear beats instead of relying on loudness.’"]],
+        "schedule": [["45–48 min", "Celebrate", "One-word chat check-in; acknowledge persistence and problem-solving."], ["48–53 min", "Analyse", "Identify three drama elements with exact performance evidence and audience effect."], ["53–57 min", "Trace growth", "Compare the final work with the Lesson 5 structure/tension plan."], ["57–60 min", "Exit + save", "Post the proud moment and next goal; save the final folio reflection."]],
+        "iboard": {"label": "iBoard check 4 · Final exit", "prompt": "I am proud of <b>___</b>. My use of <b>___</b> made the audience <b>___</b>. Next time I will <b>___</b>."},
+        "onenote": {"label": "OneNote / folio · Drama L10", "prompt": "Save <b>Final reflection</b>: what the piece communicates · three elements with evidence/effect · growth since Lesson 5 · strongest moment · next performance goal."},
+        "notes": "<h4>Close the evidence loop</h4><p>Follow up any blocked submission after class. Assessment evidence now includes the performance plus six lessons of choices, revisions and reflection.</p>"
+      }
+    ],
     "notes": "<p>Celebrate first — then App. L reflection for the folio. Filming checklist from App. K stays visible.</p>"
   }
 ]
